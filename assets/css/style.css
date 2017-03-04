@@ -1,19 +1,19 @@
 
 @media only screen and (max-width: 399px){
 
-.navbar-brand>img {
+	.navbar-brand>img {
 
-	width: 80%;
-	margin-top: -18%;
-}
+		width: 80%;
+		margin-top: -18%;
+	}
 }
 
- @media only screen and (min-width : 380px) {
+@media only screen and (min-width : 380px) {
 
-.navbar-brand>img {
-	margin-top: -5%;
-	width: 100%;
-}
+	.navbar-brand>img {
+		margin-top: -5%;
+		width: 100%;
+	}
 
 }
 
@@ -59,9 +59,26 @@
 
 
 .category-links {
-    display: inline-block;
-    padding: 0 20px;
-    line-height: 25px;
-    text-transform: uppercase;
+	display: inline-block;
+	padding: 0 20px;
+	line-height: 25px;
+	text-transform: uppercase;
 
+}
+
+.no-decor ul {
+	list-style-type: none;
+}
+
+.dark {
+	border-top: 1px solid #ddd;
+}
+
+.btn-primary a {
+	color: white;
+
+}
+
+.ptop {
+	padding-top: 3%;
 }
