@@ -4,7 +4,7 @@ import { Router, Request, Response, NextFunction } from "express";
 
 
 class Routers {
-    router: Router
+    router: Router;
 
     constructor() {
         this.router = Router();

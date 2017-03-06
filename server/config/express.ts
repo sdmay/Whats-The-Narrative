@@ -5,7 +5,7 @@ import * as logger from "morgan";
 import Routes from "../routes/routes-index";
 
 class App {
-    app: express.Express = express();
+    app: express.Express;
 
     constructor() {
         this.app = express();
@@ -19,7 +19,7 @@ class App {
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(bodyParser.text());
         this.app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-        this.app.use(express.static("./public"));
+        this.app.use(express.static("./client"));
     }
 
     private routes(): void {

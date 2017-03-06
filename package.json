@@ -19,27 +19,14 @@
   },
   "homepage": "https://github.com/mtmulch/Whats-The-Narrative#readme",
   "dependencies": {
-    "@angular/common": "~2.4.0",
-    "@angular/compiler": "~2.4.0",
-    "@angular/core": "~2.4.0",
-    "@angular/forms": "~2.4.0",
-    "@angular/http": "~2.4.0",
-    "@angular/platform-browser": "~2.4.0",
-    "@angular/platform-browser-dynamic": "~2.4.0",
-    "@angular/router": "~3.4.0",
-    "@angular/upgrade": "~2.4.0",
-    "angular-in-memory-web-api": "~0.2.4",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.0",
-    "core-js": "^2.4.1",
     "debug": "^2.6.1",
     "express": "^4.15.0",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.8.5",
     "morgan": "^1.8.1",
-    "request": "^2.80.0",
-    "rxjs": "5.0.1",
-    "zone.js": "^0.7.4"
+    "request": "^2.80.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.0.37",
