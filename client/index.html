@@ -1,22 +1,65 @@
-<html>
-  <head>
-    <title>What's The Narrative - A Tailored News Search</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 1. Load libraries -->
-     <!-- Polyfill for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
-    <script>
-      System.import('app').catch(function(err){ console.error(err); });
-    </script>
-  </head>
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
-  </body>
+<html lang="en" class="no-js">
+
+<head>
+  <!-- meta -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- SEO -->
+	<meta name="description" content="A Tailored News Search That Dares to Be Different" />
+	<meta name="keywords" content="news search, daily news, breaking news, news today, current events" />
+	<meta name="author" content="UCF Web Coding Bootcamp" />
+	<!-- / SEO -->
+	<!-- Social Sharing -->
+	<meta property="og:title" content="What's The Narrative? A Tailored News Search That Dares to Be Different" />
+	<meta property="og:url" content="" />
+	<meta property="og:type" content="Website" />
+	<meta property="og:description" content="Get away from fakes news and build a tailored news search to keep you up to date!" />
+	<meta property="og:image" content="" />
+	<meta name="twitter:title" content="What's The Narrative? A Tailored News Search That Dares to Be Different" />
+	<meta name="twitter:description" content="Get away from fakes news and build a tailored news search to keep you up to date!" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="keywords" content="news search, daily news, breaking news, news today, current events">
+	<!-- / Social Sharing -->
+	<!-- / meta -->
+
+	<!-- Need Google Analytics Script HERE-->
+
+	<!-- bootstrap css & font awesome links -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+	<!-- normalize and style.css link -->
+	<link rel="stylesheet" href="assets/css/normalize.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+
+	<!-- favicon link -->
+	<!-- 	<link rel="shortcut icon" href="../assets/images/favicon.ico"> -->
+
+	<!-- local js link if needed-->
+	<!-- <script src="assets/js/main.js"></script> -->
+
+	<title>What's The Narrative - A Tailored News Search</title>
+
+  <!-- 1. Load libraries -->
+  <!-- Polyfill for older browsers -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <!-- 2. Configure SystemJS -->
+  <script src="systemjs.config.js"></script>
+  <script>
+    System.import('app/main').catch(function (err) { console.error(err); });
+  </script>
+</head>
+<!-- 3. Display the application -->
+
+<body>
+  <my-app>Loading...</my-app>
+		<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+</body>
+
 </html>
