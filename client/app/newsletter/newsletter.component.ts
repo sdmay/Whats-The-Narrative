@@ -2,9 +2,10 @@ import { Component } from "@angular/core";
 
 
 @Component({
+    moduleId: module.id,
     selector: "newsletter",
-    templateUrl: "app/newsletter/newsletter.component.html",
-    styleUrls: ["app/newsletter/newsletter.component.css"]
+    templateUrl: "./newsletter.component.html",
+    styleUrls: ["./newsletter.component.css"]
 })
 
 export class NewsLetterComponent {

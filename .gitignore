@@ -1,5 +1,5 @@
 node_modules
 
 #Ignoring automatically transpiled Typescript Files for Angular 2 to help avoid merge conflicts.
-/client/**/*.js
-/client/**/*.js.map
+/client/app/**/*.js
+/client/app/**/*.js.map
