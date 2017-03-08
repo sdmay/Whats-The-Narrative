@@ -1,5 +1,5 @@
 <div class="row">
-
+ <router-outlet></router-outlet>
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -67,7 +67,8 @@
                     <h3>Need An Account?</h3><br>
                 </div>
                 <div class="row text-center">
-                    <button type="button" class="btn btn-primary"><a href="#">Register</a></button>
+                    <a [routerLink]="['register']"><button type="button" class="btn btn-primary">Register</button></a>
+               
                 </div>
 
 
