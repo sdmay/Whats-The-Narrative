@@ -9,5 +9,10 @@ import { Component } from "@angular/core";
 })
 
 export class RegisterComponent {
+    firstName: string = "";
+    password: string = "";
 
+    update() {
+        console.log(this.firstName, this.password);
+    }
 }
