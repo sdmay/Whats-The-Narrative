@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
     styleUrls: ["./newsletter.component.css"]
 })
 
+
 export class NewsLetterComponent {
 
 }
