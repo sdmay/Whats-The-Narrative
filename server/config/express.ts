@@ -37,11 +37,11 @@ class App {
         this.app.post("/userauth/signinuser" , (req, res) => {
         console.log(req.body);
            let newUser = new User({
-               name: req.body.user.firstName,
+               name: req.body.user.name,
                password: req.body.user.password
            });
            newUser.save((err) => {
-                
+                console.log("saved")
            });
 
         });

@@ -3,6 +3,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         BrowserModule,
         HttpModule,
+        ReactiveFormsModule,
         FormsModule
     ],
     declarations: [
