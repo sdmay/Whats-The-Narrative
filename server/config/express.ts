@@ -25,7 +25,6 @@ class App {
 
     private routes(): void {
         this.app.get("*", (req, res) => {
-            console.log('test');
             res.sendFile(path.join(__dirname + "../../../client/index.html"));
         });
         this.app.use("/api", Routes);
