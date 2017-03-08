@@ -2,8 +2,11 @@ import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as logger from "morgan";
 import * as path from "path";
+import * as jwt from "jsonwebtoken";
 
 import Routes from "../routes/routes-index";
+
+import User from "../models/User";
 
 class App {
     app: express.Express;
@@ -24,10 +27,39 @@ class App {
     }
 
     private routes(): void {
+        
+
+        
+
+        this.app.use("/api", Routes);
+
+        // Test going to fix with TS.
+        this.app.post("/userauth/signinuser" , (req, res) => {
+           let newUser = new User({
+               name: "Mike",
+               password: "123"
+           });
+           newUser.save((err) => {
+                
+           });
+
+        });
+
+
         this.app.get("*", (req, res) => {
             res.sendFile(path.join(__dirname + "/../../client/index.html"));
         });
-        this.app.use("/api", Routes);
+
+
+
+
+        
+
+
+
+
+
+
     }
 
 };

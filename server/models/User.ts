@@ -12,7 +12,7 @@ export interface UserModel extends mongoose.Document {
 
 }
 
-let userSchema = new Schema({
+export let userSchema = new Schema({
 
     name: {
         type: String,
@@ -30,11 +30,6 @@ let userSchema = new Schema({
         //     },
         //     "Password should be longer."
         // ]
-    },
-    jwt: {
-        type: String,
-        required: true
-
     },
     leftOrRight: {
         type: Boolean,
@@ -67,7 +62,5 @@ let userSchema = new Schema({
     return this;
 });
 
-
-
-
-
+const User = mongoose.model<UserModel>("User", userSchema);
+export default User;
