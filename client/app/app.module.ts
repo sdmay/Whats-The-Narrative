@@ -12,9 +12,10 @@ import { HomeComponent } from "./home/home.component";
 import { NewsLetterComponent } from "./newsletter/newsletter.component";
 import { FooterComponent } from "./footer/footer.component";
 import { RegisterComponent } from "./register/register.component";
+import { IndexComponent } from './index/index.component';
 
 const appRoutes: Routes = [
-
+    { path: '', component: HomeComponent },
     { path: 'register', component: RegisterComponent },
 ]
 
@@ -32,11 +33,12 @@ const appRoutes: Routes = [
         HomeComponent,
         NewsLetterComponent,
         FooterComponent,
-        RegisterComponent
+        RegisterComponent, 
+        IndexComponent
     ],
     bootstrap: [
-        AppComponent],
-
+        AppComponent
+    ],
     exports: [RouterModule]
 })
 
