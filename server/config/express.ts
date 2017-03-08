@@ -35,9 +35,10 @@ class App {
 
         // Test going to fix with TS.
         this.app.post("/userauth/signinuser" , (req, res) => {
+        console.log(req.body);
            let newUser = new User({
-               name: "Mike",
-               password: "123"
+               name: req.body.user.firstName,
+               password: req.body.user.password
            });
            newUser.save((err) => {
                 
