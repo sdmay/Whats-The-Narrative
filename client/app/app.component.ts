@@ -1,3 +1,4 @@
+import { SavedComponent } from './saved/saved.component';
 import { Component } from "@angular/core";
 import { HeaderComponent } from "./header/header.component";
 import { SearchComponent } from "./search/search.component";
@@ -13,7 +14,8 @@ import { FooterComponent } from './footer/footer.component';
     SearchComponent,
     HomeComponent,
     NewsLetterComponent,
-    FooterComponent
+    FooterComponent, 
+    SavedComponent
     ]
 })
 
