@@ -1,6 +1,7 @@
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as logger from "morgan";
+import * as path from "path";
 
 import Routes from "../routes/routes-index";
 
@@ -23,6 +24,10 @@ class App {
     }
 
     private routes(): void {
+        this.app.get("*", (req, res) => {
+            console.log('test');
+            res.sendFile(path.join(__dirname + "../../../client/index.html"));
+        });
         this.app.use("/api", Routes);
     }
 
