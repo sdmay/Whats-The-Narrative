@@ -26,7 +26,8 @@
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.8.5",
     "morgan": "^1.8.1",
-    "request": "^2.80.0"
+    "request": "^2.80.0",
+    "ts-node": "^2.1.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.0.37",
@@ -44,7 +45,6 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "nodemon": "^1.11.0",
-    "ts-node": "^2.1.0",
     "typescript": "^2.2.1"
   }
 }

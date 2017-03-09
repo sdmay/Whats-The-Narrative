@@ -27,42 +27,11 @@ class App {
     }
 
     private routes(): void {
-        
-
-        
-
         this.app.use("/api", Routes);
-
-        // Test going to fix with TS.
-        this.app.post("/userauth/signinuser" , (req, res) => {
-        console.log(req.body);
-           let newUser = new User({
-               name: req.body.user.name,
-               password: req.body.user.password
-           });
-           newUser.save((err) => {
-                console.log("saved")
-           });
-
-        });
-
-
-        this.app.get("*", (req, res) => {
+        this.app.get("*", (req: express.Request, res: express.Response) => {
             res.sendFile(path.join(__dirname + "/../../client/index.html"));
         });
-
-
-
-
-        
-
-
-
-
-
-
     }
-
 };
 
 export default new App().app;

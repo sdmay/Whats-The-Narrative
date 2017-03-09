@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
+// Components
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
 import { SearchComponent } from "./search/search.component";
@@ -14,6 +15,9 @@ import { FooterComponent } from "./footer/footer.component";
 import { RegisterComponent } from "./register/register.component";
 import { IndexComponent } from './index/index.component';
 import { SavedComponent } from './saved/saved.component';
+
+//Services
+import { RegisterService } from "./register/register.service";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -38,6 +42,9 @@ const appRoutes: Routes = [
         RegisterComponent, 
         IndexComponent,
         SavedComponent
+    ],
+    providers: [
+        RegisterService
     ],
     bootstrap: [
         AppComponent

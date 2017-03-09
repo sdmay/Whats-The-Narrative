@@ -1,6 +1,6 @@
-import { Router, Request, Response, NextFunction } from "express";
+import { Router } from "express";
 
-// TODO: import subrouters
+import UserAuthenication from "./user-authenication";
 
 
 class Routers {
@@ -12,8 +12,8 @@ class Routers {
     }
 
     private initializeRoutes() {
-        
-        // TODO : put reference to sub routers here.
+        this.router.use("/userauth", UserAuthenication);
+        // TODO : put reference to sub routers here (external api calls etc).
     }
 }
 

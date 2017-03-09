@@ -28,3 +28,5 @@ server.on("error", (error : Error) => {
 server.on("listening", () => {
   console.log("Server started on port " + PORT);
 });
+
+export default app;
