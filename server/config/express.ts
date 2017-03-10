@@ -23,13 +23,13 @@ class App {
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(bodyParser.text());
         this.app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-        this.app.use(express.static("./client"));
+        this.app.use(express.static("./dist"));
     }
 
     private routes(): void {
         this.app.use("/api", Routes);
         this.app.get("*", (req: express.Request, res: express.Response) => {
-            res.sendFile(path.join(__dirname + "/../../client/index.html"));
+            res.sendFile(path.join(__dirname + "/../../dist/index.html"));
         });
     }
 };
