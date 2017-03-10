@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 
+
 export let Schema = mongoose.Schema;
 export let ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -8,19 +9,29 @@ export interface NewsLetterModel extends mongoose.Document {
     email: string;
     createdAt: Date;
     modifiedAt: Date;
+
 }
 
-let newsLetterSchema = new Schema({
+export let newsLetterSchema = new Schema({
+
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 
     email: {
         type: String,
-        required: true
+        trim: true,
+        required: 'Password is Required'
+        // validate: [
+        //     function (input) {
+        //         return input.length >= 6;
+        //     },
+        //     "Password should be longer."
+        // ]
     },
-    createdAt: {
+        createdAt: {
         type: Date,
         required: false
     },
@@ -30,8 +41,8 @@ let newsLetterSchema = new Schema({
     }
 }).pre('save', function (next) {
     if (this._doc) {
-        let doc = <NewsLetterModel>this._doc;
-        let now = new Date();
+        const doc = <NewsLetterModel>this._doc;
+        const now = new Date();
         if (!doc.createdAt) {
             doc.createdAt = now;
         }
@@ -40,3 +51,6 @@ let newsLetterSchema = new Schema({
     next();
     return this;
 });
+
+const NewsLetter = mongoose.model<NewsLetterModel>('NewsLetter', newsLetterSchema);
+export default NewsLetter;

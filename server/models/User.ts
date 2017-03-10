@@ -7,6 +7,8 @@ export let ObjectId = mongoose.Schema.Types.ObjectId;
 export interface UserModel extends mongoose.Document {
     name: string;
     password: string;
+    leftOrRight: string;
+    savedArticle: string;
     createdAt: Date;
     modifiedAt: Date;
 
@@ -62,5 +64,5 @@ export let userSchema = new Schema({
     return this;
 });
 
-const User = mongoose.model<UserModel>("User", userSchema);
+const User = mongoose.model<UserModel>('User', userSchema);
 export default User;

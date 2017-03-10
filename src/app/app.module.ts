@@ -24,6 +24,7 @@ import { PeopleComponent } from './index/people/people.component';
 
 //Services
 import { RegisterService } from "./register/register.service";
+import { NewsLetterService } from './newsletter/newsletter.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
         PeopleComponent
     ],
     providers: [
-        RegisterService
+        RegisterService,
+        NewsLetterService
     ],
     bootstrap: [
         AppComponent

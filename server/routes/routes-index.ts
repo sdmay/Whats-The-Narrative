@@ -1,6 +1,7 @@
-import { Router } from "express";
+import { Router } from 'express';
 
-import UserAuthenication from "./user-authenication";
+import UserAuthenication from './user-authenication';
+import NewsLetterSignUp from './newslettersignup';
 
 
 class Routers {
@@ -12,8 +13,8 @@ class Routers {
     }
 
     private initializeRoutes() {
-        this.router.use("/userauth", UserAuthenication);
-        
+        this.router.use('/userauth', UserAuthenication);
+        this.router.post('/newsletter', NewsLetterSignUp );
         // TODO : put reference to sub routers here (external api calls etc).
     }
 }
