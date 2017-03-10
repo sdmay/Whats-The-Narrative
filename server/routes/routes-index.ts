@@ -13,6 +13,7 @@ class Routers {
 
     private initializeRoutes() {
         this.router.use("/userauth", UserAuthenication);
+        
         // TODO : put reference to sub routers here (external api calls etc).
     }
 }

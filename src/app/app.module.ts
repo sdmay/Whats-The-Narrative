@@ -15,6 +15,12 @@ import { FooterComponent } from "./footer/footer.component";
 import { RegisterComponent } from "./register/register.component";
 import { IndexComponent } from './index/index.component';
 import { SavedComponent } from './saved/saved.component';
+import { TrendingComponent } from './index/trending/trending.component';
+import { TopicsComponent } from './index/topics/topics.component';
+import { PoliticsComponent } from './index/politics/politics.component';
+import { PeopleComponent } from './index/people/people.component';
+
+
 
 //Services
 import { RegisterService } from "./register/register.service";
@@ -22,7 +28,11 @@ import { RegisterService } from "./register/register.service";
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'saved', component: SavedComponent }
+    { path: 'saved', component: SavedComponent },
+    { path: 'trending', component: TrendingComponent },
+    { path: 'topics', component: TopicsComponent },
+    { path: 'politics', component: PoliticsComponent},
+    { path: 'people', component: PeopleComponent }
 ]
 @NgModule({
     imports: [
@@ -39,9 +49,13 @@ const appRoutes: Routes = [
         HomeComponent,
         NewsLetterComponent,
         FooterComponent,
-        RegisterComponent, 
+        RegisterComponent,
         IndexComponent,
-        SavedComponent
+        SavedComponent,
+        TrendingComponent,
+        TopicsComponent,
+        PoliticsComponent,
+        PeopleComponent
     ],
     providers: [
         RegisterService
