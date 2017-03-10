@@ -15,7 +15,7 @@
   "homepage": "https://github.com/mtmulch/Whats-The-Narrative#readme",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build && node index.js",
+    "start": "node index.js",
     "build": "ng build",
     "build:watch": "ng build --watch",
     "server:dev": "nodemon -e js,ts index.js",
@@ -34,7 +34,6 @@
     "@angular/platform-browser": "^2.4.0",
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
-    "@ngtools/webpack": "^1.2.4",
     "aylien-news-api": "^2.0.2",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.0",
