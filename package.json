@@ -22,12 +22,14 @@
     "test:server": "mocha --reporter spec --compilers ts:ts-node/register tests/**/*.test.ts",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --target=production -e ${NODE_ENV:-production} --aot"
   },
   "dependencies": {
     "@angular/cli": "^1.0.0-rc.1",
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
+    "@angular/compiler-cli": "^2.4.9",
     "@angular/core": "^2.4.0",
     "@angular/forms": "^2.4.0",
     "@angular/http": "^2.4.0",
