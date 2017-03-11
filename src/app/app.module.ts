@@ -20,12 +20,15 @@ import { TrendingComponent } from './index/trending/trending.component';
 import { TopicsComponent } from './index/topics/topics.component';
 import { PoliticsComponent } from './index/politics/politics.component';
 import { PeopleComponent } from './index/people/people.component';
-
+import { LwTwitterFeedComponent } from './home/twitter/lw-twitter-feed.component';
+import { TwitterService } from 'ng2-twitter';
 
 //Services
 import { RegisterService } from "./register/register.service";
 import { NewsLetterService } from './newsletter/newsletter.service';
 import { TrendingService } from './index/trending/trending.service';
+import { LwTweetService } from './home/twitter/lw-twitter-feed.service';
+import {RightWingTwitterFeed} from '../../server/routes/twitter-api'
 
 
 const appRoutes: Routes = [
@@ -44,6 +47,8 @@ const appRoutes: Routes = [
         HttpModule,
         ReactiveFormsModule,
         FormsModule,
+        
+        
         // AppRoutingModule
     ],
     declarations: [
@@ -59,16 +64,24 @@ const appRoutes: Routes = [
         TrendingComponent,
         TopicsComponent,
         PoliticsComponent,
-        PeopleComponent
+        PeopleComponent,
+        LwTwitterFeedComponent,
+        
     ],
     providers: [
         TrendingService,
         RegisterService,
         NewsLetterService,
+        LwTweetService,
+        TwitterService,
+        RightWingTwitterFeed
+        
     ],
     bootstrap: [
         AppComponent
     ],
-    exports: [RouterModule]
+    exports: [RouterModule,
+    
+    ]
 })
 export class AppModule {}
