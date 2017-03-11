@@ -16,8 +16,10 @@ export class TrendingComponent implements OnInit {
     getTrending(): void {
         this.trendingService
             .getTrending()
-            .then(trends => this.trends = trends);
-            console.log(this.trends);
+            .then((trends) => {
+                this.trends = trends.response.docs;
+                console.log(this.trends);
+            });
     }
     ngOnInit(): void {
         this.getTrending();

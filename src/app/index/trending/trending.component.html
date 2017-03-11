@@ -3,9 +3,9 @@
 <ul class="trends">
     <p>Should display articles</p>
       <li *ngFor="let trend of trends">
-    {{trend}}
-    <span class="badge">{{trend.id}}</span>
-    <span>{{trend.title}}</span>
+    <span class="badge">{{trend._id}}</span>
+    <span>{{trend.headline.main}}</span>
+    <a href="{{trend.web_url}}" target="blank"><span>{{trend.web_url}}</span></a>
   </li>
 
   </ul>

@@ -1,5 +1,5 @@
 export class Trending {
-  id: number;
+  _id: number;
   title: string;
   url: string;
 }
