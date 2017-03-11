@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Trending } from './trending';
+import { TrendingService } from './trending.service';
 
 @Component({
     moduleId: module.id,
@@ -7,6 +8,18 @@ import { Component } from '@angular/core';
     templateUrl: './trending.component.html'
 })
 
-export class TrendingComponent {
+export class TrendingComponent implements OnInit {
+    trends: Trending[] = [];
 
+    constructor(private trendingService: TrendingService) { }
+
+    getTrending(): void {
+        this.trendingService
+            .getTrending()
+            .then(trends => this.trends = trends);
+            console.log(this.trends);
+    }
+    ngOnInit(): void {
+        this.getTrending();
+    }
 }

@@ -4,6 +4,7 @@ import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+// import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from "./app.component";
@@ -21,10 +22,11 @@ import { PoliticsComponent } from './index/politics/politics.component';
 import { PeopleComponent } from './index/people/people.component';
 
 
-
 //Services
 import { RegisterService } from "./register/register.service";
 import { NewsLetterService } from './newsletter/newsletter.service';
+import { TrendingService } from './index/trending/trending.service';
+
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -32,16 +34,17 @@ const appRoutes: Routes = [
     { path: 'saved', component: SavedComponent },
     { path: 'trending', component: TrendingComponent },
     { path: 'topics', component: TopicsComponent },
-    { path: 'politics', component: PoliticsComponent},
+    { path: 'politics', component: PoliticsComponent },
     { path: 'people', component: PeopleComponent }
-]
+];
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes),
         BrowserModule,
         HttpModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        // AppRoutingModule
     ],
     declarations: [
         AppComponent,
@@ -59,13 +62,13 @@ const appRoutes: Routes = [
         PeopleComponent
     ],
     providers: [
+        TrendingService,
         RegisterService,
-        NewsLetterService
+        NewsLetterService,
     ],
     bootstrap: [
         AppComponent
     ],
     exports: [RouterModule]
 })
-export class AppModule {
-}
+export class AppModule {}

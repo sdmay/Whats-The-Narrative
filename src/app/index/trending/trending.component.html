@@ -1,1 +1,11 @@
 <h1>Trending News Storied</h1>
+
+<ul class="trends">
+    <p>Should display articles</p>
+      <li *ngFor="let trend of trends">
+    {{trend}}
+    <span class="badge">{{trend.id}}</span>
+    <span>{{trend.title}}</span>
+  </li>
+
+  </ul>
