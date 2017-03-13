@@ -2,8 +2,8 @@ import { Router } from 'express';
 
 import UserAuthenication from './user-authenication';
 import NewsLetterSignUp from './newslettersignup';
-import LwTwitterFeedComponent from './src/app/home/twitter/lw-twitter-feed.component'
-import RightWingTwitterFeed from './twitter-api';
+import TwitterApi from './twitter-api';
+
 
 class Routers {
     router: Router;
@@ -15,8 +15,8 @@ class Routers {
 
     private initializeRoutes() {
         this.router.use('/userauth', UserAuthenication);
-        this.router.post('/newsletter', NewsLetterSignUp );
-        this.router.get('/twitterfeed', RightWingTwitterFeed)
+        this.router.use('/twitterfeed', TwitterApi);
+        this.router.post('/newsletter', NewsLetterSignUp);
         // TODO : put reference to sub routers here (external api calls etc).
     }
 }

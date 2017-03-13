@@ -18,7 +18,7 @@ describe('angular home route "/" ', () => {
     });
 });
 
-describe('angular home route "/" ', () => {
+describe('angular register route "/" ', () => {
     it("it should be a status of 200 and it should return text/html", () => {
         return chai.request(app).get("/register")
             .then(res => {
