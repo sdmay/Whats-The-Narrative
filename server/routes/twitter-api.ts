@@ -27,20 +27,20 @@ export class TwitterApi {
 
     private getLeftWingTwitterResults(req: Request, res: Response, next: NextFunction): void {
         console.log('test');
-        res.locals.twitterClient.get('search/tweets', { q: 'republican' }, (error, tweets, response) => {
-            res.locals.tweets = tweets;
-            next();
-        });
-    }
-
-    private getRightWingTwitterResults(req: Request, res: Response, next: NextFunction): void {
         res.locals.twitterClient.get('search/tweets', { q: 'democrat' }, (error, tweets, response) => {
             res.locals.tweets = tweets;
             next();
         });
     }
 
-    sendBackTweetResults(req: Request, res: Response, next: NextFunction): void {
+    private getRightWingTwitterResults(req: Request, res: Response, next: NextFunction): void {
+        res.locals.twitterClient.get('search/tweets', { q: 'republican' }, (error, tweets, response) => {
+            res.locals.tweets = tweets;
+            next();
+        });
+    }
+
+    sendBackTweetResults(req: Request, res: Response): void {
         res.json(res.locals.tweets);
     }
 
