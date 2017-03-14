@@ -17,6 +17,7 @@ export class SearchResultsService {
   }
 
   private extractUserSearchData(res: Response) {
+    // console.log(res);
     const body = res.json();
     console.log('search results array');
     console.log(body);
