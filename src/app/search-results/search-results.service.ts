@@ -15,7 +15,6 @@ export class SearchResultsService {
   // TODO: give this observable a type that is not any
   public getUsersSearchFromServer(userSearchData) {
     const apiUrl = `/api/mainnewssearch/${userSearchData}`;
-
     console.log(apiUrl);
     this.http.get(apiUrl)
       .map((response: any) => {
