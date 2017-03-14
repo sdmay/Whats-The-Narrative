@@ -12,7 +12,8 @@ export class MainNewsSearch {
     }
 
     private initializeRoutes() {
-        this.router.get('/:searchterm', this.createAylienNewsInstance, this.createAylienNewsRightOrLeftWingSearch, this.performAylienNewsSearch);
+        this.router.get('/api/mainnewssearch/:searchterm',
+        this.createAylienNewsInstance, this.createAylienNewsRightOrLeftWingSearch, this.performAylienNewsSearch);
 
     }
 
@@ -26,6 +27,8 @@ export class MainNewsSearch {
     private createAylienNewsRightOrLeftWingSearch(req: Request, res: Response, next: NextFunction): void {
         // TODO: add another parameter to this api url to determine if the user is left or right wing or we can search the database...
         // and default for just a plain search.
+        
+
         res.locals.searchOptions = {
             'title': req.params.searchterm,
             'language': ['en'],
