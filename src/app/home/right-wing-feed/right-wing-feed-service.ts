@@ -11,7 +11,7 @@ export class RightWingFeedService {
   private apiUrl = '/api/twitterfeed/rightwing';
   constructor(private http: Http) {}
 
-  getTweets(): Observable<Tweet[]> {
+  getTweets(): any {
     return this.http.get(this.apiUrl)
       .map(this.extractTweetData)
       .catch(this.handleError);
@@ -27,7 +27,7 @@ export class RightWingFeedService {
 
   private extractTweetData(res: Response) {
     const body = res.json();
-    console.log('right wing twieet results');
+    console.log('right wing tweet results');
     console.log(body.statuses);
     return body.statuses || {};
   }
