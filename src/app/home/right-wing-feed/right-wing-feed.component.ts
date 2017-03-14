@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { RightWingFeedService } from './right-wing-feed-service';
 
+import {Tweet} from '../shared/tweet';
+
 
 @Component({
     moduleId: module.id,
@@ -11,7 +13,7 @@ import { RightWingFeedService } from './right-wing-feed-service';
 })
 
 export class RightWingFeedComponent implements OnInit {
-    tweets: any[];
+    tweets: Tweet[] = [];
 
 
     constructor(private rightWingFeedService: RightWingFeedService) { }

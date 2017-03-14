@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 import { HomeComponent } from './home/home.component';
 import { NewsLetterComponent } from './newsletter/newsletter.component';
 import { FooterComponent } from './footer/footer.component';
@@ -30,6 +31,8 @@ import { NewsLetterService } from './newsletter/newsletter.service';
 import { TrendingService } from './index/trending/trending.service';
 import { LeftWingFeedService } from './home/left-wing-feed/left-wing-feed.service';
 import { RightWingFeedService } from './home/right-wing-feed/right-wing-feed-service';
+import { DataComponent } from './shared/providers/data.component';
+import { SearchResultsService } from './search-results/search-results.service';
 
 
 
@@ -40,7 +43,8 @@ const appRoutes: Routes = [
     { path: 'trending', component: TrendingComponent },
     { path: 'topics', component: TopicsComponent },
     { path: 'politics', component: PoliticsComponent },
-    { path: 'people', component: PeopleComponent }
+    { path: 'people', component: PeopleComponent },
+    { path: 'searchresults', component: SearchResultsComponent },
 ];
 @NgModule({
     imports: [
@@ -66,14 +70,18 @@ const appRoutes: Routes = [
         PoliticsComponent,
         PeopleComponent,
         LeftWingFeedComponent,
-        RightWingFeedComponent
+        RightWingFeedComponent,
+        SearchResultsComponent
     ],
     providers: [
+        DataComponent,
         TrendingService,
         RegisterService,
         NewsLetterService,
         LeftWingFeedService,
-        RightWingFeedService
+        RightWingFeedService,
+        SearchResultsComponent,
+        SearchResultsService
     ],
     bootstrap: [
         AppComponent
@@ -82,4 +90,4 @@ const appRoutes: Routes = [
         RouterModule
     ]
 })
-export class AppModule {}
+export class AppModule { }

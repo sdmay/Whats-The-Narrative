@@ -42,7 +42,7 @@
                 </ul>
             </div>
             <!-- /btn-group -->
-            <input type="text" class="form-control">
+            <input type="text" [(ngModel)]="userInputSearchTerm" class="form-control"><button class="btn btn-primary" (click)="toggleUserSearch()">Search</button>
         </div>
         <!-- /input-group -->
     </div>

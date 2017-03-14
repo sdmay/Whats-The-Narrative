@@ -26,7 +26,6 @@ export class TwitterApi {
     }
 
     private getLeftWingTwitterResults(req: Request, res: Response, next: NextFunction): void {
-        console.log('test');
         res.locals.twitterClient.get('search/tweets', { q: 'democrat' }, (error, tweets, response) => {
             res.locals.tweets = tweets;
             next();

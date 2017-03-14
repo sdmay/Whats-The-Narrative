@@ -21,7 +21,7 @@ db.once('open', () => {
     server.listen(PORT);
 });
 
-server.on('error', (error : Error) => {
+server.on('error', (error: Error) => {
   console.log('Error starting server' + error);
 });
 
