@@ -85,7 +85,7 @@
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.9.tgz#ee159181c4013046598e1d176b45063bddb141f6"
 
-"@angular/core@>=2.3.1 <5.0.0 || >=4.0.0-beta <5.0.0", "@angular/core@^2.3.1", "@angular/core@^2.4.0":
+"@angular/core@>=2.3.1 <5.0.0 || >=4.0.0-beta <5.0.0", "@angular/core@^2.4.0":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.9.tgz#85dca2afa4021be91512c97597702ac8d73092e6"
 
@@ -93,7 +93,7 @@
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.9.tgz#a1ee9f403267fd78041f9ee77d1c9c24150e1d7c"
 
-"@angular/http@^2.3.1", "@angular/http@^2.4.0":
+"@angular/http@^2.4.0":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.9.tgz#a7de980d564ac25a497c5e822d2b941c1f143d48"
 
@@ -187,10 +187,6 @@
   resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-7.2.0.tgz#0fed32c8501da80ac9839d2d403a65c83d776ffd"
   dependencies:
     "@types/node" "*"
-
-"@types/jssha@0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@types/jssha/-/jssha-0.0.29.tgz#95e83dba98787ff796d2d5f37a1925abf41bc9cb"
 
 "@types/mime@*":
   version "0.0.29"
@@ -1398,7 +1394,7 @@ deep-eql@^0.1.3:
   dependencies:
     type-detect "0.1.1"
 
-deep-extend@~0.4.0:
+deep-extend@^0.4.1, deep-extend@~0.4.0:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.1.tgz#efe4113d08085f4e6f9687759810f807469e2253"
 
@@ -2902,10 +2898,6 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.3.6"
 
-jssha@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/jssha/-/jssha-2.2.0.tgz#87dcf60821dc3bec593f3855bbebccd276aacc1c"
-
 jwa@^1.1.4:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/jwa/-/jwa-1.1.5.tgz#a0552ce0220742cd52e153774a32905c30e756e5"
@@ -3480,17 +3472,6 @@ nested-error-stacks@^1.0.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz#19f619591519f096769a5ba9a86e6eeec823c3cf"
   dependencies:
     inherits "~2.0.1"
-
-ng2-twitter@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/ng2-twitter/-/ng2-twitter-0.3.0.tgz#fd83d02a86dfa0c79a30318c23c63bcb76df9d47"
-  dependencies:
-    "@angular/core" "^2.3.1"
-    "@angular/http" "^2.3.1"
-    "@types/jssha" "0.0.29"
-    jssha "^2.2.0"
-    rxjs "^5.0.1"
-    zone.js "^0.7.2"
 
 no-case@^2.2.0:
   version "2.3.1"
@@ -5327,6 +5308,13 @@ tunnel-agent@^0.6.0:
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
+
+twitter@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/twitter/-/twitter-1.7.0.tgz#2882e208e0ad83bb226528613561f1dd233ac94b"
+  dependencies:
+    deep-extend "^0.4.1"
+    request "^2.72.0"
 
 type-detect@0.1.1:
   version "0.1.1"

@@ -11,8 +11,8 @@ export class TwitterApi {
     }
 
     private initializeRoutes() {
-        this.router.get('/api/twitterfeed/rightwing', this.makeTwitterClient, this.getRightWingTwitterResults, this.sendBackTweetResults);
-        this.router.get('/api/twitterfeed/leftwing', this.makeTwitterClient, this.getLeftWingTwitterResults, this.sendBackTweetResults);
+        this.router.get('/rightwing', this.makeTwitterClient, this.getRightWingTwitterResults, this.sendBackTweetResults);
+        this.router.get('/leftwing', this.makeTwitterClient, this.getLeftWingTwitterResults, this.sendBackTweetResults);
     }
 
     private makeTwitterClient(req: Request, res: Response, next: NextFunction): void {
