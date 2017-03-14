@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import * as passportLocalMongoose from 'passport-local-mongoose';
 
 
 export let Schema = mongoose.Schema;
@@ -11,7 +12,6 @@ export interface UserModel extends mongoose.Document {
     savedArticle: string;
     createdAt: Date;
     modifiedAt: Date;
-
 }
 
 export let userSchema = new Schema({
@@ -63,6 +63,8 @@ export let userSchema = new Schema({
     next();
     return this;
 });
+
+userSchema.plugin(passportLocalMongoose);
 
 const User = mongoose.model<UserModel>('User', userSchema);
 export default User;

@@ -5,6 +5,7 @@ import { Trending } from './trending';
 
 @Injectable()
 export class TrendingService {
+    // TODO: turn this api call into a server side call.
     private catUrl = 'http://thecatapi.com/api/images/get?format=xml&results_per_page=20';
     // http://thecatapi.com/api/images/get?format=xml&results_per_page=20
     private trendingUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=097be422255e45a18b6864a8176f4a6c&q=trump';

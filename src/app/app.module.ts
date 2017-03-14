@@ -23,6 +23,7 @@ import { PoliticsComponent } from './index/politics/politics.component';
 import { PeopleComponent } from './index/people/people.component';
 import { LeftWingFeedComponent } from './home/left-wing-feed/left-wing-feed.component';
 import { RightWingFeedComponent } from './home/right-wing-feed/right-wing-feed.component';
+import { LoginComponent } from './login/login.component';
 
 
 // Services
@@ -33,6 +34,7 @@ import { LeftWingFeedService } from './home/left-wing-feed/left-wing-feed.servic
 import { RightWingFeedService } from './home/right-wing-feed/right-wing-feed-service';
 import { DataComponent } from './shared/providers/data.component';
 import { SearchResultsService } from './search-results/search-results.service';
+import { LoginService } from './login/login.service';
 
 
 
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
     { path: 'politics', component: PoliticsComponent },
     { path: 'people', component: PeopleComponent },
     { path: 'searchresults', component: SearchResultsComponent },
+    { path: 'login', component: LoginComponent },
 ];
 @NgModule({
     imports: [
@@ -71,7 +74,8 @@ const appRoutes: Routes = [
         PeopleComponent,
         LeftWingFeedComponent,
         RightWingFeedComponent,
-        SearchResultsComponent
+        SearchResultsComponent,
+        LoginComponent
     ],
     providers: [
         DataComponent,
@@ -81,7 +85,8 @@ const appRoutes: Routes = [
         LeftWingFeedService,
         RightWingFeedService,
         SearchResultsComponent,
-        SearchResultsService
+        SearchResultsService,
+        LoginService
     ],
     bootstrap: [
         AppComponent

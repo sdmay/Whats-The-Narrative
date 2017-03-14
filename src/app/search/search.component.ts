@@ -31,8 +31,8 @@ export class SearchComponent {
         // clear the input field
         this.userInputSearchTerm = '';
         if (this.router.url === '/searchresults') {
-            //TODO: THIS IS A TOTAL HACK NEED TO ACCOMPLISH THIS PROPERLY!!
-            this.router.navigate(['/']);
+            // TODO: FIX THIS!
+            this.router.navigate(['']);
             setTimeout(() => {
                 this.router.navigate(['searchresults']);
             }, 1);

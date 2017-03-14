@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 
 import { DataComponent } from '../shared/providers/data.component';
 import { SearchResultsService } from './search-results.service';
@@ -19,6 +19,7 @@ export class SearchResultsComponent implements OnInit {
     constructor(
         private dataComponent: DataComponent,
         private searchResultsService: SearchResultsService,
+        private zone: NgZone
     ) { }
 
     ngOnInit(): void {
@@ -27,7 +28,11 @@ export class SearchResultsComponent implements OnInit {
 
     public getUsersSearch() {
         this.searchResultsService.test(this.dataComponent.userSearchData).subscribe(
-            stories => this.stories = stories
+            stories => {
+                this.zone.run(() => {
+                    this.stories = stories;
+                });
+            }
         );
     }
 }
