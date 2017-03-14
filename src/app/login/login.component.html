@@ -1,0 +1,5 @@
+<form [formGroup]="loginForm">
+    <input formControlName="name" type="name" placeholder="Enter Your Email">
+    <input formControlName="password" type="password" placeholder="Enter Your Password">
+    <button (click)="toggleLoginUser()"class="btn btn-primary">Login</button>
+</form>
