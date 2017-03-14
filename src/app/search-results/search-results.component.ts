@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { DataComponent } from '../shared/providers/data.component';
 import { SearchResultsService } from './search-results.service';
@@ -14,25 +14,18 @@ export class SearchResultsComponent implements OnInit {
     // TODO: give these proper types.
     userSearch: any;
     // TODO: give this a proper type we need to determine what needs to be displayed on the page.
-    stories: any[] = [];
 
     constructor(
         private dataComponent: DataComponent,
         private searchResultsService: SearchResultsService,
-        private zone: NgZone
-    ) { }
+    ) {}
 
     ngOnInit(): void {
         this.getUsersSearch();
     }
 
-    public getUsersSearch() {
-        this.searchResultsService.test(this.dataComponent.userSearchData).subscribe(
-            stories => {
-                this.zone.run(() => {
-                    this.stories = stories;
-                });
-            }
-        );
+    public getUsersSearch(): void {
+        const userSearchData = this.dataComponent.userSearchData;
+        this.searchResultsService.getUsersSearchFromServer(userSearchData);
     }
 }

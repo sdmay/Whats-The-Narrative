@@ -6,15 +6,24 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SearchResultsService {
+  stories: any[] = [];
+
   constructor(
     private http: Http
   ) {}
 
   // TODO: give this observable a type that is not any
-  public test(userSearchData): Observable<any[]> {
+  public getUsersSearchFromServer(userSearchData) {
     const apiUrl = `/api/mainnewssearch/${userSearchData}`;
-    return this.http.get(apiUrl)
-      .map(this.extractUserSearchData);
+
+    console.log(apiUrl);
+    this.http.get(apiUrl)
+      .map((response: any) => {
+        console.log(JSON.parse(response._body));
+        return JSON.parse(response._body);
+      }).subscribe(result => {
+          this.stories = result;
+      });
       // .catch(this.handleError);
   }
 

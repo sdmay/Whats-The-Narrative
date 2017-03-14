@@ -1,5 +1,5 @@
-<ul *ngIf="stories">
-    <li *ngFor="let story of stories">
+<ul *ngIf="searchResultsService.stories">
+    <li *ngFor="let story of searchResultsService.stories">
         <p>Written By: {{story.author.name}}</p>
         <p>{{story.body}}</p>
         <img src={{story.media[0].url}} />

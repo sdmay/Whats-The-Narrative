@@ -31,11 +31,12 @@ export class SearchComponent {
         // clear the input field
         this.userInputSearchTerm = '';
         if (this.router.url === '/searchresults') {
-            // TODO: FIX THIS!
-            this.router.navigate(['']);
-            setTimeout(() => {
-                this.router.navigate(['searchresults']);
-            }, 1);
+            this.searchResultsComponent.getUsersSearch();
+            // // TODO: FIX THIS!
+            // this.router.navigate(['']);
+            // setTimeout(() => {
+            //     this.router.navigate(['searchresults']);
+            // }, 1);
         } else {
             this.router.navigate(['searchresults']);
         }
