@@ -12,7 +12,7 @@ export class MainNewsSearch {
     }
 
     private initializeRoutes() {
-        this.router.get('/api/mainnewssearch/:searchterm',
+        this.router.get('/:searchterm',
         this.createAylienNewsInstance, this.createAylienNewsRightOrLeftWingSearch, this.performAylienNewsSearch);
 
     }
