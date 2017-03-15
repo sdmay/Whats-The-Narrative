@@ -16,6 +16,7 @@ export class PopularNewsSearches {
         this.router.get('/politics', this.createAylienNewsInstance, this.createPoliticsNewsSearch, this.searchNews, this.sendResultsBack);
         this.router.get('/people', this.createAylienNewsInstance, this.createPeopleNewsSearch, this.searchNews, this.sendResultsBack);
         this.router.get('/money', this.createAylienNewsInstance, this.createMoneyNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/health', this.createAylienNewsInstance, this.createHealthNewsSearch, this.searchNews, this.sendResultsBack);
     }
 
     private createAylienNewsInstance(req: Request, res: Response, next: NextFunction): void {
@@ -26,7 +27,6 @@ export class PopularNewsSearches {
     }
 
     private createTrendingNowNewsSearch(req: Request, res: Response, next: NextFunction): void {
-        console.log('testing politics');
         res.locals.searchOptions = {
             'text': 'trending',
             'language': ['en'],
@@ -67,6 +67,19 @@ export class PopularNewsSearches {
     private createMoneyNewsSearch(req: Request, res: Response, next: NextFunction): void {
         res.locals.searchOptions = {
             'text': 'money',
+            'language': ['en'],
+            'notLanguage': ['es', 'it'],
+            'publishedAtStart': 'NOW-3DAYS',
+            'publishedAtEnd': 'NOW',
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+        };
+        next();
+    }
+
+    // TODO: adjust source Domains for this search.
+    private createHealthNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.searchOptions = {
+            'text': 'health',
             'language': ['en'],
             'notLanguage': ['es', 'it'],
             'publishedAtStart': 'NOW-3DAYS',

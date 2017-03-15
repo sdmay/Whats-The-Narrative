@@ -24,6 +24,7 @@ import { LeftWingFeedComponent } from './home/left-wing-feed/left-wing-feed.comp
 import { RightWingFeedComponent } from './home/right-wing-feed/right-wing-feed.component';
 import { LoginComponent } from './login/login.component';
 import { MoneyComponent } from './index/money/money.component';
+import { HealthComponent } from './index/health/health.component';
 
 
 // Services
@@ -38,6 +39,8 @@ import { SearchResultsService } from './search-results/search-results.service';
 import { LoginService } from './login/login.service';
 import { MoneyService } from './index/money/money.service';
 import { PeopleService } from './index/people/people.service';
+import { HealthService } from './index/health/health.service';
+
 
 
 @NgModule({
@@ -65,7 +68,8 @@ import { PeopleService } from './index/people/people.service';
         RightWingFeedComponent,
         SearchResultsComponent,
         LoginComponent,
-        MoneyComponent
+        MoneyComponent,
+        HealthComponent
     ],
     providers: [
         DataComponent,
@@ -79,7 +83,8 @@ import { PeopleService } from './index/people/people.service';
         LoginService,
         PoliticsService,
         MoneyService,
-        PeopleService
+        PeopleService,
+        HealthService
     ],
     bootstrap: [
         AppComponent

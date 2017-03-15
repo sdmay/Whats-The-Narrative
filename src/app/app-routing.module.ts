@@ -10,6 +10,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { PeopleComponent } from './index/people/people.component';
 import { PoliticsComponent } from './index/politics/politics.component';
 import { SavedComponent } from './saved/saved.component';
+import { HealthComponent } from './index/health/health.component';
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
     { path: 'searchresults', component: SearchResultsComponent },
     { path: 'login', component: LoginComponent },
     { path: 'money', component: MoneyComponent },
+    { path: 'health', component: HealthComponent },
 ];
 
 @NgModule({
