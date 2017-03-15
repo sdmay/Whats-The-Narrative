@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './header/search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { HomeComponent } from './home/home.component';
 import { NewsLetterComponent } from './newsletter/newsletter.component';
@@ -25,6 +25,11 @@ import { RightWingFeedComponent } from './home/right-wing-feed/right-wing-feed.c
 import { LoginComponent } from './login/login.component';
 import { MoneyComponent } from './index/money/money.component';
 import { HealthComponent } from './index/health/health.component';
+import { AboutComponent } from './index/about/about.component';
+import { TeamComponent } from './index/team/team.component';
+import { ContactComponent } from './index/contact/contact.component';
+import { SignupComponent } from './index/signup/signup.component';
+import { SigninComponent } from './index/signin/signin.component';
 
 
 // Services
@@ -41,9 +46,9 @@ import { MoneyService } from './index/money/money.service';
 import { PeopleService } from './index/people/people.service';
 import { HealthService } from './index/health/health.service';
 
-
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'register', component: RegisterComponent },
     { path: 'saved', component: SavedComponent },
     { path: 'trending', component: TrendingComponent },
@@ -53,6 +58,11 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'money', component: MoneyComponent },
     { path: 'health', component: HealthComponent },
+    { path: 'about', component: AboutComponent },
+    { path: 'team', component: TeamComponent },
+    { path: 'contact', component: ContactComponent },
+    { path: 'signup', component: SignupComponent },
+    { path: 'signin', component: SigninComponent },
 ];
 
 
@@ -83,7 +93,12 @@ const appRoutes: Routes = [
         SearchResultsComponent,
         LoginComponent,
         MoneyComponent,
-        HealthComponent
+        HealthComponent,
+        AboutComponent,
+        TeamComponent,
+        ContactComponent,
+        SignupComponent,
+        SigninComponent
     ],
     providers: [
         DataComponent,

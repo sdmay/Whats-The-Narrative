@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 
+import {SearchComponent} from './search/search.component';
+
 
 @Component({
     moduleId: module.id,
     selector: 'header',
+    entryComponents: [SearchComponent],
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css']
 })

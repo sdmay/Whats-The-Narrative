@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { DataComponent } from '../shared/providers/data.component';
-import { SearchResultsComponent } from '../search-results/search-results.component';
+import { DataComponent } from '../../shared/providers/data.component';
+import { SearchResultsComponent } from '../../search-results/search-results.component';
 
 
 @Component({
@@ -22,6 +22,7 @@ export class SearchComponent {
     ) { }
 
     toggleUserSearch() {
+        console.log('test');
         // break the function if there is no input in the input field
         if (!this.userInputSearchTerm) {
             return;
@@ -32,11 +33,6 @@ export class SearchComponent {
         this.userInputSearchTerm = '';
         if (this.router.url === '/searchresults') {
             this.searchResultsComponent.getUsersSearch();
-            // // TODO: FIX THIS!
-            // this.router.navigate(['']);
-            // setTimeout(() => {
-            //     this.router.navigate(['searchresults']);
-            // }, 1);
         } else {
             this.router.navigate(['searchresults']);
         }

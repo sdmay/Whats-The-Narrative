@@ -17,16 +17,14 @@ export class MainNewsSearch {
 
     private createAylienNewsInstance(req: Request, res: Response, next: NextFunction): void {
         res.locals.AylienNewsInstance = new AylienNewsApi.DefaultApi();
-        res.locals.AylienNewsInstance.apiClient.authentications['app_id'].apiKey = '2f2ac0fa';
-        res.locals.AylienNewsInstance.apiClient.authentications['app_key'].apiKey = 'eebf8dce086aeb01006fcbd87323a13a';
+        res.locals.AylienNewsInstance.apiClient.authentications['app_id'].apiKey = 'c2be3538';
+        res.locals.AylienNewsInstance.apiClient.authentications['app_key'].apiKey = '7c3d695c5aa573f72f642a77937d6d5b';
         next();
     }
 
     private createAylienNewsRightOrLeftWingSearch(req: Request, res: Response, next: NextFunction): void {
         // TODO: add another parameter to this api url to determine if the user is left or right wing or we can search the database...
         // and default for just a plain search.
-        
-
         res.locals.searchOptions = {
             'text': req.params.searchterm,
             'language': ['en'],
