@@ -4,6 +4,7 @@ import UserAuthenication from './user-authenication';
 import NewsLetterSignUp from './newslettersignup';
 import TwitterApi from './twitter-api';
 import MainNewsSearch from './main-news-search';
+import PopularSearches from './popular-news-searches';
 
 
 class Routers {
@@ -19,6 +20,7 @@ class Routers {
         this.router.use('/twitterfeed', TwitterApi);
         this.router.use('/mainnewssearch', MainNewsSearch);
         this.router.post('/newsletter', NewsLetterSignUp);
+        this.router.use('/popularnewssearchs', PopularSearches);
         // TODO : put reference to sub routers here (external api calls etc).
     }
 }
