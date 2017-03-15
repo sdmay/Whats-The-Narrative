@@ -5,23 +5,24 @@ import { TrendingService } from './trending.service';
 @Component({
     moduleId: module.id,
     selector: 'trending',
+    styleUrls: ['trending.component.css'],
     templateUrl: './trending.component.html'
 })
 
 export class TrendingComponent implements OnInit {
-    trends: Trending[] = [];
+    private trends: any[] = [];
 
     constructor(private trendingService: TrendingService) { }
 
-    getTrending(): void {
-        this.trendingService
-            .getTrending()
-            .then((trends) => {
-                this.trends = trends.response.docs;
-                console.log(this.trends);
-            });
-    }
     ngOnInit(): void {
         this.getTrending();
     }
+
+    private getTrending(): void {
+        this.trendingService.getTrending().subscribe(
+            trends => this.trends = trends
+        );
+    }
+
+    
 }

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class SearchResultsService {
@@ -15,12 +14,9 @@ export class SearchResultsService {
   // TODO: give this observable a type that is not any
   public getUsersSearchFromServer(userSearchData) {
     const apiUrl = `/api/mainnewssearch/${userSearchData}`;
-    console.log(apiUrl);
     this.http.get(apiUrl)
-      .map((response: any) => {
-        console.log(JSON.parse(response._body));
-        return JSON.parse(response._body);
-      }).subscribe(result => {
+      .map(this.extractUserSearchData)
+      .subscribe(result => {
           this.stories = result;
       });
       // .catch(this.handleError);

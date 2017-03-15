@@ -1,7 +1,9 @@
 <ul *ngIf="searchResultsService.stories">
     <li *ngFor="let story of searchResultsService.stories">
         <p>Written By: {{story.author.name}}</p>
+        <br>
         <p>{{story.body}}</p>
-        <img src={{story.media[0].url}} />
+        <br>
+        <img class="search-results-images" src={{story.media[0].url}} />
     </li>
 </ul>

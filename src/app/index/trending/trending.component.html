@@ -1,11 +1,13 @@
-<h1>Trending News Storied</h1>
+<h1>Trending News Stories</h1>
 
 <ul class="trends">
-    <p>Should display articles</p>
-      <li *ngFor="let trend of trends">
-    <span class="badge">{{trend._id}}</span>
-    <span>{{trend.headline.main}}</span>
-    <a href="{{trend.web_url}}" target="blank"><span>{{trend.web_url}}</span></a>
+  <p>Should display articles</p>
+  <li *ngFor="let trend of trends">
+    <p>Written By: <span class="badge">{{trend.author.name}}</span> </p>
+    <span>{{trend.body}}</span>
+    <br>
+    <img class="trending-images" src={{trend.media[0].url}}/>
+    <br>
+    <a href="{{trend.links.permalink}}" target="blank"><span>Click Here to Visit Full Article</span></a>
   </li>
-
-  </ul>
+</ul>
