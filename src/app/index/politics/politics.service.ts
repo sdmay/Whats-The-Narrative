@@ -1,24 +1,26 @@
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-import { Trending } from './trending';
+
+import { Politics } from './politics-type';
 
 @Injectable()
-export class TrendingService {
-    private apiUrl = '/api/popularnewssearchs/trending';
+export class PoliticsService {
+    private apiUrl = '/api/popularnewssearchs/politics';
     constructor(private http: Http) {}
 
-    public getTrending(): Observable<any[]> {
+    // TODO: construct politics type for this Observable
+    public getPolitics(): Observable<any[]> {
         console.log(this.apiUrl);
         return this.http.get(this.apiUrl)
-            .map(this.parseTrendingSearchData)
+            .map(this.parsePoliticsSearchData)
             .catch(this.handleError);
     }
 
-    private parseTrendingSearchData(res: Response) {
+    private parsePoliticsSearchData(res: Response) {
         // console.log(res);
         const body = res.json();
-        console.log('trending results array');
+        console.log('Politics results array');
         console.log(body);
         return body || {};
     }

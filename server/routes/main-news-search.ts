@@ -12,9 +12,7 @@ export class MainNewsSearch {
     }
 
     private initializeRoutes() {
-        this.router.get('/:searchterm',
-        this.createAylienNewsInstance, this.createAylienNewsRightOrLeftWingSearch, this.performAylienNewsSearch);
-
+        this.router.get('/:searchterm', this.createAylienNewsInstance, this.createAylienNewsRightOrLeftWingSearch, this.performAylienNewsSearch, this.sendBackResults);
     }
 
     private createAylienNewsInstance(req: Request, res: Response, next: NextFunction): void {
@@ -30,7 +28,7 @@ export class MainNewsSearch {
         
 
         res.locals.searchOptions = {
-            'title': req.params.searchterm,
+            'text': req.params.searchterm,
             'language': ['en'],
             'notLanguage': ['es', 'it'],
             'publishedAtStart': 'NOW-3DAYS',
@@ -39,7 +37,7 @@ export class MainNewsSearch {
         };
 
         // res.locals.searchOptions = {
-        //     'title': req.params.searchterm,
+        //     'text': req.params.searchterm,
         //     'language': ['en'],
         //     'notLanguage': ['es', 'it'],
         //     'publishedAtStart': 'NOW-3DAYS',
@@ -55,9 +53,14 @@ export class MainNewsSearch {
                 // TODO: send the user an error
                 console.log(error);
             } else {
-                res.json(data.stories);
+                res.locals.stories = data.stories;
+                next();
             }
         });
+    }
+
+    private sendBackResults(req: Request, res: Response): void {
+        res.json(res.locals.stories);
     }
 }
 

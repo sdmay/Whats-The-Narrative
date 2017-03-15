@@ -15,14 +15,12 @@ export class TrendingComponent implements OnInit {
     constructor(private trendingService: TrendingService) { }
 
     ngOnInit(): void {
-        this.getTrending();
+        this.toggleGetTrending();
     }
 
-    private getTrending(): void {
+    private toggleGetTrending(): void {
         this.trendingService.getTrending().subscribe(
             trends => this.trends = trends
         );
     }
-
-    
 }

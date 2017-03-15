@@ -12,12 +12,12 @@ export class PopularNewsSearches {
     }
 
     private initializeRoutes() {
-        this.router.get('/trending',
-        this.createAylienNewsInstance, this.createTrendingNowNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/trending', this.createAylienNewsInstance, this.createTrendingNowNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/politics', this.createAylienNewsInstance, this.createPoliticsNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/money', this.createAylienNewsInstance, this.createMoneyNewsSearch, this.searchNews, this.sendResultsBack);
     }
 
     private createAylienNewsInstance(req: Request, res: Response, next: NextFunction): void {
-        console.log('test');
         res.locals.AylienNewsInstance = new AylienNewsApi.DefaultApi();
         res.locals.AylienNewsInstance.apiClient.authentications['app_id'].apiKey = '2f2ac0fa';
         res.locals.AylienNewsInstance.apiClient.authentications['app_key'].apiKey = 'eebf8dce086aeb01006fcbd87323a13a';
@@ -25,13 +25,38 @@ export class PopularNewsSearches {
     }
 
     private createTrendingNowNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        console.log('testing politics');
         res.locals.searchOptions = {
-            'title': 'trending test',
+            'text': 'trending',
             'language': ['en'],
             'notLanguage': ['es', 'it'],
             'publishedAtStart': 'NOW-3DAYS',
             'publishedAtEnd': 'NOW',
-            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'dailycaller.com', 'nationalreview.com', 'townhall.com']
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+        };
+        next();
+    }
+
+    private createPoliticsNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.searchOptions = {
+            'text': 'politics',
+            'language': ['en'],
+            'notLanguage': ['es', 'it'],
+            'publishedAtStart': 'NOW-3DAYS',
+            'publishedAtEnd': 'NOW',
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+        };
+        next();
+    }
+
+    private createMoneyNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.searchOptions = {
+            'text': 'money',
+            'language': ['en'],
+            'notLanguage': ['es', 'it'],
+            'publishedAtStart': 'NOW-3DAYS',
+            'publishedAtEnd': 'NOW',
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
         };
         next();
     }
