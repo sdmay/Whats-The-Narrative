@@ -42,14 +42,28 @@ import { PeopleService } from './index/people/people.service';
 import { HealthService } from './index/health/health.service';
 
 
+const appRoutes: Routes = [
+    { path: '', component: HomeComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'saved', component: SavedComponent },
+    { path: 'trending', component: TrendingComponent },
+    { path: 'politics', component: PoliticsComponent },
+    { path: 'people', component: PeopleComponent },
+    { path: 'searchresults', component: SearchResultsComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'money', component: MoneyComponent },
+    { path: 'health', component: HealthComponent },
+];
+
 
 @NgModule({
     imports: [
+        RouterModule.forRoot(appRoutes),
         BrowserModule,
         HttpModule,
         ReactiveFormsModule,
         FormsModule,
-        AppRoutingModule
+        // AppRoutingModule
     ],
     declarations: [
         AppComponent,
