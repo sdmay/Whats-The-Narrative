@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -39,27 +39,13 @@ import { LoginService } from './login/login.service';
 import { MoneyService } from './index/money/money.service';
 
 
-
-const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'saved', component: SavedComponent },
-    { path: 'trending', component: TrendingComponent },
-    { path: 'politics', component: PoliticsComponent },
-    { path: 'people', component: PeopleComponent },
-    { path: 'searchresults', component: SearchResultsComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'money', component: MoneyComponent },
-];
-
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes),
         BrowserModule,
         HttpModule,
         ReactiveFormsModule,
         FormsModule,
-        // AppRoutingModule
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
