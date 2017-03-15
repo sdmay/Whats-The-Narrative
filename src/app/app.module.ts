@@ -37,6 +37,7 @@ import { DataComponent } from './shared/providers/data.component';
 import { SearchResultsService } from './search-results/search-results.service';
 import { LoginService } from './login/login.service';
 import { MoneyService } from './index/money/money.service';
+import { PeopleService } from './index/people/people.service';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { MoneyService } from './index/money/money.service';
         SearchResultsService,
         LoginService,
         PoliticsService,
-        MoneyService
+        MoneyService,
+        PeopleService
     ],
     bootstrap: [
         AppComponent

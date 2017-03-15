@@ -14,6 +14,7 @@ export class PopularNewsSearches {
     private initializeRoutes() {
         this.router.get('/trending', this.createAylienNewsInstance, this.createTrendingNowNewsSearch, this.searchNews, this.sendResultsBack);
         this.router.get('/politics', this.createAylienNewsInstance, this.createPoliticsNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/people', this.createAylienNewsInstance, this.createPeopleNewsSearch, this.searchNews, this.sendResultsBack);
         this.router.get('/money', this.createAylienNewsInstance, this.createMoneyNewsSearch, this.searchNews, this.sendResultsBack);
     }
 
@@ -49,6 +50,20 @@ export class PopularNewsSearches {
         next();
     }
 
+    // TODO: adjust source Domains for this search
+    private createPeopleNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.searchOptions = {
+            'text': 'society',
+            'language': ['en'],
+            'notLanguage': ['es', 'it'],
+            'publishedAtStart': 'NOW-3DAYS',
+            'publishedAtEnd': 'NOW',
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+        };
+        next();
+    }
+
+    // TODO: adjust source Domains for this search
     private createMoneyNewsSearch(req: Request, res: Response, next: NextFunction): void {
         res.locals.searchOptions = {
             'text': 'money',
