@@ -1,7 +1,7 @@
 
 <!--(keyup.enter)="doLogin(user, pass)"-->
     <input 
-    [(ngModel)] = "user"
+    [(ngModel)] = "username"
     
     type="text" 
     placeholder="Your Name"
@@ -24,6 +24,6 @@
 <input type="radio" name="q" value="0"> No <br>
 </li>
 </ul>
-  <button (click)="doLogin(user, pass)" >Register</button>
+  <button (click)="doLogin(username, pass)" >Register</button>
 
 

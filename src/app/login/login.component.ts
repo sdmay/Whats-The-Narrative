@@ -22,17 +22,15 @@ user: any = {};
         private loginSevice: LoginService
     ) { }
 
-    toggleLoginUser(user, pass): void {
+    toggleLoginUser(username, pass): void {
         // if no username or passsword is enter stop the function.
         console.log("toggleLoginUser")
-        this.user = {"name": user, "pass": pass};
+        this.user = {"name": username, "pass": pass};
         // const userObject = this.user;
-        console.log(this.user)
+        console.log(this.user);
         if (!this.user) {
             return;
         }
-
-   
         this.loginSevice.loginUser(this.user).subscribe(res => {
             console.log(res);
         });

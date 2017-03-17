@@ -58,13 +58,13 @@ export class RegisterComponent  implements OnInit {
     private registerService: RegisterService
   ) { }
 
-  doLogin(user, pass) {
+  doLogin(username, pass) {
     // need to prevent form from submitting.
     // need to find better solution
-console.log(user);
+console.log(username);
 console.log(pass);
 
-this.user = {"name": name, "pass": pass}
+this.user = {"name": username, "pass": pass}
     // event.preventDefault();
     // const userObject = this.loginForm.value;
     // console.log(this.loginForm)

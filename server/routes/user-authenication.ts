@@ -13,9 +13,9 @@ export class UserAuthenication {
 
     private initializeRoutes() {
         this.router.post('/registeruser',
-        this.doesTheUserExistInTheDatabase, this.createNewUserFromModel,
-        this.saveNewUserToDatabase);
-        this.router.get('/login/:name/:password', this.doesTheUserExistInTheDatabase);
+            this.doesTheUserExistInTheDatabase, this.createNewUserFromModel,
+            this.saveNewUserToDatabase);
+        this.router.get('/login/:name/:password', this.userIsTrue);
         // TODO: login user route
     }
 
@@ -23,11 +23,28 @@ export class UserAuthenication {
         // console.log(req.params.name, req.params.password);
     }
 
+private userIsTrue (req: Request, res: Response, next: NextFunction): void {
+    console.log(req.body + "WHAT");
+    console.log(req.params + "POOP")
+    console.log(res + "WHO");
+ User.findOne({ 'name': req.params.user },
+     (error, user) => {
+                console.log(user)
+                // TODO: some kind of error handling for the future.
+                if (error) throw error;
 
+                if (user) {
+                    // tell the client the user already exists.
+                    res.json({ status: 422, data: 'This user already exists' });
+                }
+
+                if (!user) {
+                    next();
+                }
+            });
+    }
     private doesTheUserExistInTheDatabase(req: Request, res: Response, next: NextFunction): void {
-        console.log("in herezzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
         User.findOne({ 'name': req.body.user },
-        
             (error, user) => {
                 console.log(user)
                 // TODO: some kind of error handling for the future.
@@ -58,8 +75,8 @@ export class UserAuthenication {
         res.locals.newUser.save((user, error) => {
             // TODO: some kind of error handling for the future.
             if (error) throw error;
-           // TODO: send JSON web token back to user and perform some kind of redirect.
-        //    Can the the redirect be hanlded via angular or does it have to be here?
+            // TODO: send JSON web token back to user and perform some kind of redirect.
+            //    Can the the redirect be hanlded via angular or does it have to be here?
             res.json({ status: 200, data: '' });
         });
     }
