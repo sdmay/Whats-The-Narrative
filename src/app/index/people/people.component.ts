@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { People } from './people-type';
+
+import { Story } from '../../shared/types/story-type';
 import { PeopleService } from './people.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'people',
-    styleUrls: ['people.component.css'],
-    templateUrl: './people.component.html'
+    templateUrl: '../index-shared/stories.template.html'
 })
 
-
-
 export class PeopleComponent implements OnInit {
-    private peopleStories: any[] = [];
+    private stories: Story[];
 
     constructor(private peopleService: PeopleService) { }
 
@@ -22,7 +19,7 @@ export class PeopleComponent implements OnInit {
 
     private toggleGetPeople(): void {
         this.peopleService.getPeopleStories().subscribe(
-            peopleStories => this.peopleStories = peopleStories
+            stories => this.stories = stories
         );
     }
 }

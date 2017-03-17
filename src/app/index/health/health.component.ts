@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Health } from './health-type';
+import { Story } from '../../shared/types/story-type';
 import { HealthService } from './health.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'health',
-    styleUrls: ['health.component.css'],
-    templateUrl: './health.component.html'
+    templateUrl: '../index-shared/stories.template.html'
 })
 
 export class HealthComponent implements OnInit {
-    private title:string  = 'Trending Health Stories';
-    private healthStories: any[] = [];
+    private stories: Story[];
 
     constructor(private healthService: HealthService) { }
 
@@ -22,7 +19,7 @@ export class HealthComponent implements OnInit {
 
     private toggleGetHealthStories(): void {
         this.healthService.getHealthStories().subscribe(
-            healthStories => this.healthStories = healthStories
+            stories => this.stories = stories
         );
     }
 }

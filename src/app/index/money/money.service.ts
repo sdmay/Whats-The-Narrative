@@ -2,27 +2,25 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
-import { Money } from './money-type';
+import { Story } from '../index-shared/story-type';
 
 @Injectable()
 export class MoneyService {
     private apiUrl = '/api/popularnewssearchs/money';
     constructor(private http: Http) {}
 
-    // TODO: construct money type for this Observable
-    public getMoneyStories(): Observable<any[]> {
+    public getMoneyStories(): Observable<Story[]> {
         console.log(this.apiUrl);
         return this.http.get(this.apiUrl)
             .map(this.parseMoneySearchData)
             .catch(this.handleError);
     }
 
-    private parseMoneySearchData(res: Response) {
-        // console.log(res);
+    private parseMoneySearchData(res: Response): Story[] {
         const body = res.json();
         console.log('Politics results array');
         console.log(body);
-        return body || {};
+        return body;
     }
 
     private handleError(error: any) {

@@ -2,27 +2,24 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
-import { Politics } from './politics-type';
+import { Story } from '../index-shared/story-type';
 
 @Injectable()
 export class PoliticsService {
     private apiUrl = '/api/popularnewssearchs/politics';
-    constructor(private http: Http) {}
+    constructor(private http: Http) { }
 
-    // TODO: construct politics type for this Observable
-    public getPolitics(): Observable<any[]> {
-        console.log(this.apiUrl);
+    public getPolitics(): Observable<Story[]> {
         return this.http.get(this.apiUrl)
             .map(this.parsePoliticsSearchData)
             .catch(this.handleError);
     }
 
-    private parsePoliticsSearchData(res: Response) {
-        // console.log(res);
+    private parsePoliticsSearchData(res: Response): Story[] {
         const body = res.json();
         console.log('Politics results array');
         console.log(body);
-        return body || {};
+        return body;
     }
 
     private handleError(error: any) {

@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Money } from './money-type';
+import { Story } from '../../shared/types/story-type';
 import { MoneyService } from './money.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'money',
-    styleUrls: ['money.component.css'],
-    templateUrl: './money.component.html'
+    templateUrl: '../index-shared/stories.template.html'
 })
 
 export class MoneyComponent implements OnInit {
-    private title:string  = 'Trending Money Stories';
-    private moneyStories: any[] = [];
+    private stories: Story[];
 
     constructor(private moneyService: MoneyService) { }
 
@@ -22,7 +19,7 @@ export class MoneyComponent implements OnInit {
 
     private toggleGetMoneyStories(): void {
         this.moneyService.getMoneyStories().subscribe(
-            moneyStories => this.moneyStories = moneyStories
+            stories => this.stories = stories
         );
     }
 }

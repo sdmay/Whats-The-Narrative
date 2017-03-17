@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Health } from './health-type';
+import { Story } from '../../shared/types/story-type';
 
 @Injectable()
 export class HealthService {
@@ -10,19 +10,18 @@ export class HealthService {
     constructor(private http: Http) {}
 
     // TODO: construct money type for this Observable
-    public getHealthStories(): Observable<any[]> {
+    public getHealthStories(): Observable<Story[]> {
         console.log(this.apiUrl);
         return this.http.get(this.apiUrl)
             .map(this.parseHealthSearchData)
             .catch(this.handleError);
     }
 
-    private parseHealthSearchData(res: Response) {
-        // console.log(res);
+    private parseHealthSearchData(res: Response): Story[] {
         const body = res.json();
         console.log('Politics results array');
         console.log(body);
-        return body || {};
+        return body;
     }
 
     private handleError(error: any) {

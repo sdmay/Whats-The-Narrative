@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Trending } from './trending';
+
+import { Story } from '../../shared/types/story-type';
 import { TrendingService } from './trending.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'trending',
-    styleUrls: ['trending.component.css'],
-    templateUrl: './trending.component.html'
+    templateUrl: '../index-shared/stories.template.html'
 })
 
 export class TrendingComponent implements OnInit {
-    private trends: any[] = [];
+    private stories: Story[];
 
     constructor(private trendingService: TrendingService) { }
 
@@ -20,7 +19,7 @@ export class TrendingComponent implements OnInit {
 
     private toggleGetTrending(): void {
         this.trendingService.getTrending().subscribe(
-            trends => this.trends = trends
+            stories => this.stories = stories
         );
     }
 }

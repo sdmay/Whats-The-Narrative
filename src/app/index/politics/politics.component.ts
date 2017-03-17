@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-
 import { PoliticsService } from './politics.service';
-import { Politics } from './politics-type';
-
+import { Story } from '../../shared/types/story-type';
 
 @Component({
     moduleId: module.id,
-    selector: 'politics',
-    styleUrls: ['./politics.component.css'],
-    templateUrl: './politics.component.html'
+    templateUrl: '../index-shared/stories.template.html'
 })
 
 export class PoliticsComponent implements OnInit {
-    private politicsStories: any[];
+    private stories: Story[];
 
     constructor(private politicsService: PoliticsService) {}
 
@@ -23,7 +19,7 @@ export class PoliticsComponent implements OnInit {
 
     private toggleGetPolitics(): void {
         this.politicsService.getPolitics().subscribe(
-            politics => this.politicsStories = politics
+            stories => this.stories = stories
         );
     }
 }

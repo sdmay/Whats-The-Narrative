@@ -2,26 +2,24 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { People } from './people-type';
+import { Story } from '../index-shared/story-type';
 
 @Injectable()
 export class PeopleService {
     private apiUrl = '/api/popularnewssearchs/people';
     constructor(private http: Http) {}
 
-    public getPeopleStories(): Observable<any[]> {
-        console.log(this.apiUrl);
+    public getPeopleStories(): Observable<Story[]> {
         return this.http.get(this.apiUrl)
             .map(this.parsePeopleSearchData)
             .catch(this.handleError);
     }
 
-    private parsePeopleSearchData(res: Response) {
-        // console.log(res);
+    private parsePeopleSearchData(res: Response): Story[] {
         const body = res.json();
         console.log('people results array');
         console.log(body);
-        return body || {};
+        return body;
     }
 
     private handleError(error: any) {

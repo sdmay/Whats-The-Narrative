@@ -1,0 +1,33 @@
+<div class="cd-content">
+	<ul class="wtn-quickview-items wtn-quickview-container">
+		<li *ngFor="let story of stories" id="container-{{story.id}}" class="wtn-quickview-item">
+			<img src={{story.media[0].url}} alt="Item Preview">
+			<a class="wtn-quickview-trigger">View Article</a>
+		</li>
+		<!-- wtn-quickview-item -->
+	</ul>
+	<!-- wtn-quickview-items -->
+
+	<div class="wtn-quickview-quick-view" id="{{story.id}}" *ngFor="let story of stories">
+		<div class="wtn-quickview-slider-wrapper">
+			<ul class="wtn-quickview-slider">
+				<li class="wtn-quickview-selected"><img src={{story.media[0].url}}></li>
+			</ul>
+			<!-- wtn-quickview-slider -->
+		</div>
+		<!-- wtn-quickview-slider-wrapper -->
+
+		<div class="wtn-quickview-item-info">
+			<h2>{{story.title}}</h2>
+			<br>
+			<h3>Written By: {{story.author.name}}</h3>
+			<p>{{story.summary.sentences[0]}}{{story.summary.sentences[1]}}</p>
+			<ul class="wtn-quickview-item-action">
+				<li><a href="{{story.links.permalink}}" target="_blank">View Full Article</a></li>
+			</ul>
+			<!-- wtn-quickview-item-action -->
+		</div>
+		<!-- wtn-quickview-item-info -->
+		<a class="wtn-quickview-close">Close</a>
+	</div>
+	<!-- wtn-quickview-quick-view -->
