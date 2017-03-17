@@ -5,7 +5,7 @@ import {SearchComponent} from './search/search.component';
 
 @Component({
     moduleId: module.id,
-    selector: 'header',
+    selector: 'my-header',
     entryComponents: [SearchComponent],
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css']

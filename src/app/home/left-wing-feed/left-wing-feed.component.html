@@ -1,17 +1,8 @@
-<div class="col-lg-4" id="left-wing-twitter-feed">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title text-center">Top Trending Left Wing</h3>
-        </div>
-        <div class="panel-body no-decor">
-            <ul>
-                <li *ngFor="let tweet of tweets">
-                    <!--<img src="{{tweet.user.profile_background_image_url_https}}"/>-->
-                    <p>{{tweet.user.name}}</p>
-                    <p>{{tweet.text}}</p>
-                    <p>{{tweet.created_at}}</p>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<ul>
+    <li *ngFor="let tweet of tweets">
+        <!--<img src="{{tweet.user.profile_background_image_url_https}}"/>-->
+        <p>{{tweet.user.name}}</p>
+        <p>{{tweet.text}}</p>
+        <p>{{tweet.created_at}}</p>
+    </li>
+</ul>

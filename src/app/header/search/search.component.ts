@@ -19,10 +19,9 @@ export class SearchComponent {
         private router: Router,
         private dataComponent: DataComponent,
         private searchResultsComponent: SearchResultsComponent
-    ) { }
+    ) {}
 
     toggleUserSearch() {
-        console.log('test');
         // break the function if there is no input in the input field
         if (!this.userInputSearchTerm) {
             return;
