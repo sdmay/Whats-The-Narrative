@@ -1,7 +1,7 @@
 import { Register } from 'ts-node/dist';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
+import 'rxjs/add/operator/toPromise';
 import { LoginService } from './login.service';
 
 
@@ -12,28 +12,16 @@ import { LoginService } from './login.service';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    public loginForm = this.formBuilder.group({
-        name: ['', Validators.required],
-        password: ['', Validators.required]
-    });
-user: any = {};
+    user: any = {};
+
     constructor(
-        private formBuilder: FormBuilder,
-        private loginSevice: LoginService
+        private loginService: LoginService
     ) { }
 
-    toggleLoginUser(username, pass): void {
-        // if no username or passsword is enter stop the function.
-        console.log("toggleLoginUser")
-        this.user = {"name": username, "pass": pass};
-        // const userObject = this.user;
+    toggleLoginUser(username, pass): any {
+        this.user = { "name": username, "pass": pass };
         console.log(this.user);
-        if (!this.user) {
-            return;
-        }
-        this.loginSevice.loginUser(this.user).subscribe(res => {
-            console.log(res);
-        });
+        this.loginService.loginUser(this.user)
+        .subscribe();
     }
-
 }
