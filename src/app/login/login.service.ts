@@ -21,7 +21,8 @@ export class LoginService {
 
         return this.http.get(apiUrl, options)
         .map(this.extractLoginUserData)
-            .catch(this.handleError);
+        .catch(this.handleError);
+            
 
     }
 
@@ -30,6 +31,8 @@ export class LoginService {
         const body = res;
         console.log(body);
     }
+
+   
        public handleError(error: Response) {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');

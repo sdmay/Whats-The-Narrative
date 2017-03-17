@@ -24,9 +24,7 @@ router: Router;
     }
 
 public userIsTrue (req: Request, res: Response, next: NextFunction): void {
-    console.log(req.params.password + "WHAT");
-    console.log(req.params.username     + "loooohhhzzzzzzzzzzzzzzzz")
-    console.log(req.params.name + "WHOmmmm");
+  
  User.findOne({ 'name': req.params.name },
      (error, name) => {
                 console.log(name)
@@ -40,6 +38,7 @@ public userIsTrue (req: Request, res: Response, next: NextFunction): void {
                      }
 
                 if (!name) {
+                    console.log("NO NAME FOUND")
                     return false;
                 }
             });
