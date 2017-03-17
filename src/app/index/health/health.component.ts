@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Story } from '../../shared/types/story-type';
-import { HealthService } from './health.service';
+import { StoriesService } from '../../shared/observables/stories.service';
 
 @Component({
     moduleId: module.id,
@@ -9,16 +9,17 @@ import { HealthService } from './health.service';
 })
 
 export class HealthComponent implements OnInit {
+    private apiUrl: string = '/api/popularnewssearchs/health';
     private stories: Story[];
 
-    constructor(private healthService: HealthService) { }
+    constructor(private storiesService: StoriesService) { }
 
     ngOnInit(): void {
         this.toggleGetHealthStories();
     }
 
     private toggleGetHealthStories(): void {
-        this.healthService.getHealthStories().subscribe(
+        this.storiesService.getStories(this.apiUrl).subscribe(
             stories => this.stories = stories
         );
     }

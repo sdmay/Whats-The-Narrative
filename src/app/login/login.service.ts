@@ -29,8 +29,6 @@ export class LoginService {
     extractLoginUserData(res: Response) {
         const body = res;
         console.log(body);
-        
-
     }
        public handleError(error: Response) {
     console.error(error);

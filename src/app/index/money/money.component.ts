@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Story } from '../../shared/types/story-type';
-import { MoneyService } from './money.service';
+import { StoriesService } from '../../shared/observables/stories.service';
 
 @Component({
     moduleId: module.id,
@@ -9,16 +9,17 @@ import { MoneyService } from './money.service';
 })
 
 export class MoneyComponent implements OnInit {
+    private apiUrl: string = '/api/popularnewssearchs/money';
     private stories: Story[];
 
-    constructor(private moneyService: MoneyService) { }
+    constructor(private storiesService: StoriesService) { }
 
     ngOnInit(): void {
         this.toggleGetMoneyStories();
     }
 
     private toggleGetMoneyStories(): void {
-        this.moneyService.getMoneyStories().subscribe(
+        this.storiesService.getStories(this.apiUrl).subscribe(
             stories => this.stories = stories
         );
     }

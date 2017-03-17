@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Story } from '../../shared/types/story-type';
-import { TrendingService } from './trending.service';
+import { StoriesService } from '../../shared/observables/stories.service';
 
 @Component({
     moduleId: module.id,
@@ -9,16 +9,17 @@ import { TrendingService } from './trending.service';
 })
 
 export class TrendingComponent implements OnInit {
+    private apiUrl: string = '/api/popularnewssearchs/trending';
     private stories: Story[];
 
-    constructor(private trendingService: TrendingService) { }
+    constructor(private storiesService: StoriesService) { }
 
     ngOnInit(): void {
         this.toggleGetTrending();
     }
 
     private toggleGetTrending(): void {
-        this.trendingService.getTrending().subscribe(
+        this.storiesService.getStories(this.apiUrl).subscribe(
             stories => this.stories = stories
         );
     }

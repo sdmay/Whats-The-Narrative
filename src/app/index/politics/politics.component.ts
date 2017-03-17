@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PoliticsService } from './politics.service';
+import { StoriesService } from '../../shared/observables/stories.service';
 import { Story } from '../../shared/types/story-type';
 
 @Component({
@@ -9,16 +9,17 @@ import { Story } from '../../shared/types/story-type';
 })
 
 export class PoliticsComponent implements OnInit {
+    private apiUrl: string = '/api/popularnewssearchs/politics';
     private stories: Story[];
 
-    constructor(private politicsService: PoliticsService) {}
+    constructor(private storiesService: StoriesService) {}
 
     ngOnInit(): void {
         this.toggleGetPolitics();
     }
 
     private toggleGetPolitics(): void {
-        this.politicsService.getPolitics().subscribe(
+        this.storiesService.getStories(this.apiUrl).subscribe(
             stories => this.stories = stories
         );
     }

@@ -5,10 +5,11 @@ import { Headers, Http, Response } from '@angular/http';
 import { Story } from '../types/story-type';
 
 @Injectable()
-export class PoliticsService {
+
+export class StoriesService {
     constructor(private http: Http) { }
 
-    public getPolitics(apiUrl): Observable<Story[]> {
+    public getStories(apiUrl): Observable<Story[]> {
         return this.http.get(apiUrl)
             .map(this.parseStoriesSearchData)
             .catch(this.handleError);

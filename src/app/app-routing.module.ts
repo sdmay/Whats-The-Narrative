@@ -16,11 +16,13 @@ import { ContactComponent } from './index/contact/contact.component';
 import { TeamComponent } from './index/team/team.component';
 import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
+import { DashBoardComponent } from './dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
+    { path: 'dashboard', component: DashBoardComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'saved', component: SavedComponent },
     { path: 'trending', component: TrendingComponent },

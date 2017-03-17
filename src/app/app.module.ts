@@ -33,24 +33,21 @@ import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
 
 
+
 // Services
 import { RegisterService } from './register/register.service';
 import { NewsLetterService } from './newsletter/newsletter.service';
-import { TrendingService } from './index/trending/trending.service';
-import { PoliticsService } from './index/politics/politics.service';
 import { LeftWingFeedService } from './home/left-wing-feed/left-wing-feed.service';
 import { RightWingFeedService } from './home/right-wing-feed/right-wing-feed-service';
 import { DataComponent } from './shared/providers/data.component';
 import { SearchResultsService } from './search-results/search-results.service';
 import { LoginService } from './login/login.service';
-import { MoneyService } from './index/money/money.service';
-import { PeopleService } from './index/people/people.service';
-import { HealthService } from './index/health/health.service';
+import { StoriesService } from './shared/observables/stories.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
-    { path: 'dashboard', component: DashBoardComponent},
+    { path: 'dashboard', component: DashBoardComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'saved', component: SavedComponent },
     { path: 'trending', component: TrendingComponent },
@@ -103,10 +100,10 @@ const appRoutes: Routes = [
         SignupComponent,
         DashBoardComponent,
         SigninComponent
+
     ],
     providers: [
         DataComponent,
-        TrendingService,
         RegisterService,
         NewsLetterService,
         LeftWingFeedService,
@@ -114,10 +111,7 @@ const appRoutes: Routes = [
         SearchResultsComponent,
         SearchResultsService,
         LoginService,
-        PoliticsService,
-        MoneyService,
-        PeopleService,
-        HealthService
+        StoriesService
     ],
     bootstrap: [
         AppComponent
