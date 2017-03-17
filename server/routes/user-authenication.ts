@@ -23,23 +23,24 @@ export class UserAuthenication {
         // console.log(req.params.name, req.params.password);
     }
 
-private userIsTrue (req: Request, res: Response, next: NextFunction): void {
-    console.log(req.body + "WHAT");
-    console.log(req.params + "POOP")
-    console.log(res + "WHO");
- User.findOne({ 'name': req.params.user },
-     (error, user) => {
-                console.log(user)
+public userIsTrue (req: Request, res: Response, next: NextFunction): void {
+    console.log(req.params.password + "WHAT");
+    console.log(req.params.username     + "loooohhhzzzzzzzzzzzzzzzz")
+    console.log(req.params.name + "WHOmmmm");
+ User.findOne({ 'name': req.params.name },
+     (error, name) => {
+                console.log(name)
                 // TODO: some kind of error handling for the future.
                 if (error) throw error;
 
-                if (user) {
-                    // tell the client the user already exists.
-                    res.json({ status: 422, data: 'This user already exists' });
-                }
+                if (name) {
+                        console.log("USER");
+                    return res.json();
+                    // this.router.navigate(['/dashboard']) ;
+                     }
 
-                if (!user) {
-                    next();
+                if (!name) {
+                    return false;
                 }
             });
     }
@@ -80,6 +81,7 @@ private userIsTrue (req: Request, res: Response, next: NextFunction): void {
             res.json({ status: 200, data: '' });
         });
     }
+   
 }
 
 export default new UserAuthenication().router;

@@ -73,37 +73,9 @@ this.user = {"name": username, "pass": pass}
     this.registerService.registerUser(this.user).subscribe();
   }
 
-
-
-
-
  ngOnInit(): any {
   //  .pages["0"].questions["0"].choices[1].text
   this.questions = this.surveyJSON.pages[0].questions;
     }
-
-
- 
 }
-
-
-// var surveyJSON = {pages:[{name:"page1",questions:[{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Do you like Trump?"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"For the war on drugs?"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question10"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question9"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question8"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question7"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question6"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question5"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question4"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question3"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question2"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question1"}]}]}
-
-// function sendDataToServer(survey) {
-//     //send Ajax request to your web server.
-//     alert("The results are:" + JSON.stringify(s.data));
-// }
-
-// @Component({
-//   selector: 'ng-app',
-//         template: 
-//         <div id='surveyElement'></div>",
-// })
-// export class AppComponent {
-//     ngOnInit() {
-//         var survey = new Survey.Model(surveyJSON);
-//         survey.onComplete.add(sendDataToServer);
-//        Survey.SurveyNG.render("surveyElement", { model: survey });
-//     }
-// }
 

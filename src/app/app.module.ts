@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +30,7 @@ import { TeamComponent } from './index/team/team.component';
 import { ContactComponent } from './index/contact/contact.component';
 import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
+import { DashBoardComponent } from './dashboard/dashboard.component';
 
 
 // Services
@@ -49,6 +50,7 @@ import { HealthService } from './index/health/health.service';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
+    { path: 'dashboard', component: DashBoardComponent},
     { path: 'register', component: RegisterComponent },
     { path: 'saved', component: SavedComponent },
     { path: 'trending', component: TrendingComponent },
@@ -73,6 +75,7 @@ const appRoutes: Routes = [
         HttpModule,
         ReactiveFormsModule,
         FormsModule,
+        JsonpModule
         // AppRoutingModule
     ],
     declarations: [
@@ -98,6 +101,7 @@ const appRoutes: Routes = [
         TeamComponent,
         ContactComponent,
         SignupComponent,
+        DashBoardComponent,
         SigninComponent
     ],
     providers: [
