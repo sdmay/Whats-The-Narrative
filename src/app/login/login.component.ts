@@ -16,20 +16,26 @@ export class LoginComponent {
         name: ['', Validators.required],
         password: ['', Validators.required]
     });
-
+user: any = {};
     constructor(
         private formBuilder: FormBuilder,
         private loginSevice: LoginService
     ) { }
 
-    toggleLoginUser(): void {
+    toggleLoginUser(user, pass): void {
         // if no username or passsword is enter stop the function.
-        if (!this.loginForm.value.name || !this.loginForm.value.password) {
+        console.log("toggleLoginUser")
+        this.user = {"name": user, "pass": pass};
+        // const userObject = this.user;
+        console.log(this.user)
+        if (!this.user) {
             return;
         }
 
-        const userObject = this.loginForm.value;
-        this.loginSevice.loginUser(userObject).subscribe();
+   
+        this.loginSevice.loginUser(this.user).subscribe(res => {
+            console.log(res);
+        });
     }
 
 }
