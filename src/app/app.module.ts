@@ -44,36 +44,14 @@ import { SearchResultsService } from './search-results/search-results.service';
 import { LoginService } from './login/login.service';
 import { StoriesService } from './shared/observables/stories.service';
 
-const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'home', redirectTo: '', pathMatch: 'full' },
-    { path: 'dashboard', component: DashBoardComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'saved', component: SavedComponent },
-    { path: 'trending', component: TrendingComponent },
-    { path: 'politics', component: PoliticsComponent },
-    { path: 'people', component: PeopleComponent },
-    { path: 'searchresults', component: SearchResultsComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'money', component: MoneyComponent },
-    { path: 'health', component: HealthComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'team', component: TeamComponent },
-    { path: 'contact', component: ContactComponent },
-    { path: 'signup', component: SignupComponent },
-    { path: 'signin', component: SigninComponent },
-];
-
-
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes),
         BrowserModule,
         HttpModule,
         ReactiveFormsModule,
         FormsModule,
-        JsonpModule
-        // AppRoutingModule
+        JsonpModule,
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
