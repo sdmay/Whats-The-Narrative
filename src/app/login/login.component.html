@@ -1,5 +1,17 @@
-<form [formGroup]="loginForm">
-    <input formControlName="name" type="name" placeholder="Enter Your Email">
-    <input formControlName="password" type="password" placeholder="Enter Your Password">
-    <button (click)="toggleLoginUser()"class="btn btn-primary">Login</button>
-</form>
+
+<input 
+    [(ngModel)] = "user"
+    
+    type="text" 
+    placeholder="Your Name"
+
+    required>
+
+    <input 
+    [(ngModel)] = "pass"
+    
+    type="text" 
+    placeholder="Your Password"
+    
+    required>
+    <button (click)="toggleLoginUser(user, pass)"class="btn btn-primary">Login</button>

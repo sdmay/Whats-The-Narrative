@@ -25,7 +25,7 @@ export let userSchema = new Schema({
     password: {
         type: String,
         trim: true,
-        required: "Password is Required"
+        required: 'Password is Required'
         // validate: [
         //     function (input) {
         //         return input.length >= 6;
@@ -53,8 +53,8 @@ export let userSchema = new Schema({
     }
 }).pre('save', function (next) {
     if (this._doc) {
-        let doc = <UserModel>this._doc;
-        let now = new Date();
+        const doc = <UserModel>this._doc;
+        const now = new Date();
         if (!doc.createdAt) {
             doc.createdAt = now;
         }

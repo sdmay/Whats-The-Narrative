@@ -1,7 +1,8 @@
 import { Register } from 'ts-node/dist';
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { Survey } from 'survey-angular';
+import 'rxjs/Rx';
 
 import { RegisterService } from "./register.service";
 
@@ -11,24 +12,97 @@ import { RegisterService } from "./register.service";
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.css"]
 })
-export class RegisterComponent {
+export class RegisterComponent  implements OnInit {
   public loginForm = this.fb.group({
     name: ["", Validators.required],
     password: ["", Validators.required]
   });
+
+  questions: any = [];
+  user: any = {};
+
+    public surveyJSON = {
+      pages:[
+        {
+          name:"page1",
+          questions:[
+            {
+              type:"radiogroup",
+              choices:[{value:"1",text:"Yes"},
+              {value:"0",text:"No"}],
+              isRequired:true,
+              name:"Do you like Trump?"
+            },
+            {
+              type:"radiogroup",
+              choices:[{value:"1",text:"Yes"},
+              {value:"0",text:"No"}],
+              isRequired:true,
+              name:"For the war on drugs?"
+            },
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"For the war  on terror?"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question9"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question8"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question7"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question6"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question5"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question4"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question3"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question2"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question1"}]}]}
+
 
   constructor(
     public fb: FormBuilder,
     private registerService: RegisterService
   ) { }
 
-  doLogin(event) {
+  doLogin(user, pass) {
     // need to prevent form from submitting.
     // need to find better solution
-    event.preventDefault();
-    let userObject = this.loginForm.value;
+console.log(user);
+console.log(pass);
+
+this.user = {"name": name, "pass": pass}
+    // event.preventDefault();
+    // const userObject = this.loginForm.value;
+    // console.log(this.loginForm)
+    // console.log(userObject);
     // Observables are lazy. Need to subscribe to the http request to hit the server.
-    this.registerService.registerUser(userObject).subscribe();
+    this.registerService.registerUser(this.user).subscribe();
   }
+
+
+
+
+
+ ngOnInit(): any {
+  //  .pages["0"].questions["0"].choices[1].text
+  this.questions = this.surveyJSON.pages[0].questions;
+    }
+
+
+ 
 }
+
+
+// var surveyJSON = {pages:[{name:"page1",questions:[{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Do you like Trump?"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"For the war on drugs?"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question10"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question9"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question8"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question7"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question6"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question5"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question4"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question3"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question2"},{type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question1"}]}]}
+
+// function sendDataToServer(survey) {
+//     //send Ajax request to your web server.
+//     alert("The results are:" + JSON.stringify(s.data));
+// }
+
+// @Component({
+//   selector: 'ng-app',
+//         template: 
+//         <div id='surveyElement'></div>",
+// })
+// export class AppComponent {
+//     ngOnInit() {
+//         var survey = new Survey.Model(surveyJSON);
+//         survey.onComplete.add(sendDataToServer);
+//        Survey.SurveyNG.render("surveyElement", { model: survey });
+//     }
+// }
 

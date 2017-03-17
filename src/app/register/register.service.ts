@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
@@ -17,6 +18,7 @@ export class RegisterService {
         const options = new RequestOptions({ headers: headers });
         return this.http.post('api/userauth/registeruser', userObject, options)
             .map(this.extractRegisterUserData)
+            .catch(this.handleError);
     }
 
     // TODO: put in return value type.
@@ -24,4 +26,9 @@ export class RegisterService {
         const body = res.json();
         console.log(body);
     }
+
+     public handleError(error: Response) {
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
+  }
 }
