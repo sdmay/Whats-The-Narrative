@@ -4,7 +4,7 @@ import { Router, Request, Response, NextFunction } from 'express';
 import User from '../models/User';
 
 export class UserAuthenication {
-    router: Router;
+router: Router;
 
     constructor() {
         this.router = Router();
