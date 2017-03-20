@@ -14,7 +14,7 @@ export class LoginService {
     ) {}
 
 
-    loginUser(userObject: object): Observable<any> {
+    loginUser(userObject): Observable<any> {
         const apiUrl = `api/userauth/login/${userObject.name}/${userObject.pass}`;
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers });

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class NewsLetterService {
     constructor(private http: Http) {}
 
-    registerUser(userObject: object): Observable<any> {
+    registerUser(userObject): Observable<any> {
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers });
         return this.http.post('api/newsletter/signup', userObject, options)
