@@ -7,7 +7,8 @@ export class AylienNewsApiConstructor {
     peoplesNewsSearchOptions: object;
     moneyNewsSearchOptions: object;
     healthNewsSearchOptions: object;
-
+    rightWingNewsSearchOptions: object;
+    leftWingNewsSearchOptions: object;
 
     constructor() {
         this.aylienNewsApiInstance = this.createAylienNewsApiInstance();
@@ -16,6 +17,8 @@ export class AylienNewsApiConstructor {
         this.peoplesNewsSearchOptions = this.createPeopleNewsSearchOptions();
         this.moneyNewsSearchOptions = this.createMoneyNewsSearchOptions();
         this.healthNewsSearchOptions = this.createHealthNewsSearchOptions();
+        this.rightWingNewsSearchOptions = this.createRightWingNewsSearchOptions();
+        this.leftWingNewsSearchOptions = this.createLeftWingNewsSearchOptions();
     }
 
 
@@ -28,12 +31,13 @@ export class AylienNewsApiConstructor {
 
     private createTrendingNowNewsSearchOptions(): object {
         return {
-            'text': 'trending',
+            'text': 'news',
             'language': ['en'],
             'notLanguage': ['es', 'it'],
             'publishedAtStart': 'NOW-3DAYS',
             'publishedAtEnd': 'NOW',
-            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com'],
+            'mediaImagesCountMin': 1
         };
     }
 
@@ -45,7 +49,8 @@ export class AylienNewsApiConstructor {
             'notLanguage': ['es', 'it'],
             'publishedAtStart': 'NOW-3DAYS',
             'publishedAtEnd': 'NOW',
-            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com'],
+            'mediaImagesCountMin': 1
         };
     }
 
@@ -57,33 +62,58 @@ export class AylienNewsApiConstructor {
             'notLanguage': ['es', 'it'],
             'publishedAtStart': 'NOW-3DAYS',
             'publishedAtEnd': 'NOW',
-            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com'],
+            'mediaImagesCountMin': 1
         };
     }
 
-    // TODO: adjust source Domains for this search.
     private createMoneyNewsSearchOptions(): object {
         return {
-            'text': 'money',
+            'text': 'economy',
             'language': ['en'],
             'notLanguage': ['es', 'it'],
             'publishedAtStart': 'NOW-3DAYS',
             'publishedAtEnd': 'NOW',
-            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+            'sourceDomain': ['wsj.com', 'economist.com', 'bloomberg.com'],
+            'mediaImagesCountMin': 1
         };
     }
 
     private createHealthNewsSearchOptions(): object {
         return {
-            'text': 'health',
+            'text': 'healthcare',
             'language': ['en'],
             'notLanguage': ['es', 'it'],
             'publishedAtStart': 'NOW-3DAYS',
             'publishedAtEnd': 'NOW',
-            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com']
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'huffingtonpost.co.uk', 'salon.com', 'dailykos.com'],
+            'mediaImagesCountMin': 1
         };
     }
 
+    private createRightWingNewsSearchOptions(): object {
+        return {
+            'text': '',
+            'language': ['en'],
+            'notLanguage': ['es', 'it'],
+            'publishedAtStart': 'NOW-3DAYS',
+            'publishedAtEnd': 'NOW',
+            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'dailycaller.com', 'nationalreview.com', 'townhall.com'],
+            'mediaImagesCountMin': 1
+        };
+    }
+
+    private createLeftWingNewsSearchOptions(): object {
+        return {
+            'text': '',
+            'language': ['en'],
+            'notLanguage': ['es', 'it'],
+            'publishedAtStart': 'NOW-3DAYS',
+            'publishedAtEnd': 'NOW',
+            'sourceDomain': ['huffingtonpost.co.uk', 'salon.com', 'dailykos.com', 'thedailybeast.com', 'alternet.org', 'motherjones.com'],
+            'mediaImagesCountMin': 1
+        };
+    }
 }
 
 export default new AylienNewsApiConstructor();

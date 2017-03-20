@@ -1,10 +1,9 @@
 import { Router } from 'express';
 
-import UserAuthenication from './user-authenication';
-import NewsLetterSignUp from './newslettersignup';
-import TwitterApi from './twitter-api';
-import MainNewsSearch from './main-news-search';
-import PopularNewsSearches from './popular-news-searches';
+import UserAuthenicationRouter from './user-authenication';
+import NewsLetterSignUpRouter from './newslettersignup';
+import TwitterApiRouter from './twitter-search';
+import MainNewsSearchRouter from './main-news-search';
 
 
 class Routers {
@@ -16,12 +15,10 @@ class Routers {
     }
 
     private initializeRoutes() {
-        this.router.use('/userauth', UserAuthenication);
-        this.router.use('/twitterfeed', TwitterApi);
-        this.router.use('/mainnewssearch', MainNewsSearch);
-        this.router.post('/newsletter', NewsLetterSignUp);
-        this.router.use('/popularnewssearchs', PopularNewsSearches);
-        // TODO : put reference to sub routers here (external api calls etc).
+        this.router.use('/userauth', UserAuthenicationRouter);
+        this.router.use('/twitterfeed', TwitterApiRouter);
+        this.router.post('/newsletter', NewsLetterSignUpRouter);
+        this.router.use('/mainnewssearch', MainNewsSearchRouter);
     }
 }
 

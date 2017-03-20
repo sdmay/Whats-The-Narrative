@@ -1,9 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express';
 
-import AylienNewsApi = require('aylien-news-api');
+import AylienNewsApiConstructor from './external-api-keys/aylien-news';
 
 
-export class MainNewsSearch {
+export class PopularNewsSearches {
     router: Router;
 
     constructor() {
@@ -12,40 +12,64 @@ export class MainNewsSearch {
     }
 
     private initializeRoutes() {
-        this.router.get('/:searchterm', this.createAylienNewsInstance, this.createAylienNewsRightOrLeftWingSearch, this.performAylienNewsSearch, this.sendBackResults);
+        this.router.get('/trending', this.createTrendingNowNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/politics', this.createPoliticsNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/people', this.createPeopleNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/money', this.createMoneyNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/health', this.createHealthNewsSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/:searchterm', this.createLeftWingOrRightWingSearch, this.searchNews, this.sendResultsBack);
+
     }
 
-    private createAylienNewsInstance(req: Request, res: Response, next: NextFunction): void {
-        res.locals.AylienNewsInstance = new AylienNewsApi.DefaultApi();
-        res.locals.AylienNewsInstance.apiClient.authentications['app_id'].apiKey = 'c2be3538';
-        res.locals.AylienNewsInstance.apiClient.authentications['app_key'].apiKey = '7c3d695c5aa573f72f642a77937d6d5b';
+    private createTrendingNowNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
+        res.locals.searchOptions = AylienNewsApiConstructor.trendingNowNewsSearchOptions;
         next();
     }
 
-    private createAylienNewsRightOrLeftWingSearch(req: Request, res: Response, next: NextFunction): void {
-        // TODO: add another parameter to this api url to determine if the user is left or right wing or we can search the database...
-        // and default for just a plain search.
-        res.locals.searchOptions = {
-            'text': req.params.searchterm,
-            'language': ['en'],
-            'notLanguage': ['es', 'it'],
-            'publishedAtStart': 'NOW-3DAYS',
-            'publishedAtEnd': 'NOW',
-            'sourceDomain': ['breitbart.com', 'theblaze.com', 'drudgereport.com', 'dailycaller.com', 'nationalreview.com', 'townhall.com']
-        };
-
-        // res.locals.searchOptions = {
-        //     'text': req.params.searchterm,
-        //     'language': ['en'],
-        //     'notLanguage': ['es', 'it'],
-        //     'publishedAtStart': 'NOW-3DAYS',
-        //     'publishedAtEnd': 'NOW',
-        //     'sourceDomain': ['huffingtonpost.co.uk', 'salon.com', 'dailykos.com', 'thedailybeast.com', 'alternet.org', 'motherjones.com']
-        // };
+    private createPoliticsNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
+        res.locals.searchOptions = AylienNewsApiConstructor.politicsNewsSearchOptions;
         next();
     }
 
-    private performAylienNewsSearch(req: Request, res: Response, next: NextFunction): void {
+    private createPeopleNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
+        res.locals.searchOptions = AylienNewsApiConstructor.peoplesNewsSearchOptions;
+        next();
+    }
+
+    private createMoneyNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
+        res.locals.searchOptions = AylienNewsApiConstructor.moneyNewsSearchOptions;
+        next();
+    }
+
+    private createHealthNewsSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
+        res.locals.searchOptions = AylienNewsApiConstructor.healthNewsSearchOptions;
+        next();
+    }
+
+    private createLeftWingOrRightWingSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
+
+        //TODO: here is where we determine if the user is going to receive left or right wing searches. this needs to be implemented properly.
+        // the if statement can obviously be changed that is just placeholder for the time being.
+
+        // if (userObjectSurveryResults === "left wing") {
+        //     res.locals.searchOptions = AylienNewsApiConstructor.leftWingNewsSearchOptions;
+        // } else {
+        //     res.locals.searchOptions = AylienNewsApiConstructor.rightWingNewsSearchOptions;
+        // }
+
+        res.locals.searchOptions = AylienNewsApiConstructor.leftWingNewsSearchOptions;
+        // replace the empty string from the constructor for the users search term recieved from the client request
+        res.locals.searchOptions.text = req.params.searchterm;
+        next();
+    }
+
+    private searchNews(req: Request, res: Response, next: NextFunction): void {
         res.locals.AylienNewsInstance.listStories(res.locals.searchOptions, (error, data, response) => {
             if (error) {
                 // TODO: send the user an error
@@ -57,9 +81,13 @@ export class MainNewsSearch {
         });
     }
 
-    private sendBackResults(req: Request, res: Response): void {
+    private sendResultsBack(req: Request, res: Response): void {
         res.json(res.locals.stories);
     }
 }
 
-export default new MainNewsSearch().router;
+
+
+
+
+export default new PopularNewsSearches().router;

@@ -4,7 +4,7 @@ import { Router, Request, Response, NextFunction } from 'express';
 import User from '../models/User';
 
 export class UserAuthenication {
-router: Router;
+    router: Router;
 
     constructor() {
         this.router = Router();
@@ -12,30 +12,22 @@ router: Router;
     }
 
     private initializeRoutes() {
-        this.router.post('/registeruser',
-            this.doesTheUserExistInTheDatabase, this.createNewUserFromModel,
-            this.saveNewUserToDatabase);
+        this.router.post('/registeruser', this.doesTheUserExistInTheDatabase, this.createNewUserFromModel, this.saveNewUserToDatabase);
         this.router.get('/login/:name/:password', this.userIsTrue);
-        // TODO: login user route
     }
 
-    private test(req: Request, res: Response, next: NextFunction): void {
-        // console.log(req.params.name, req.params.password);
-    }
-
-public userIsTrue (req: Request, res: Response, next: NextFunction): void {
-  
- User.findOne({ 'name': req.params.name },
-     (error, name) => {
+    public userIsTrue(req: Request, res: Response, next: NextFunction): void {
+        User.findOne({ 'name': req.params.name },
+            (error, name) => {
                 console.log(name)
                 // TODO: some kind of error handling for the future.
                 if (error) throw error;
 
                 if (name) {
-                        console.log("USER");
+                    console.log("USER");
                     return res.json();
                     // this.router.navigate(['/dashboard']) ;
-                     }
+                }
 
                 if (!name) {
                     console.log("NO NAME FOUND")
@@ -80,7 +72,7 @@ public userIsTrue (req: Request, res: Response, next: NextFunction): void {
             res.json({ status: 200, data: '' });
         });
     }
-   
+
 }
 
 export default new UserAuthenication().router;
