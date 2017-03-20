@@ -2,27 +2,26 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-
-
 @Injectable()
 export class NewsLetterService {
-    constructor(private http: Http) {
+    constructor(private http: Http) {}
 
-    }
-
-    // TODO: put in return value type and type for parameter
-    registerUser(userObject) {
+    registerUser(userObject: object): Observable<any> {
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers });
         return this.http.post('api/newsletter/signup', userObject, options)
             .map(this.extractRegisterUserData)
-        // TODO: Put in catch for error handling.
+            .catch(this.handleError);
     }
 
-    // TODO: put in return value type.
-    extractRegisterUserData(res: Response) {
+    extractRegisterUserData(res: Response): void {
         const body = res.json();
         console.log(body);
     }
 
+     private handleError(error: any) {
+        const errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        return Observable.throw(errMsg);
+    }
 }

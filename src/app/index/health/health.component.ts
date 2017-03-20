@@ -9,7 +9,7 @@ import { StoriesService } from '../../shared/observables/stories.service';
 })
 
 export class HealthComponent implements OnInit {
-    private apiUrl: string = '/api/popularnewssearchs/health';
+    private apiUrl: string = '/api/mainnewssearch/health';
     private stories: Story[];
 
     constructor(private storiesService: StoriesService) { }

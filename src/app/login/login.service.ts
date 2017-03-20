@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 import { Router, CanActivate } from '@angular/router';
-import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
 export class LoginService {
-    result: any;
-    constructor(private http: Http,
-        private router: Router) { }
 
 
-    loginUser(userObject) {
+    constructor(
+        private http: Http,
+        private router: Router
+    ) {}
+
+
+    loginUser(userObject: object): Observable<any> {
         const apiUrl = `api/userauth/login/${userObject.name}/${userObject.pass}`;
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers });

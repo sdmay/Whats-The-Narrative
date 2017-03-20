@@ -9,7 +9,7 @@ import { Story } from '../../shared/types/story-type';
 })
 
 export class PoliticsComponent implements OnInit {
-    private apiUrl: string = '/api/popularnewssearchs/politics';
+    private apiUrl: string = '/api/mainnewssearch/politics';
     private stories: Story[];
 
     constructor(private storiesService: StoriesService) {}

@@ -3,25 +3,23 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 
-import { Tweet } from '../shared/tweet';
+import { Tweet } from '../types/tweet-type';
 
 
 @Injectable()
-export class RightWingFeedService {
-  private apiUrl = '/api/twitterfeed/rightwing';
+export class GetTweetsService {
   constructor(private http: Http) {}
 
-  getTweets(): any {
-    return this.http.get(this.apiUrl)
+  getTweets(apiUrl): Observable<Tweet[]> {
+    return this.http.get(apiUrl)
       .map(this.extractTweetData)
       .catch(this.handleError);
   }
 
-  private extractTweetData(res: Response) {
+  private extractTweetData(res: Response): Tweet[] {
     const body = res.json();
-    console.log('right wing tweet results');
     console.log(body.statuses);
-    return body.statuses || {};
+    return body.statuses;
   }
 
   private handleError(error: any) {

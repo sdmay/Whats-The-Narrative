@@ -1,7 +1,6 @@
 <ul>
     <li *ngFor="let tweet of tweets">
-        <!--<img src="{{tweet.user.profile_background_image_url_https}}"/>-->
-        <p>{{tweet.user.name}}</p>
+        <p>Tweeted By: {{tweet.user.name}}</p>
         <p>{{tweet.text}}</p>
         <p>{{tweet.created_at}}</p>
     </li>

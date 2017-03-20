@@ -1,17 +1,4 @@
+<input [(ngModel)] = "username" type="text" placeholder="Your Name" required>
 
-<input 
-    [(ngModel)] = "username"
-    
-    type="text" 
-    placeholder="Your Name"
-
-    required>
-
-    <input 
-    [(ngModel)] = "pass"
-    
-    type="text" 
-    placeholder="Your Password"
-    
-    required>
-    <button (click)="toggleLoginUser(username, pass)"class="btn btn-primary">Login</button>
+<input [(ngModel)] = "pass" type="text" placeholder="Your Password" required>
+<button (click)="toggleLoginUser(username, pass)"class="btn btn-primary">Login</button>

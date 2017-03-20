@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LeftWingFeedService } from './left-wing-feed.service';
-
-import { Tweet } from '../shared/tweet';
-
-
+import { GetTweetsService } from '../../shared/observables/get-tweets.service';
+import { Tweet } from '../../shared/types/tweet-type';
 
 @Component({
     moduleId: module.id,
@@ -14,15 +11,15 @@ import { Tweet } from '../shared/tweet';
 })
 
 export class LeftWingFeedComponent implements OnInit {
-    tweets: Tweet[] = [];
+    private apiUrl: string = '/api/twitterfeed/leftwing';
+    tweets: Tweet[];
 
 
-    constructor(private leftWingFeedService: LeftWingFeedService) { }
+    constructor(private getTweetsService: GetTweetsService) {}
 
     ngOnInit(): void {
-        this.leftWingFeedService.getTweets().subscribe(
+        this.getTweetsService.getTweets(this.apiUrl).subscribe(
             tweets => this.tweets = tweets
         );
     }
-
 }

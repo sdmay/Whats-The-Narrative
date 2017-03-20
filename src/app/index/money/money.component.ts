@@ -9,7 +9,7 @@ import { StoriesService } from '../../shared/observables/stories.service';
 })
 
 export class MoneyComponent implements OnInit {
-    private apiUrl: string = '/api/popularnewssearchs/money';
+    private apiUrl: string = '/api/mainnewssearch/money';
     private stories: Story[];
 
     constructor(private storiesService: StoriesService) { }

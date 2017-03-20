@@ -2,7 +2,7 @@ import { Register } from 'ts-node/dist';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { NewsLetterService } from './newsletter.service';
+import { NewsLetterService } from '../../shared/observables/newsletter.service';
 
 @Component({
     moduleId: module.id,

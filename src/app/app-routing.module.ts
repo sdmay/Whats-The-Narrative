@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { PeopleComponent } from './index/people/people.component';
 import { PoliticsComponent } from './index/politics/politics.component';
-import { SavedComponent } from './saved/saved.component';
 import { HealthComponent } from './index/health/health.component';
 import { AboutComponent } from './index/about/about.component';
 import { ContactComponent } from './index/contact/contact.component';
@@ -24,7 +23,6 @@ const appRoutes: Routes = [
     { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'dashboard', component: DashBoardComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'saved', component: SavedComponent },
     { path: 'trending', component: TrendingComponent },
     { path: 'politics', component: PoliticsComponent },
     { path: 'people', component: PeopleComponent },

@@ -11,6 +11,8 @@ import { Router, CanActivate } from '@angular/router';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
+
+// TODO: fix this to use the NgModels that are in the template.
 export class LoginComponent {
     
     user: any = {};
@@ -26,6 +28,7 @@ export class LoginComponent {
         console.log(this.user);
         this.loginService.loginUser(this.user)
         .subscribe(res => {
+            // TODO: this should only redirect to the dashboard if the login was successful.
             this.redirect();
         });
     }

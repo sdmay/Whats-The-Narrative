@@ -2,31 +2,31 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+import { Story } from '../../shared/types/story-type';
+
 
 @Injectable()
 export class SearchResultsService {
-  stories: any[] = [];
+  stories: Story[];
 
-  constructor(
-    private http: Http
-  ) {}
+  constructor(private http: Http) {}
 
-  // TODO: give this observable a type that is not any
-  public getUsersSearchFromServer(userSearchData) {
+
+  public getUsersSearchFromServer(userSearchData: string): void {
     const apiUrl = `/api/mainnewssearch/${userSearchData}`;
     this.http.get(apiUrl)
       .map(this.extractUserSearchData)
+      .catch(this.handleError)
       .subscribe(result => {
           this.stories = result;
       });
-      // .catch(this.handleError);
   }
 
-  private extractUserSearchData(res: Response) {
+  private extractUserSearchData(res: Response): Story[] {
     const body = res.json();
     console.log('search results array');
     console.log(body);
-    return body || {};
+    return body;
   }
 
   private handleError(res: Response) {
