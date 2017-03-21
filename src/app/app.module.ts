@@ -4,7 +4,11 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+import Auth0Lock from 'auth0-lock';
+import {Auth} from '../shared/auth0/auth.service';
+
 
 // Components
 import { AppComponent } from './app.component';
@@ -82,7 +86,10 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
         SearchResultsComponent,
         SearchResultsService,
         LoginService,
-        StoriesService
+        StoriesService,
+        AUTH_PROVIDERS,
+        appRoutingProviders,
+        Auth
     ],
     bootstrap: [
         AppComponent

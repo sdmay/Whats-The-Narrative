@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
 import { LoginService } from './login.service';
 import { Router, CanActivate } from '@angular/router';
+import {Auth} from '../shared/auth0/auth.service';
 
 @Component({
     moduleId: module.id,
@@ -19,7 +20,8 @@ export class LoginComponent {
 
     constructor(
         private router: Router,
-        private loginService: LoginService
+        private loginService: LoginService,
+        private auth: Auth
     ) { }
     
 
