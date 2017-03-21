@@ -5,11 +5,13 @@
     <nav class="wtn-modal-main-nav">
         <ul>
             <!-- inser more links here -->
-            <li><a class="wtn-modal-signin" href="#0">Sign in</a></li>
-            <li><a class="wtn-modal-signup" href="#0">Sign up</a></li>
+            <li><a class="wtn-modal-signin" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign in</a></li>
+            <li><a class="wtn-modal-signup" (click)="auth.logout()" *ngIf="auth.authenticated()">Sign out</a></li>
         </ul>
     </nav>
-
+    
+    <!--*ngIf="!auth.authenticated()" (click)="auth.login()"-->
+<!--*ngIf="auth.authenticated()" -->
     <nav class="wtn-main-nav-wrapper">
         <a href="#search" class="wtn-search-trigger wtn-text-replace">Search</a>
 

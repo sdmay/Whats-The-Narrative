@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-
-import {SearchComponent} from './search/search.component';
-
+import { Register } from 'ts-node/dist';
+import { SearchComponent } from './search/search.component';
+import { Router, CanActivate } from '@angular/router';
+import { Auth } from '../shared/auth0/auth.service';
 
 @Component({
     moduleId: module.id,
@@ -12,5 +13,11 @@ import {SearchComponent} from './search/search.component';
 })
 
 export class HeaderComponent {
+    user: any = {};
 
+    constructor(
+        // private router: Router,
+        // private loginService: LoginService,
+        private auth: Auth
+    ) { }
 }
