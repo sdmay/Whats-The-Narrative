@@ -10,6 +10,8 @@ import { myConfig } from './auth.config';
 import Auth0Lock from 'auth0-lock';
 @Injectable()
 export class Auth {
+  Auth0Lock: any;
+  
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
 
   constructor() {

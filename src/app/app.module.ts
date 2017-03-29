@@ -54,8 +54,7 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
         ReactiveFormsModule,
         FormsModule,
         JsonpModule,
-        AppRoutingModule,
-        
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
