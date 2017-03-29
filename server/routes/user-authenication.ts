@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-
+import { mongo } from 'mongoose';
 
 import User from '../models/User';
 
@@ -14,6 +14,7 @@ export class UserAuthenication {
     private initializeRoutes() {
         this.router.post('/registeruser', this.doesTheUserExistInTheDatabase, this.createNewUserFromModel, this.saveNewUserToDatabase);
         this.router.get('/login/:name/:password', this.userIsTrue);
+        this.router.post('https://whatsthenarrative.auth0.com/dbconnections/signup', this.createNewUserFromModel);
     }
 
     public userIsTrue(req: Request, res: Response, next: NextFunction): void {
@@ -72,7 +73,7 @@ export class UserAuthenication {
             res.json({ status: 200, data: '' });
         });
     }
-
 }
+
 
 export default new UserAuthenication().router;

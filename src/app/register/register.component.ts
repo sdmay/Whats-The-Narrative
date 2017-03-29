@@ -42,15 +42,17 @@ export class RegisterComponent  implements OnInit {
               name:"For the war on drugs?"
             },
     {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"For the war  on terror?"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question9"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question8"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question7"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question6"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question5"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question4"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question3"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question2"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question1"}]}]}
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Did OJ kill Nicole?"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Do you believe in God?"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Are women equal?"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Should abortion be allowed?"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Do you support the death penalty?"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Do you trust the police?"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Do you believe vaccinations cause Autism?"},
+    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"Do you like Cats?"}
+    // {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question1"}
+    ]}
+    ]};
 
 
   constructor(

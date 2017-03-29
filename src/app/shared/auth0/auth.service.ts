@@ -25,4 +25,5 @@ export class Auth {
   public logout() {
     localStorage.removeItem('id_token');
   };
+
 }
