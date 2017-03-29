@@ -8,7 +8,7 @@ const PORT: number = process.env.PORT || 8080;
 const server: http.Server = http.createServer(app);
 
 (<any>mongoose).Promise = Promise;
-mongoose.connect('mongodb://admin:admin@ds123370.mlab.com:23370/heroku_m8hpkfsk');
+mongoose.connect(process.env.MONGO_URL);
 const db = mongoose.connection;
 
 

@@ -24,8 +24,8 @@ export class AylienNewsApiConstructor {
 
     private createAylienNewsApiInstance(): AylienNewsApi {
         const AylienNewsInstance = new AylienNewsApi.DefaultApi();
-        AylienNewsInstance.apiClient.authentications['app_id'].apiKey = 'c2be3538';
-        AylienNewsInstance.apiClient.authentications['app_key'].apiKey = '7c3d695c5aa573f72f642a77937d6d5b';
+        AylienNewsInstance.apiClient.authentications['app_id'].apiKey = process.env.AYLIEN_NEWS_APP_ID;
+        AylienNewsInstance.apiClient.authentications['app_key'].apiKey = process.env.AYLIEN_NEWS_APP_KEY;
         return AylienNewsInstance;
     }
 

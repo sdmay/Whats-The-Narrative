@@ -15,10 +15,10 @@ export class TwitterApiConstructor {
 
     private createTwitterApiInstance(): Twitter {
         const twitterApiInstance = new Twitter({
-            consumer_key: 'dv1iRBGxLYjyKn41qpvayuI8U',
-            consumer_secret: 'Der5Hk7WdnyYiFwCmRbx9akiFlAANbHdXT9ZVS4jYaNWU4w9E1',
-            access_token_key: '249584013-wk8Vlc2jWdc95EqlOT7WvikOpH2Qe81YjKUb0Xxf',
-            access_token_secret: 'hlGBlj3nB8VMpAfG6euyeZGs6o0pgW43wdfcSWtBM2faz'
+            consumer_key: process.env.TWITTER_CONSUMER_KEY,
+            consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+            access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+            access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
         });
         return twitterApiInstance;
     }
