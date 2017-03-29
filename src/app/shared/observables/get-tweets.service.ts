@@ -23,7 +23,7 @@ export class GetTweetsService {
   }
 
   private handleError(error: any) {
-    const errMsg = (error.message) ? error.message :
+    let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     return Observable.throw(errMsg);
   }

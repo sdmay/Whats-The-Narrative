@@ -36,14 +36,9 @@ const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
 ];
-export const appRoutingProviders: any[] = [
-
-];
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],
     exports: [RouterModule]
 })
-
-
 export class AppRoutingModule {}

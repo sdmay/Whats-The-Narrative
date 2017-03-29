@@ -22,6 +22,8 @@ export class LoginService {
         return this.http.get(apiUrl, options)
         .map(this.extractLoginUserData)
         .catch(this.handleError);
+            
+
     }
 
     // TODO: put in return value type.
@@ -30,6 +32,7 @@ export class LoginService {
         console.log(body);
     }
 
+   
        public handleError(error: Response) {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');

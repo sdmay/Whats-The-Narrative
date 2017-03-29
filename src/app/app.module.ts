@@ -4,14 +4,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
-// import { AUTH_PROVIDERS } from 'angular2-jwt';
-// import Auth0Lock from 'auth0-lock';
-import {Auth} from './shared/auth0/auth.service';
-
-// Workaround for global variables
-// declare var require: any;
-// const Auth0Lock = require('auth0-lock').default;
+import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -79,8 +72,7 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
         ContactComponent,
         SignupComponent,
         DashBoardComponent,
-        SigninComponent,
-        // Auth0Lock
+        SigninComponent
     ],
     providers: [
         DataComponent,
@@ -90,10 +82,7 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
         SearchResultsComponent,
         SearchResultsService,
         LoginService,
-        StoriesService,
-        // AUTH_PROVIDERS,
-        appRoutingProviders,
-        Auth
+        StoriesService
     ],
     bootstrap: [
         AppComponent

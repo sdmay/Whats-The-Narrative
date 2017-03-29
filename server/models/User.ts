@@ -16,7 +16,7 @@ export interface UserModel extends mongoose.Document {
 
 export let userSchema = new Schema({
 
-    email: {
+    name: {
         type: String,
         required: true,
         unique: true

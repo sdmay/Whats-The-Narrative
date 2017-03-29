@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { mongo } from 'mongoose';
+
 
 import User from '../models/User';
 
@@ -14,11 +14,10 @@ export class UserAuthenication {
     private initializeRoutes() {
         this.router.post('/registeruser', this.doesTheUserExistInTheDatabase, this.createNewUserFromModel, this.saveNewUserToDatabase);
         this.router.get('/login/:name/:password', this.userIsTrue);
-        this.router.post('https://whatsthenarrative.auth0.com/dbconnections/signup', this.createNewUserFromModel);
     }
 
     public userIsTrue(req: Request, res: Response, next: NextFunction): void {
-        User.findOne({ 'email': req.params.name },
+        User.findOne({ 'name': req.params.name },
             (error, name) => {
                 console.log(name)
                 // TODO: some kind of error handling for the future.
@@ -56,7 +55,7 @@ export class UserAuthenication {
 
     private createNewUserFromModel(req: Request, res: Response, next: NextFunction): void {
         res.locals.newUser = new User({
-            email: req.body.name,
+            name: req.body.name,
             password: req.body.pass
         });
         next();
@@ -73,7 +72,7 @@ export class UserAuthenication {
             res.json({ status: 200, data: '' });
         });
     }
-}
 
+}
 
 export default new UserAuthenication().router;
