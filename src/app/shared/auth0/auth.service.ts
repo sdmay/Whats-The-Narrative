@@ -5,8 +5,9 @@ import { myConfig } from './auth.config';
 // const Auth0Lock = require('auth0-lock').default;
 // import {Auth} from './shared/auth0/auth.service';
 // import { Auth0Lock } from 'auth0-lock';
-declare var require: any;
-const Auth0Lock = require('auth0-lock').default;
+// declare var require: any;
+// const Auth0Lock = require('auth0-lock').default;
+import Auth0Lock from 'auth0-lock';
 @Injectable()
 export class Auth {
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
