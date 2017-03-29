@@ -18,7 +18,7 @@ export class UserAuthenication {
     }
 
     public userIsTrue(req: Request, res: Response, next: NextFunction): void {
-        User.findOne({ 'name': req.params.name },
+        User.findOne({ 'email': req.params.name },
             (error, name) => {
                 console.log(name)
                 // TODO: some kind of error handling for the future.
@@ -56,7 +56,7 @@ export class UserAuthenication {
 
     private createNewUserFromModel(req: Request, res: Response, next: NextFunction): void {
         res.locals.newUser = new User({
-            name: req.body.name,
+            email: req.body.name,
             password: req.body.pass
         });
         next();
