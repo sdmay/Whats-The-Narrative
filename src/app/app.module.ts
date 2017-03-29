@@ -8,7 +8,8 @@ import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
 // import { AUTH_PROVIDERS } from 'angular2-jwt';
 // import { Auth0Lock } from 'auth0-lock';
 import {Auth} from './shared/auth0/auth.service';
-
+declare var require: any;
+const Auth0Lock = require('auth0-lock').default;
 
 // Components
 import { AppComponent } from './app.component';
