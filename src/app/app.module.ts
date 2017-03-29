@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, appRoutingProviders } from './app-routing.module';
 // import { AUTH_PROVIDERS } from 'angular2-jwt';
-import Auth0Lock from 'auth0-lock';
+import { Auth0Lock } from 'auth0-lock';
 import {Auth} from './shared/auth0/auth.service';
 
 

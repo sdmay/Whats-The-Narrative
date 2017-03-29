@@ -3,7 +3,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { myConfig } from './auth.config';
 // Avoid name not found warnings
 // const Auth0Lock = require('auth0-lock').default;
-import Auth0Lock from 'auth0-lock';
+import { Auth0Lock } from 'auth0-lock';
 @Injectable()
 export class Auth {
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
