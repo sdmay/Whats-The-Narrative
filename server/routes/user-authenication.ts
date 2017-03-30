@@ -1,7 +1,8 @@
+import bcrypt = require("bcrypt");
 import { Router, Request, Response, NextFunction } from 'express';
+import { JsonWebTokenMiddleWare } from "./middleware/json-web-token-middleware";
 
-
-import User from '../models/User';
+import { User } from '../models/User';
 
 export class UserAuthenication {
     router: Router;
@@ -13,32 +14,50 @@ export class UserAuthenication {
 
     private initializeRoutes() {
         this.router.post('/registeruser', this.doesTheUserExistInTheDatabase, this.createNewUserFromModel, this.saveNewUserToDatabase);
-        this.router.get('/login/:name/:password', this.userIsTrue);
+        this.router.get('/login/:name/:password', this.userIsTrue, this.doesTheUsersPasswordMatch, JsonWebTokenMiddleWare.getPrivateKey, JsonWebTokenMiddleWare.signJsonWebToken);
     }
 
     public userIsTrue(req: Request, res: Response, next: NextFunction): void {
         User.findOne({ 'name': req.params.name },
-            (error, name) => {
-                console.log(name)
+            (error, user) => {
                 // TODO: some kind of error handling for the future.
                 if (error) throw error;
 
-                if (name) {
-                    console.log("USER");
-                    return res.json();
-                    // this.router.navigate(['/dashboard']) ;
+                if (user) {
+                    // store the user information found in the database to a local variable.
+                    res.locals.user = user;
+                    next();
                 }
 
-                if (!name) {
-                    console.log("NO NAME FOUND")
-                    return false;
+                if (!user) {
+                    res.json({ status: 401, data: "Are you sure you entered the correct username?" });
                 }
             });
     }
+
+    private doesTheUsersPasswordMatch(req: Request, res: Response, next: NextFunction): void {
+        // compare the password the user sent down to the to the password we got from the database.
+        bcrypt.compare(req.params.password, res.locals.user.password, (error, result) => {
+            if (error) {
+                return next(error);
+            }
+            // if the passwords match
+            if (result) {
+                //create a response local variable that only stores the users database id and if they are left wing or right wing.
+                res.locals.tokenData = {
+                    id: res.locals.user._id,
+                    leftOrRight: res.locals.user.leftOrRight,
+                };
+                next();
+            } else {
+                res.json({ status: 401, data: "Are you sure you entered the correct password?" });
+            }
+        });
+    }
+
     private doesTheUserExistInTheDatabase(req: Request, res: Response, next: NextFunction): void {
-        User.findOne({ 'name': req.body.user },
+        User.findOne({ 'name': req.body.name },
             (error, user) => {
-                console.log(user)
                 // TODO: some kind of error handling for the future.
                 if (error) throw error;
 
@@ -61,15 +80,11 @@ export class UserAuthenication {
         next();
     }
 
-
-
     private saveNewUserToDatabase(req: Request, res: Response, next: NextFunction): void {
-        res.locals.newUser.save((user, error) => {
+        res.locals.newUser.save((error, user) => {
             // TODO: some kind of error handling for the future.
             if (error) throw error;
-            // TODO: send JSON web token back to user and perform some kind of redirect.
-            //    Can the the redirect be hanlded via angular or does it have to be here?
-            res.json({ status: 200, data: '' });
+            res.json({ status: 200, data: 'You have successfully registered' });
         });
     }
 

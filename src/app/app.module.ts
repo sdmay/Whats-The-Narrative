@@ -14,14 +14,11 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { HomeComponent } from './home/home.component';
 import { NewsLetterComponent } from './footer/newsletter/newsletter.component';
 import { FooterComponent } from './footer/footer.component';
-import { RegisterComponent } from './register/register.component';
-import { IndexComponent } from './index/index.component';
 import { TrendingComponent } from './index/trending/trending.component';
 import { PoliticsComponent } from './index/politics/politics.component';
 import { PeopleComponent } from './index/people/people.component';
 import { LeftWingFeedComponent } from './home/left-wing-feed/left-wing-feed.component';
 import { RightWingFeedComponent } from './home/right-wing-feed/right-wing-feed.component';
-import { LoginComponent } from './login/login.component';
 import { MoneyComponent } from './index/money/money.component';
 import { HealthComponent } from './index/health/health.component';
 import { AboutComponent } from './index/about/about.component';
@@ -32,13 +29,15 @@ import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
 
 // Services
-import { RegisterService } from './register/register.service';
 import { NewsLetterService } from './shared/observables/newsletter.service';
 import { DataComponent } from './shared/providers/data.component';
 import { SearchResultsService } from './search-results/search-results.service';
-import { LoginService } from './login/login.service';
+import { SignInService } from './index/signin/sign-in.service';
 import { StoriesService } from './shared/observables/stories.service';
 import { GetTweetsService } from './shared/observables/get-tweets.service';
+import { AuthenicationControl } from './shared/authenication/authenication-control';
+import { SignUpService } from './index/signup/signup.service';
+import { SaveArticleService } from './shared/observables/save-article-service';
 
 @NgModule({
     imports: [
@@ -56,15 +55,12 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
         HomeComponent,
         NewsLetterComponent,
         FooterComponent,
-        RegisterComponent,
-        IndexComponent,
         TrendingComponent,
         PoliticsComponent,
         PeopleComponent,
         LeftWingFeedComponent,
         RightWingFeedComponent,
         SearchResultsComponent,
-        LoginComponent,
         MoneyComponent,
         HealthComponent,
         AboutComponent,
@@ -76,13 +72,15 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
     ],
     providers: [
         DataComponent,
-        RegisterService,
         NewsLetterService,
         GetTweetsService,
         SearchResultsComponent,
         SearchResultsService,
-        LoginService,
-        StoriesService
+        StoriesService,
+        AuthenicationControl,
+        SignInService,
+        SignUpService,
+        SaveArticleService
     ],
     bootstrap: [
         AppComponent

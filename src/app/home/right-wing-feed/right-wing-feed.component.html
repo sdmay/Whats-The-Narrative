@@ -1,7 +1,9 @@
 <ul>
     <li *ngFor="let tweet of tweets">
-        <p>Tweeted By: {{tweet.user.name}}</p>
-        <p>{{tweet.text}}</p>
-        <p>{{tweet.created_at}}</p>
+        <blockquote class="twitter-tweet">
+            <p>Tweeted By: {{tweet.user.name}}</p>
+            <p>{{tweet.text}}</p>
+            <p>{{tweet.created_at}}</p>
+        </blockquote>
     </li>
 </ul>

@@ -1,52 +1,37 @@
-<header class="wtn-main-header animate-search">
+<div class="wtn-main-header animate-search">
     <div class="wtn-logo">
         <a href="index.html"><img src="assets/img/WTNh80.png" alt="Logo"></a>
     </div>
-    <nav class="wtn-modal-main-nav">
-        <ul>
-            <!-- inser more links here -->
-            <li><a class="wtn-modal-signin" href="#0">Sign in</a></li>
-            <li><a class="wtn-modal-signup" href="#0">Sign up</a></li>
+    <div class="wtn-modal-main-nav">
+        <ul [ngSwitch]="authenicationControl.isTheUserAuthenicated()">
+            <li [routerLink]="['signin']" *ngSwitchCase="false"><a class="wtn-modal-signin">Sign in</a></li>
+            <li [routerLink]="['signup']" *ngSwitchCase="false"><a class="wtn-modal-signup ">Sign up</a></li>
+            <li *ngSwitchCase="true" (click)="logUserOut()"><a class="wtn-modal-signup ">Logout</a></li>
         </ul>
-    </nav>
+    </div>
 
-    <nav class="wtn-main-nav-wrapper">
-        <a href="#search" class="wtn-search-trigger wtn-text-replace">Search</a>
+    <div class="wtn-main-nav-wrapper">
+        <a class="wtn-search-trigger wtn-text-replace">Search</a>
 
         <ul class="wtn-main-nav">
-            <li><a [routerLink]="['trending']">Trending</a></li>
+            <li><a [routerLink]="['trending']" class="links">Trending</a></li>
             <li><a [routerLink]="['politics']" class="links">Politics</a></li>
             <li><a [routerLink]="['people']" class="links">People</a></li>
             <li><a [routerLink]="['money']" class="links">Money</a></li>
             <li><a [routerLink]="['health']" class="links">Health</a></li>
-            <!-- 		<li><a href="#0"><span class="fa fa-user"> Log In</span></a></li>
-				<li><a href="#0"><span class="fa fa-pencil"> Sign Up</span></a></li> -->
         </ul>
         <!-- .wtn-main-nav -->
-    </nav>
+    </div>
     <!-- .wtn-main-nav-wrapper -->
 
-    <a href="#0" class="wtn-nav-trigger wtn-text-replace">Menu<span></span></a>
-</header>
+    <a class="wtn-nav-trigger wtn-text-replace">Menu<span></span></a>
+</div>
 
 
 <div id="search" class="wtn-main-search">
     <form>
         <!--THIS IS THE SEARCH COMPONENT-->
         <search></search>
-
-        <div class="wtn-select">
-            <span></span>
-            <select name="select-category">
-					<option value="all-categories">All Categories</option>
-					<option value="category1">Trending</option>
-					<option value="category2">Politics</option>
-					<option value="category3">People</option>
-					<option value="category3">Money</option>
-					<option value="category3">Health</option>
-				</select>
-            <span class="selected-value">All Categories</span>
-        </div>
     </form>
 
     <div class="wtn-search-suggestions">
@@ -54,41 +39,28 @@
             <h3>News</h3>
             <ul>
                 <li>
-                    <a class="wtn-image-wrapper" href="#0"><img src="assets/img/placeholder.png" alt="News image"></a>
-                    <h4><a class="wtn-nowrap" href="#0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h4>
+                    <a class="wtn-image-wrapper"><img src="assets/img/placeholder.png" alt="News image"></a>
+                    <h4><a class="wtn-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h4>
                     <time datetime="2016-01-12">Feb 03, 2016</time>
                 </li>
 
                 <li>
-                    <a class="wtn-image-wrapper" href="#0"><img src="assets/img/placeholder.png" alt="News image"></a>
-                    <h4><a class="wtn-nowrap" href="#0">Incidunt voluptatem adipisci voluptates fugit beatae culpa eum, distinctio, assumenda est ad</a></h4>
+                    <a class="wtn-image-wrapper"><img src="assets/img/placeholder.png" alt="News image"></a>
+                    <h4><a class="wtn-nowrap">Incidunt voluptatem adipisci voluptates fugit beatae culpa eum, distinctio, assumenda est ad</a></h4>
                     <time datetime="2016-01-12">Jan 28, 2016</time>
                 </li>
 
                 <li>
-                    <a class="wtn-image-wrapper" href="#0"><img src="assets/img/placeholder.png" alt="News image"></a>
-                    <h4><a class="wtn-nowrap" href="#0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, esse.</a></h4>
+                    <a class="wtn-image-wrapper"><img src="assets/img/placeholder.png" alt="News image"></a>
+                    <h4><a class="wtn-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, esse.</a></h4>
                     <time datetime="2016-01-12">Jan 12, 2016</time>
                 </li>
             </ul>
         </div>
-        <!-- .wtn-news -->
-
-        <div class="wtn-quick-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#0">Find a store</a></li>
-                <li><a href="#0">Accessories</a></li>
-                <li><a href="#0">Warranty info</a></li>
-                <li><a href="#0">Support</a></li>
-                <li><a href="#0">Contact us</a></li>
-            </ul>
-        </div>
-        <!-- .wtn-quick-links -->
     </div>
     <!-- .wtn-search-suggestions -->
 
-    <a href="#" class="wtn-close wtn-text-replace">Close Form</a>
+    <a class="wtn-close wtn-text-replace">Close Form</a>
 </div>
 <!-- .wtn-main-search -->
 
@@ -98,19 +70,19 @@
 
 
 <a href="#cd-nav" class="cd-nav-trigger">
-		Menu<span><!-- used to create the menu icon --></span>
-	</a>
+    <span>Menu</span>
+</a>
 <!-- .cd-nav-trigger -->
 
-<nav class="cd-nav-container" id="cd-nav">
+<div class="cd-nav-container">
     <div>
-        <h3>What's The Narrative? <a href="#"><span class="fa fa-lg fa-facebook"></span></a><a href="#"><span class="fa fa-lg fa-twitter"></span></a>            <a href="#"><span class="fa fa-lg fa-github"></span></a><a href="#"><span class="fa fa-lg fa-linkedin"></span></a>            </h3>
-        <a href="#0" class="cd-close-nav">Close</a>
+        <h3>What's The Narrative? <a><span class="fa fa-lg fa-facebook"></span></a><a><span class="fa fa-lg fa-twitter"></span></a>            <a><span class="fa fa-lg fa-github"></span></a><a><span class="fa fa-lg fa-linkedin"></span></a></h3>
+        <span class="cd-close-nav wtn-text-replace ">close</span>
     </div>
 
     <ul class="cd-nav">
         <li class="cd-selected" data-menu="index">
-            <a [routerLink]="['home']">
+            <a [routerLink]="['']">
                 <span>
 						<svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64"><g transform="translate(0, 0)"> <polyline data-cap="butt" fill="none" stroke="#333545" stroke-width="2" stroke-miterlimit="10" points="10,24.9 10,60 26,60 26,44 38,44 38,60 54,60 54,24.9 " stroke-linejoin="square" stroke-linecap="butt"></polyline> <polyline data-color="color-2" fill="none" stroke="#333545" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points=" 4,30 32,6 60,30 " stroke-linejoin="square"></polyline> <rect data-color="color-2" x="26" y="24" fill="none" stroke="#333545" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" width="12" height="10" stroke-linejoin="square"></rect> </g></svg>
 					</span>
@@ -172,4 +144,4 @@
         <!--  -->
     </ul>
     <!-- .cd-3d-nav -->
-</nav>
+</div>

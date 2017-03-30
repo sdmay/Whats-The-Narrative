@@ -3,7 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class RegisterService {
+export class SignUpService {
     constructor(private http: Http) {}
 
     registerUser(userObject): Observable<any> {
@@ -17,6 +17,7 @@ export class RegisterService {
     extractRegisterUserData(res: Response): void {
         const body = res.json();
         console.log(body);
+        return body;
     }
 
      public handleError(error: Response) {

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import {SearchComponent} from './search/search.component';
+import { SearchComponent } from './search/search.component';
+
+import { AuthenicationControl } from "../shared/authenication/authenication-control";
 
 
 @Component({
@@ -12,5 +15,14 @@ import {SearchComponent} from './search/search.component';
 })
 
 export class HeaderComponent {
+
+    constructor(private authenicationControl: AuthenicationControl, private router: Router)
+    { }
+
+    private logUserOut() {
+        console.log('test');
+        this.authenicationControl.removeJsonWebToken();
+        this.router.navigate([""]);
+    }
 
 }

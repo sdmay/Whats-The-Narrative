@@ -13,22 +13,30 @@ import { NewsLetterService } from '../../shared/observables/newsletter.service';
 
 
 export class NewsLetterComponent {
-    public signUpForm = this.fb.group({
-        signupname: ['', Validators.required],
-        signupemail: ['', Validators.required]
-    });
+    private signupemail: string = "";
+    private signupname: string = "";
+
     constructor(
-        public fb: FormBuilder,
         private newsLetterService: NewsLetterService
     ) { }
 
-    newsLetter(event) {
-        event.preventDefault();
-        const userObject = this.signUpForm.value;
-        console.log(userObject);
-        // Observables are lazy. Need to subscribe to the http request to hit the server.
-        this.newsLetterService.registerUser(userObject).subscribe();
 
+
+    private newsLetter(event) {
+        const userObject = {signupname: this.signupname, signupemail: this.signupemail};
+        this.newsLetterService.registerUser(userObject).subscribe(
+            response => this.wasTheNewsLetterSignUpSuccessful(response)
+        );
+        this.clearForm();
     }
 
+    private wasTheNewsLetterSignUpSuccessful(response) {
+        console.log(response);
+    }
+
+
+    private clearForm() {
+        this.signupemail = "";
+        this.signupname = "";
+    }
 }

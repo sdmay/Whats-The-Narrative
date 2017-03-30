@@ -1,11 +1,12 @@
 import * as mongoose from 'mongoose';
-import * as passportLocalMongoose from 'passport-local-mongoose';
+import bcrypt = require("bcrypt");
 
 
-export let Schema = mongoose.Schema;
-export let ObjectId = mongoose.Schema.Types.ObjectId;
 
-export interface UserModel extends mongoose.Document {
+let Schema = mongoose.Schema;
+let ObjectId = mongoose.Schema.Types.ObjectId;
+
+interface UserModel extends mongoose.Document {
     name: string;
     password: string;
     leftOrRight: string;
@@ -14,8 +15,7 @@ export interface UserModel extends mongoose.Document {
     modifiedAt: Date;
 }
 
-export let userSchema = new Schema({
-
+let userSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -26,18 +26,12 @@ export let userSchema = new Schema({
         type: String,
         trim: true,
         required: 'Password is Required'
-        // validate: [
-        //     function (input) {
-        //         return input.length >= 6;
-        //     },
-        //     "Password should be longer."
-        // ]
+
     },
     leftOrRight: {
         type: Boolean,
         default: false,
         required: true
-
     },
     savedArticle: [{
         type: Schema.Types.ObjectId,
@@ -51,7 +45,9 @@ export let userSchema = new Schema({
         type: Date,
         required: false
     }
-}).pre('save', function (next) {
+});
+
+userSchema.pre("save", function (next: Function) {
     if (this._doc) {
         const doc = <UserModel>this._doc;
         const now = new Date();
@@ -60,11 +56,29 @@ export let userSchema = new Schema({
         }
         doc.modifiedAt = now;
     }
-    next();
-    return this;
+    const user = this;
+    generateBcryptSalt(next, user);
 });
 
-userSchema.plugin(passportLocalMongoose);
+const generateBcryptSalt = (next, user) => {
 
-const User = mongoose.model<UserModel>('User', userSchema);
-export default User;
+    bcrypt.genSalt(10, (error, salt) => {
+        if (error) return next(error);
+        encryptPassword(next, user, salt);
+    });
+}
+
+const encryptPassword = (next, user, salt) => {
+
+    bcrypt.hash(user.password, salt, (error, hash) => {
+        if (error) return next(error);
+        user.password = hash;
+        return next();
+    });
+}
+
+
+
+
+
+export const User = mongoose.model<UserModel>('User', userSchema);

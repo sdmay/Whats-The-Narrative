@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { TrendingComponent } from './index/trending/trending.component';
 import { MoneyComponent } from './index/money/money.component';
-import { LoginComponent } from './login/login.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { PeopleComponent } from './index/people/people.component';
 import { PoliticsComponent } from './index/politics/politics.component';
@@ -17,17 +15,14 @@ import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
 
-
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'dashboard', component: DashBoardComponent },
-    { path: 'register', component: RegisterComponent },
     { path: 'trending', component: TrendingComponent },
     { path: 'politics', component: PoliticsComponent },
     { path: 'people', component: PeopleComponent },
     { path: 'searchresults', component: SearchResultsComponent },
-    { path: 'login', component: LoginComponent },
     { path: 'money', component: MoneyComponent },
     { path: 'health', component: HealthComponent },
     { path: 'about', component: AboutComponent },
@@ -41,4 +36,4 @@ const appRoutes: Routes = [
     imports: [RouterModule.forRoot(appRoutes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,9 +1,9 @@
 import * as mongoose from 'mongoose';
 
-export let Schema = mongoose.Schema;
-export let ObjectId = mongoose.Schema.Types.ObjectId;
+let Schema = mongoose.Schema;
+let ObjectId = mongoose.Schema.Types.ObjectId;
 
-export interface ArticleModel extends mongoose.Document {
+interface ArticleModel extends mongoose.Document {
     title: string;
     url: string;
     createdAt: Date;
@@ -11,12 +11,31 @@ export interface ArticleModel extends mongoose.Document {
 }
 
 let articleSchema = new Schema({
-    title: {
+    pictureUrl: {
         type: String,
         required: true
     },
-
-    url: {
+    articleId: {
+        type: String,
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    summaryPartOne: {
+        type: String,
+        required: true
+    },
+    summaryPartTwo: {
+        type: String,
+        require: true
+    },
+    articleUrl: {
+        type: String,
+        required: true
+    },
+    articleTitle: {
         type: String,
         required: true
     },
@@ -38,5 +57,7 @@ let articleSchema = new Schema({
         doc.modifiedAt = now;
     }
     next();
-    return this;
 });
+
+
+export const Article = mongoose.model<ArticleModel>('Article', articleSchema);

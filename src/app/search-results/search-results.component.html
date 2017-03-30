@@ -25,7 +25,8 @@
 			<h3>Written By: {{story.author.name}}</h3>
 			<p>{{story.summary.sentences[0]}}{{story.summary.sentences[1]}}</p>
 			<ul class="wtn-quickview-item-action">
-				<li><a href="{{story.links.permalink}}" target="_blank">View Full Article</a></li>
+				<li><a class="stories-read-full-article" href="{{story.links.permalink}}" target="_blank">View Full Article</a></li>
+				<li><button class="btn btn-primary save-article-button">Save Article</button></li>
 			</ul>
 			<!-- wtn-quickview-item-action -->
 		</div>

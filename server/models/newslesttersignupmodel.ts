@@ -1,10 +1,9 @@
 import * as mongoose from 'mongoose';
 
+const Schema = mongoose.Schema;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-export let Schema = mongoose.Schema;
-export let ObjectId = mongoose.Schema.Types.ObjectId;
-
-export interface NewsLetterModel extends mongoose.Document {
+interface NewsLetterModel extends mongoose.Document {
     name: string;
     email: string;
     createdAt: Date;
@@ -12,26 +11,18 @@ export interface NewsLetterModel extends mongoose.Document {
 
 }
 
-export let newsLetterSchema = new Schema({
-
+const newsLetterSchema = new Schema({
     name: {
         type: String,
         required: true,
         unique: true
     },
-
     email: {
         type: String,
         trim: true,
         required: 'Password is Required'
-        // validate: [
-        //     function (input) {
-        //         return input.length >= 6;
-        //     },
-        //     "Password should be longer."
-        // ]
     },
-        createdAt: {
+    createdAt: {
         type: Date,
         required: false
     },
@@ -49,8 +40,6 @@ export let newsLetterSchema = new Schema({
         doc.modifiedAt = now;
     }
     next();
-    return this;
 });
 
-const NewsLetter = mongoose.model<NewsLetterModel>('NewsLetter', newsLetterSchema);
-export default NewsLetter;
+export const NewsLetter = mongoose.model<NewsLetterModel>('NewsLetter', newsLetterSchema);

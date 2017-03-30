@@ -17,9 +17,13 @@ export class GetTweetsService {
   }
 
   private extractTweetData(res: Response): Tweet[] {
+    const tweets = [];
     const body = res.json();
+    for (var i = 0; i < 5; i++) {
+      tweets.push(body.statuses[i]);
+    }
     console.log(body.statuses);
-    return body.statuses;
+    return tweets;
   }
 
   private handleError(error: any) {

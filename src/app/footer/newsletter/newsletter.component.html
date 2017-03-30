@@ -1,10 +1,8 @@
-<div class="row">
-    <h3 class="text-center">Enjoying What's The Narrative? Subscribe To Our Newsletter!</h3><br>
-    <div class="col-lg-10 col-lg-offset-3">
-        <form [formGroup]="signUpForm" (ngSubmit)="newsLetter()">
-            <!--<input formControlName="signupname">-->
-            <input formControlName="signupname" name="signupname" placeholder="Name" autocomplete="off" required>
-            <!--<input formControlName="signupemail">-->
-            <input formControlName="signupemail" name="signupemail" type="email" placeholder="Email" autocomplete="off" required>
-            <button type="submit">Sign Up!</button>
-        </form>
+<h3 class="dark-text">Enjoying What's The Narrative? Subscribe To Our Newsletter!</h3>
+<form>
+    <!--<input formControlName="signupname">-->
+    <input [(ngModel)]="signupname" name="signupname" placeholder="Name" autocomplete="off" required>
+    <!--<input formControlName="signupemail">-->
+    <input [(ngModel)]="signupemail" name="signupemail" type="email" placeholder="Email" autocomplete="off" required>
+    <button class="btn btn-primary" type="button" (click)="newsLetter()">Sign Up!</button>
+</form>

@@ -2,12 +2,10 @@ import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
-import passport = require('passport');
-import cookieParser = require('cookie-parser');
-
+import * as mongoose from 'mongoose';
+import * as Promise from 'bluebird';
 
 import Routes from '../routes/routes-index';
-import User from '../models/User';
 
 class App {
     app: express.Express;
@@ -25,8 +23,6 @@ class App {
         this.app.use(bodyParser.text());
         this.app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
         this.app.use(express.static('./dist'));
-        this.app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
-        this.app.use(cookieParser());
     }
 
 

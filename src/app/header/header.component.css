@@ -1,0 +1,21 @@
+.wtn-modal-signin:hover {
+    cursor: pointer;
+}
+
+.cd-close-nav:hover {
+    cursor: pointer;
+}
+
+.wtn-modal-signup:hover {
+    cursor: pointer;
+}
+
+.cd-nav {
+    position: relative;
+    top: 40px;
+}
+
+.cd-close-nav{
+    position: relative;
+    left: 1425px;
+}
