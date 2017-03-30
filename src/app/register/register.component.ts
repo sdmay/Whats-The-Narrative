@@ -1,81 +1,130 @@
 import { Register } from 'ts-node/dist';
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 // TODO: do we need this anymore?
 // import { Survey } from 'survey-angular';
 import 'rxjs/Rx';
 
-import { RegisterService } from "./register.service";
+import { RegisterService } from './register.service';
+import { QuizService } from './quiz/quiz.service';
+import { HelperService } from './quiz/helper.service';
+import { Option, Question, Quiz, QuizConfig } from './quiz/models/index';
 
 @Component({
   moduleId: module.id,
   selector: "register",
   templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.css"]
+  styleUrls: ["./register.component.css"],
+  providers: [QuizService]
 })
+
 export class RegisterComponent  implements OnInit {
-  public loginForm = this.fb.group({
-    name: ["", Validators.required],
-    password: ["", Validators.required]
-  });
+  quizes: any[];
 
-  questions: any = [];
-  user: any = {};
+  quiz: Quiz = new Quiz(null);
 
-    public surveyJSON = {
-      pages:[
-        {
-          name:"page1",
-          questions:[
-            {
-              type:"radiogroup",
-              choices:[{value:"1",text:"Yes"},
-              {value:"0",text:"No"}],
-              isRequired:true,
-              name:"Do you like Trump?"
-            },
-            {
-              type:"radiogroup",
-              choices:[{value:"1",text:"Yes"},
-              {value:"0",text:"No"}],
-              isRequired:true,
-              name:"For the war on drugs?"
-            },
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"For the war  on terror?"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question9"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question8"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question7"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question6"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question5"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question4"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question3"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question2"},
-    {type:"radiogroup",choices:[{value:"1",text:"Yes"},{value:"0",text:"No"}],isRequired:true,name:"question1"}]}]}
+  mode: string = 'quiz';
 
+  quizName: string;
 
-  constructor(
-    public fb: FormBuilder,
-    private registerService: RegisterService
-  ) { }
+  config: QuizConfig = {
+    'allowBack': true,
+    'allowReview': true,
+    'autoMove': false,  // if true, it will move to next question automatically when answered.
+    'duration': 0,  // indicates the time in which quiz needs to be completed. 0 means unlimited.
+    'pageSize': 1,
+    'requiredAll': true,  // indicates if you must answer all the questions before submitting.
+    'richText': false,
+    'showPager': true,
+    'theme': 'none'
+  };
 
-  doLogin(username, pass) {
-    // need to prevent form from submitting.
-    // need to find better solution
-console.log(username);
-console.log(pass);
+  pager = {
+    index: 0,
+    size: 1,
+    count: 1
+  };
 
-this.user = {"name": username, "pass": pass}
-    // event.preventDefault();
-    // const userObject = this.loginForm.value;
-    // console.log(this.loginForm)
-    // console.log(userObject);
-    // Observables are lazy. Need to subscribe to the http request to hit the server.
-    this.registerService.registerUser(this.user).subscribe();
+  constructor(private quizService: QuizService) { }
+
+   ngOnInit() {
+    this.quizes = this.quizService.getAll();
+    this.quizName = this.quizes[0].id;
+    this.loadQuiz(this.quizName);
   }
 
- ngOnInit(): any {
-  //  .pages["0"].questions["0"].choices[1].text
-  this.questions = this.surveyJSON.pages[0].questions;
-    }
-}
+loadQuiz(quizName: string) {
+    this.quizService.get(quizName).subscribe(res => {
+      this.quiz = new Quiz(res);
+      this.pager.count = this.quiz.questions.length;
+    });
+    this.mode = 'quiz';
+  }
 
+  get filteredQuestions() {
+    return (this.quiz.questions) ?
+      this.quiz.questions.slice(this.pager.index, this.pager.index + this.pager.size) : [];
+  }
+
+
+  goTo(index: number) {
+    if (index >= 0 && index < this.pager.count) {
+      this.pager.index = index;
+      this.mode = 'quiz';
+    }
+  }
+  onSelect(question: Question, option: Option) {
+    if (question.questionTypeId === 1) {
+      question.options.forEach((x) => { if (x.id !== option.id) x.selected = false; });
+    }
+
+    if (this.config.autoMove) {
+      this.goTo(this.pager.index + 1);
+    }
+  }
+
+
+
+  isAnswered(index) {
+    return this.quiz.questions[index].options.find(x => x.selected) ? 'Answered' : 'Not Answered';
+  };
+
+  isCorrect(question: Question) {
+    return question.options.every(x => x.selected === x.isAnswer) ? 'correct' : 'wrong';
+  };
+
+  onSubmit() {
+    let answers = [];
+    this.quiz.questions.forEach(x => answers.push({ 'QuizId': this.quiz.id, 'QuestionId': x.id, 'Answered': x.answered }));
+
+    // Post your data to the server here. answers contains the questionId and the users' answer.
+    console.log(this.quiz.questions);
+    this.mode = 'result';
+  }
+}
+     //   ngOnInit() {
+
+  //  {
+  //       console.log("Reading _ConfigurationService ");
+  //       //console.log(_ConfigurationService.getConfiguration());
+    
+  //        this.quizService.getConfiguration()
+  //           .subscribe(
+  //           (res) => {
+  //               this.configs = res;
+  //               console.log("after reading");
+  //               console.log(this.configs);
+                
+  //           },
+  //           (error) => console.log("error : " + error),
+  //           () => console.log('Error in GetApplication in Login : ' + Error)
+  //       );
+    
+  //   }
+         
+  //       });
+    
+  //   this.quizes = this.quizService.getAll();
+  //   // this.quizName = this.quizes[0].id;
+  //   this.loadQuiz();
+  // }

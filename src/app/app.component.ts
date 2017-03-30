@@ -4,18 +4,19 @@ import { SearchComponent } from './header/search/search.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 
+
 @Component({
     moduleId: module.id,
     selector: 'my-app',
     templateUrl: './app.component.html',
     entryComponents: [
-    HeaderComponent,
-    SearchComponent,
-    HomeComponent,
-    FooterComponent
+        HeaderComponent,
+        SearchComponent,
+        HomeComponent,
+        FooterComponent
     ]
 })
 
 export class AppComponent {
-
+    
 }

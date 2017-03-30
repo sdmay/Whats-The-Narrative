@@ -14,6 +14,15 @@ export class UserAuthenication {
     private initializeRoutes() {
         this.router.post('/registeruser', this.doesTheUserExistInTheDatabase, this.createNewUserFromModel, this.saveNewUserToDatabase);
         this.router.get('/login/:name/:password', this.userIsTrue);
+        // this.router.get('/data/question', this.getData);
+
+    }
+
+    // private getData(req: Request, res: Response, next: NextFunction): void {
+    //          this.http.get('data/question.json')
+    //          .toPromise()
+    //             .subscribe(res => this.data = res.json());
+    // }
     }
 
     public userIsTrue(req: Request, res: Response, next: NextFunction): void {
