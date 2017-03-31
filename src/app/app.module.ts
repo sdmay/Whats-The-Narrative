@@ -30,7 +30,8 @@ import { ContactComponent } from './index/contact/contact.component';
 import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
-
+import { QuestionsAnswersComponent } from './register/quiz/questionsandanswers/questionsandanswers.component';
+import { ResultsComponent } from './register/quiz/results/results.component';
 // Services
 import { RegisterService } from './register/register.service';
 import { NewsLetterService } from './shared/observables/newsletter.service';
@@ -39,6 +40,7 @@ import { SearchResultsService } from './search-results/search-results.service';
 import { LoginService } from './login/login.service';
 import { StoriesService } from './shared/observables/stories.service';
 import { GetTweetsService } from './shared/observables/get-tweets.service';
+import { QuizService } from './register/quiz/questionsandanswers/questionsandanswers.service'
 
 @NgModule({
     imports: [
@@ -72,7 +74,9 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
         ContactComponent,
         SignupComponent,
         DashBoardComponent,
-        SigninComponent
+        SigninComponent,
+        QuestionsAnswersComponent,
+        ResultsComponent
     ],
     providers: [
         DataComponent,
@@ -82,7 +86,8 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
         SearchResultsComponent,
         SearchResultsService,
         LoginService,
-        StoriesService
+        StoriesService,
+        QuizService
     ],
     bootstrap: [
         AppComponent

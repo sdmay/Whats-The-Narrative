@@ -1,0 +1,71 @@
+
+{
+    "quizData": [
+        {
+            "id": 1,
+            "question": "Are you for Donald Trump",
+            "options": ["Yes","No"],
+            "answer": ["Yes"]
+        },
+        {
+            "id": 2,
+            "question": "Are you for The War On Drugs?",
+            "options": ["Yes","No"],
+            "answer": ["Yes"]
+        },
+        {
+            "id": 3,
+            "question": "Are you for The War On Terror?",
+            "options": ["Yes","No"],
+            "answer": ["Yes"]
+        },
+        {
+            "id": 4,
+            "question": "Did OJ kill Nicole?",
+            "options": ["Yes","No"],
+            "answer": ["Yes"]
+        },
+        {
+            "id": 5,
+            "question": "Do you believe in God?",
+            "options": ["Yes","No"],
+            "answer": ["Yes"]
+        },
+        {
+            "id": 6,
+            "question": "Are women equal?",
+            "options": ["Yes","No"],
+            "answer": ["No"]
+        },
+        {
+            "id": 7,
+            "question": "Should abortion be allowed?",
+            "options": ["Yes","No"],
+            "answer": ["No"]
+        },
+        {
+            "id": 8,
+            "question": "Do you support the death penalty?",
+            "options": ["Yes","No"],
+            "answer": ["Yes"]
+        },
+       {
+            "id": 9,
+            "question": "Do you trust the police?",
+            "options": ["Yes","No"],
+            "answer": ["Yes"]
+        },
+        {
+            "id": 10,
+            "question": "Do you believe vaccinations cause Autism?",
+            "options": ["Yes","No"],
+            "answer": ["No"]
+        },
+        {
+            "id": 11,
+            "question": "Do you like cats?",
+            "options": ["Yes","No"],
+            "answer": ["No"]
+        }
+    ]
+}   

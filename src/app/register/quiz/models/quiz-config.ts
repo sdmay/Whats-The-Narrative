@@ -7,7 +7,7 @@ export class QuizConfig {
     requiredAll: boolean;  // indicates if you must answer all the questions before submitting.
     richText: boolean;
     showPager: boolean;
-    theme: string;
+
 
     constructor(data: any) {
         data = data || {};

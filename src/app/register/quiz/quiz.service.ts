@@ -13,15 +13,13 @@ import 'rxjs/add/operator/catch';
 export class QuizService {
 
       constructor(private http: Http) { }
-
-  get(url: string) {
-    return this.http.get(url).map(res => res.text().length > 0 ? res.json() : null);
+ isQuizDone: boolean = false;
+  score: number = null;
+  quizDone(data: boolean) {
+    this.isQuizDone = data;
   }
-
-  getAll() {
-    return [
-      { id: 'assets/question.json', name: 'Quiz' }
-    ];
+  quizScore(data: number) {
+    this.score = data;
   }
 
 }
