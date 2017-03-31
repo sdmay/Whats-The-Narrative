@@ -70,6 +70,7 @@ export class QuestionsAnswersComponent implements OnInit {
     this._quizService.quizDone(true);
     this._quizService.quizScore(this.quizScore)
     console.log(this.quizScore)
+    
   }
 
   ngOnInit(): void {

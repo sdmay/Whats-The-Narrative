@@ -31,7 +31,7 @@ import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
 import { QuestionsAnswersComponent } from './register/quiz/questionsandanswers/questionsandanswers.component';
-import { ResultsComponent } from './register/quiz/results/results.component';
+
 // Services
 import { RegisterService } from './register/register.service';
 import { NewsLetterService } from './shared/observables/newsletter.service';
@@ -76,7 +76,7 @@ import { QuizService } from './register/quiz/questionsandanswers/questionsandans
         DashBoardComponent,
         SigninComponent,
         QuestionsAnswersComponent,
-        ResultsComponent
+        
     ],
     providers: [
         DataComponent,
