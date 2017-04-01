@@ -14,6 +14,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { HomeComponent } from './home/home.component';
 import { NewsLetterComponent } from './footer/newsletter/newsletter.component';
 import { FooterComponent } from './footer/footer.component';
+import { RegisterComponent } from './register/register.component';
 import { TrendingComponent } from './index/trending/trending.component';
 import { PoliticsComponent } from './index/politics/politics.component';
 import { PeopleComponent } from './index/people/people.component';
@@ -27,18 +28,20 @@ import { ContactComponent } from './index/contact/contact.component';
 import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
+import { QuestionsAnswersComponent } from './register/quiz/questionsandanswers/questionsandanswers.component';
 
 // Services
+import { RegisterService } from './register/register.service';
 import { NewsLetterService } from './shared/observables/newsletter.service';
 import { DataComponent } from './shared/providers/data.component';
 import { SearchResultsService } from './search-results/search-results.service';
 import { SignInService } from './index/signin/sign-in.service';
 import { StoriesService } from './shared/observables/stories.service';
 import { GetTweetsService } from './shared/observables/get-tweets.service';
+import { QuizService } from './register/quiz/questionsandanswers/questionsandanswers.service'
 import { AuthenicationControl } from './shared/authenication/authenication-control';
 import { SignUpService } from './index/signup/signup.service';
 import { SaveArticleService } from './shared/observables/save-article-service';
-import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     imports: [
@@ -56,6 +59,7 @@ import { RegisterComponent } from './register/register.component';
         HomeComponent,
         NewsLetterComponent,
         FooterComponent,
+        RegisterComponent,
         TrendingComponent,
         PoliticsComponent,
         PeopleComponent,
@@ -70,16 +74,18 @@ import { RegisterComponent } from './register/register.component';
         SignupComponent,
         DashBoardComponent,
         SigninComponent,
-        RegisterComponent,
+        QuestionsAnswersComponent
     ],
     providers: [
         DataComponent,
+        RegisterService,
         NewsLetterService,
         GetTweetsService,
         SearchResultsComponent,
         SearchResultsService,
         StoriesService,
-        AuthenicationControl,
+        QuizService,
+		AuthenicationControl,
         SignInService,
         SignUpService,
         SaveArticleService

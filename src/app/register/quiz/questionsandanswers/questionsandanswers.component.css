@@ -1,0 +1,16 @@
+
+.question {
+    font-size: 20px;
+    
+}
+.option {
+    cursor: pointer;
+    border: 2x;
+    border-radius: 20px;
+    background: #fff;
+}
+.option.active {
+    background: #34a9ce;
+    color: #fff;
+    font-weight: bold;
+}
