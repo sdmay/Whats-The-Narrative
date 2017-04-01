@@ -29,7 +29,8 @@ import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
 import { QuestionsAnswersComponent } from './register/quiz/questionsandanswers/questionsandanswers.component';
-
+import { SavedComponent } from './saved/saved.component';
+import { MyNewsFeedComponent } from './mynewsfeed/mynewsfeed.component';
 // Services
 import { RegisterService } from './register/register.service';
 import { NewsLetterService } from './shared/observables/newsletter.service';
@@ -74,7 +75,9 @@ import { SaveArticleService } from './shared/observables/save-article-service';
         SignupComponent,
         DashBoardComponent,
         SigninComponent,
-        QuestionsAnswersComponent
+        QuestionsAnswersComponent,
+        SavedComponent,
+        MyNewsFeedComponent
     ],
     providers: [
         DataComponent,

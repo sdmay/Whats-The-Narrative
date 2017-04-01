@@ -101,8 +101,8 @@ private _quizQAUrl = 'assets/qaa.json';
     this.quizScore = (this.quizScore / this._quiz.length) * 100;
     this._quizService.quizDone(true);
     this._quizService.quizScore(this.quizScore)
-    console.log(this.quizScore)
-    if(this.quizScore > 50){
+    console.log(this.quizScore);
+    if (this.quizScore > 50) {
       console.log("Lean Right")
     }
     else {
