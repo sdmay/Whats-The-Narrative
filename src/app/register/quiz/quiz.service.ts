@@ -13,7 +13,7 @@ import 'rxjs/add/operator/catch';
 export class QuizService {
 
       constructor(private http: Http) { }
- isQuizDone: boolean = false;
+  isQuizDone: boolean = false;
   score: number = null;
   quizDone(data: boolean) {
     this.isQuizDone = data;

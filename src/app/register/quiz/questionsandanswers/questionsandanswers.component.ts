@@ -39,14 +39,22 @@ export class QuestionsAnswersComponent implements OnInit {
   // selected options
   selected(elem: any) {
     elem.classList.toggle('active'); // toggles "active" CSS class on elements that the user clicks on
+    if (this.activeOptions.length > 1) {
+      elem.classList.toggle('active');
+    }
     this.selectedOptions.length = 0;
-    for (var i = 0; i < this.activeOptions.length; i++) {
+    for (let i = 0; i < this.activeOptions.length; i++) {
       this.selectedOptions.push(this.activeOptions[i].innerHTML);
     }
   }
 
   // next question function
   nextQuestion() {
+    if (this.activeOptions.length < 1) {
+      // elem.classList.toggle('active');
+      alert("ANSWER")
+      return false;
+    }
     if (this.questionIndex <= this._quiz.length) {
       for (let i = this.questionIndex - 1; i < this.questionIndex; i++) {
         let selectedAnswers = String(this.selectedOptions);
@@ -70,7 +78,13 @@ export class QuestionsAnswersComponent implements OnInit {
     this._quizService.quizDone(true);
     this._quizService.quizScore(this.quizScore)
     console.log(this.quizScore)
-    
+    if(this.quizScore > 50){
+      console.log("Lean Right")
+    }
+    else {
+      console.log("Lean Left")
+    }
+
   }
 
   ngOnInit(): void {
