@@ -3,7 +3,7 @@
     "quizData": [
         {
             "id": 1,
-            "question": "Are you for Donald Trump",
+            "question": "Are you for Donald Trump?",
             "options": ["Yes","No"],
             "answer": ["Yes"]
         },
