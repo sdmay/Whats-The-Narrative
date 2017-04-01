@@ -1,10 +1,21 @@
-#newsletter {
-    position: relative;
-    top: -20px;
-    left: 85px;
+#footer {
+    background-color: #333545;
+    height: 120px;
+    z-index: 0;
 }
+
+#newletter {
+    
+}
+
 #footer-nav {
     position: relative;
-    top: -30px;
-    left: 85px;
+    top: -20px;
+    left: -450px;
+}
+
+
+#footer-copyright {
+    position: relative;
+    top: -60px;
 }

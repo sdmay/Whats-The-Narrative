@@ -25,21 +25,9 @@ a:hover {
     width: 100%;
 }
 
-.home-image {
-    position: relative;
-    left: 425px;
-    top: 10px;
-}
-
 .home-text {
   position: relative;
   top: -5px;
-}
-
-#footer {
-    background-color: #333545;
-    height: 120px;
-    z-index: 0;
 }
 
 

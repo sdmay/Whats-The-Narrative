@@ -1,8 +1,6 @@
-<h3 class="dark-text">Enjoying What's The Narrative? Subscribe To Our Newsletter!</h3>
+<h2 class="dark-text">Enjoying What's The Narrative? Subscribe To Our Newsletter!</h2>
 <form>
-    <!--<input formControlName="signupname">-->
     <input [(ngModel)]="signupname" name="signupname" placeholder="Name" autocomplete="off" required>
-    <!--<input formControlName="signupemail">-->
     <input [(ngModel)]="signupemail" name="signupemail" type="email" placeholder="Email" autocomplete="off" required>
     <button class="btn btn-primary" type="button" (click)="newsLetter()">Sign Up!</button>
 </form>

@@ -1,27 +1,29 @@
-<div class="row navbar-fixed-bottom" id="footer">
-    <div class="col-xs-offset-4">
-        <newsletter id="newsletter"></newsletter>
-        <nav id="footer-nav"class=" navbar navbar-toggleable-md navbar-light bg-faded">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="wtn-main-nav navbar-nav">
-                    <li class="nav-item">
-                        <a [routerLink]="['trending']" class="footer-nav-links">Trending</a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['politics']" class="footer-nav-links">Politics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['people']" class="footer-nav-links">People</a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['money']" class="footer-nav-links">Money</a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['health']" class="footer-nav-links">Health</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <p>© 2017 | What's The Narrative?</p>
+<div class="container">
+    <div class="row navbar-fixed-bottom" id="footer">
+        <div class=" col-sm-offset-5 col-sm-5">
+            <newsletter id="newsletter"></newsletter>
+            <nav id="footer-nav" class="navbar">
+                <div>
+                    <ul class="wtn-main-nav">
+                        <li class="nav-item">
+                            <a [routerLink]="['trending']" class="footer-nav-links">Trending</a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]="['politics']" class="footer-nav-links">Politics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]="['people']" class="footer-nav-links">People</a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]="['money']" class="footer-nav-links">Money</a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]="['health']" class="footer-nav-links">Health</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <p id="footer-copyright">© 2017 | What's The Narrative?</p>
+        </div>
     </div>
 </div>
