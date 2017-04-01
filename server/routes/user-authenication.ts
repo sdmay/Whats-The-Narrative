@@ -65,7 +65,6 @@ export class UserAuthenication {
     }
 
     private doesTheUserExistInTheDatabase(req: Request, res: Response, next: NextFunction): void {
-        console.log(req.body.leftOrRight);
         User.findOne({ 'name': req.body.name },
             (error, user) => {
                 // TODO: some kind of error handling for the future.

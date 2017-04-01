@@ -1,6 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 
 import AylienNewsApiConstructor from './external-api-keys/aylien-news';
+import { JsonWebTokenMiddleWare } from './middleware/json-web-token-middleware';
 
 
 export class PopularNewsSearches {
@@ -17,8 +18,15 @@ export class PopularNewsSearches {
         this.router.get('/people', this.createPeopleNewsSearch, this.searchNews, this.sendResultsBack);
         this.router.get('/money', this.createMoneyNewsSearch, this.searchNews, this.sendResultsBack);
         this.router.get('/health', this.createHealthNewsSearch, this.searchNews, this.sendResultsBack);
-        this.router.get('/:searchterm', this.createLeftWingOrRightWingSearch, this.searchNews, this.sendResultsBack);
+        this.router.get('/:searchterm', this.createHalfAndHalfLeftAndRightSearch, this.searchNews, this.sendResultsBack);
+
+        this.router.use('/loggedin/:searchterm', JsonWebTokenMiddleWare.getPublicKey);
+        this.router.use('/loggedin/:searchterm', JsonWebTokenMiddleWare.verifiyJsonWebToken);
+        this.router.use('/loggedin/:searchterm', this.createLeftWingOrRightWingSearch);
+        this.router.use('/loggedin/:searchterm', this.searchNews);
+        this.router.get('/loggedin/:searchterm', this.sendResultsBack);
     }
+
 
     private createTrendingNowNewsSearch(req: Request, res: Response, next: NextFunction): void {
         res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
@@ -50,20 +58,24 @@ export class PopularNewsSearches {
         next();
     }
 
+    private createHalfAndHalfLeftAndRightSearch(req: Request, res: Response, next: NextFunction): void {
+        res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
+        res.locals.searchOptions = AylienNewsApiConstructor.halfAndHalfLeftAndRightWingSearchOptions;
+        res.locals.searchOptions.text = req.params.searchterm;
+        next();
+    }
+
     private createLeftWingOrRightWingSearch(req: Request, res: Response, next: NextFunction): void {
         res.locals.AylienNewsInstance = AylienNewsApiConstructor.aylienNewsApiInstance;
 
-        //TODO: here is where we determine if the user is going to receive left or right wing searches. this needs to be implemented properly.
-        // the if statement can obviously be changed that is just placeholder for the time being.
+        // Determine if the user is left or right wing based upon the information we gathered from their stored token
+        // give them the opposite of what they normally would look for.
+        if (res.locals.decodedToken.leftOrRight === "Right") {
+            res.locals.searchOptions = AylienNewsApiConstructor.leftWingNewsSearchOptions;
+        } else {
+            res.locals.searchOptions = AylienNewsApiConstructor.rightWingNewsSearchOptions;
+        }
 
-        // if (userObjectSurveryResults === "left wing") {
-        //     res.locals.searchOptions = AylienNewsApiConstructor.leftWingNewsSearchOptions;
-        // } else {
-        //     res.locals.searchOptions = AylienNewsApiConstructor.rightWingNewsSearchOptions;
-        // }
-
-        res.locals.searchOptions = AylienNewsApiConstructor.leftWingNewsSearchOptions;
-        // replace the empty string from the constructor for the users search term recieved from the client request
         res.locals.searchOptions.text = req.params.searchterm;
         next();
     }

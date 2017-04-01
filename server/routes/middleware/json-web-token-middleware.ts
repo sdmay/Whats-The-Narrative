@@ -10,7 +10,6 @@ export class JsonWebTokenMiddleWare {
         let privateKeyFilePath = path.join(__dirname, "../../../ssl/private.pem");
         fs.readFile(privateKeyFilePath, "utf-8", (error, key) => {
             if (error) {
-                console.log(error);
                 return next(error);
             } else {
                 res.locals.privatekey = key;
@@ -22,7 +21,6 @@ export class JsonWebTokenMiddleWare {
     public static signJsonWebToken(req: Request, res: Response, next: NextFunction): void {
         jwt.sign(res.locals.tokenData, res.locals.privatekey, { algorithm: "RS256", expiresIn: 86400 }, (error, token) => {
             if (error) {
-                console.log(error);
                 return next(error);
             } else {
                 res.json({ status: 200, token: token, data: "You have successfully signed in" });
@@ -48,12 +46,9 @@ export class JsonWebTokenMiddleWare {
                 return next(error);
             } else {
                 // store the users information from the decoded token into a local variable so we can use this information later.
-                res.locals.usersInformation = {
-                    id: decodedToken.id,
-                    leftOrRight: decodedToken.leftOrRight
-                };
+                res.locals.decodedToken = decodedToken;
                 next();
             }
         });
     }
-}
+};

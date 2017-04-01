@@ -9,6 +9,7 @@ export class AylienNewsApiConstructor {
     healthNewsSearchOptions: object;
     rightWingNewsSearchOptions: object;
     leftWingNewsSearchOptions: object;
+    halfAndHalfLeftAndRightWingSearchOptions: object;
 
     constructor() {
         this.aylienNewsApiInstance = this.createAylienNewsApiInstance();
@@ -19,6 +20,7 @@ export class AylienNewsApiConstructor {
         this.healthNewsSearchOptions = this.createHealthNewsSearchOptions();
         this.rightWingNewsSearchOptions = this.createRightWingNewsSearchOptions();
         this.leftWingNewsSearchOptions = this.createLeftWingNewsSearchOptions();
+        this.halfAndHalfLeftAndRightWingSearchOptions = this.createHalfAndHalfLeftAndRightWingSearchOptions();
     }
 
 
@@ -111,6 +113,18 @@ export class AylienNewsApiConstructor {
             'publishedAtStart': 'NOW-3DAYS',
             'publishedAtEnd': 'NOW',
             'sourceDomain': ['huffingtonpost.co.uk', 'salon.com', 'dailykos.com', 'thedailybeast.com', 'alternet.org', 'motherjones.com'],
+            'mediaImagesCountMin': 1
+        };
+    }
+
+    private createHalfAndHalfLeftAndRightWingSearchOptions(): object {
+        return {
+            'text': '',
+            'language': ['en'],
+            'notLanguage': ['es', 'it'],
+            'publishedAtStart': 'NOW-3DAYS',
+            'publishedAtEnd': 'NOW',
+            'sourceDomain': ['huffingtonpost.co.uk', 'salon.com', 'dailykos.com', 'breitbart.com', 'theblaze.com', 'drudgereport.com'],
             'mediaImagesCountMin': 1
         };
     }

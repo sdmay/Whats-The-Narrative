@@ -30,7 +30,7 @@ export class SearchResultsComponent implements OnInit {
 
     public getUsersSearch(): void {
         const userSearchData = this.dataComponent.userSearchData;
-        this.searchResultsService.getUsersSearchFromServer(userSearchData);
+        this.searchResultsService.createLoggedInOrNotLoggedInSearch(userSearchData);
     }
 
     private saveArticle(attributes): void {
