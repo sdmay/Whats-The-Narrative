@@ -1,12 +1,13 @@
 <div class="wtn-main-header animate-search">
     <div class="wtn-logo">
-        <a><img src="assets/img/WTNh80.png" alt="Logo"></a>
+        <a [routerLink]="['']"><img src="assets/img/WTNh80.png" alt="Logo"></a>
     </div>
     <div class="wtn-modal-main-nav">
         <ul [ngSwitch]="authenicationControl.isTheUserAuthenicated()">
             <li [routerLink]="['signin']" *ngSwitchCase="false"><a class="wtn-modal-signin">Sign in</a></li>
             <li [routerLink]="['signup']" *ngSwitchCase="false"><a class="wtn-modal-signup ">Sign up</a></li>
             <li *ngSwitchCase="true" (click)="logUserOut()"><a class="wtn-modal-signup ">Logout</a></li>
+            <li *ngSwitchCase="true"><a class="wtn-modal-signup " [routerLink]="['dashboard']">My Dashboard</a></li>
         </ul>
     </div>
 
