@@ -65,6 +65,7 @@ export class UserAuthenication {
     }
 
     private doesTheUserExistInTheDatabase(req: Request, res: Response, next: NextFunction): void {
+        console.log(req.body.leftOrRight);
         User.findOne({ 'name': req.body.name },
             (error, user) => {
                 // TODO: some kind of error handling for the future.
@@ -84,7 +85,8 @@ export class UserAuthenication {
     private createNewUserFromModel(req: Request, res: Response, next: NextFunction): void {
         res.locals.newUser = new User({
             name: req.body.name,
-            password: req.body.pass
+            password: req.body.pass,
+            leftOrRight: req.body.leftOrRight
         });
         next();
     }

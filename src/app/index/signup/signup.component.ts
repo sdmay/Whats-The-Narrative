@@ -11,21 +11,21 @@ import { IQuiz } from './qaa';
 
 
 @Component({
-    moduleId: module.id,
-    selector: 'signup',
-    styleUrls: ['signup.component.css'],
-    templateUrl: './signup.component.html'
+  moduleId: module.id,
+  selector: 'signup',
+  styleUrls: ['signup.component.css'],
+  templateUrl: './signup.component.html'
 })
 
 export class SignupComponent implements OnInit {
-    public loginForm = this.fb.group({
-        name: ["", Validators.required],
-        password: ["", Validators.required]
-    });
+  public loginForm = this.fb.group({
+    name: ["", Validators.required],
+    password: ["", Validators.required]
+  });
 
-    questions: any = [];
-    user: any = {};
-private _quizQAUrl = 'assets/qaa.json';
+  questions: any = [];
+  user: any = {};
+  private _quizQAUrl = 'assets/qaa.json';
   private _quiz: IQuiz[];
   private _answers: Array<string> = [];
 
@@ -34,26 +34,30 @@ private _quizQAUrl = 'assets/qaa.json';
   selectedOptions: Array<string> = [];
   activeOptions = document.getElementsByClassName('active');
   quizScore: number = 0;
-    constructor(
-        private _quizService: SignUpService,
-        private signUpService: SignUpService,
-        private _http: Http,
-        private router: Router,
-        public fb: FormBuilder,
-    ) { }
+  private quizAnswer: string = "";
+  constructor(
+    private _quizService: SignUpService,
+    private signUpService: SignUpService,
+    private _http: Http,
+    private router: Router,
+    public fb: FormBuilder,
+  ) { }
 
-    private doLogin(username, pass) {
-        this.user = { "name": username, "pass": pass };
-        this.signUpService.registerUser(this.user).subscribe(
-            response => this.wasTheRegistrationSuccessful(response)
-        );
+  private doLogin(username, pass) {
+    if (this.quizAnswer === "") {
+      return;
     }
+    this.user = { "name": username, "pass": pass, "leftOrRight": this.quizAnswer };
+    this.signUpService.registerUser(this.user).subscribe(
+      response => this.wasTheRegistrationSuccessful(response)
+    );
+  }
 
-    private wasTheRegistrationSuccessful(response): void {
-        if (response.status === 200) {
-            this.router.navigate(['signin']);
-        }
+  private wasTheRegistrationSuccessful(response): void {
+    if (response.status === 200) {
+      this.router.navigate(['signin']);
     }
+  }
   // get the list of the questions and answers as an observable
   getQAAList(): Observable<IQuiz[]> {
     return this._http.get(this._quizQAUrl)
@@ -100,13 +104,15 @@ private _quizQAUrl = 'assets/qaa.json';
   calculateScore() {
     this.quizScore = (this.quizScore / this._quiz.length) * 100;
     this._quizService.quizDone(true);
-    this._quizService.quizScore(this.quizScore)
+    this._quizService.quizScore(this.quizScore);
     console.log(this.quizScore)
-    if(this.quizScore > 50){
-      console.log("Lean Right")
+    if (this.quizScore > 50) {
+      console.log("Lean Right");
+      this.quizAnswer = "Right";
     }
     else {
       console.log("Lean Left")
+      this.quizAnswer = "Left";
     }
 
   }
@@ -117,6 +123,6 @@ private _quizQAUrl = 'assets/qaa.json';
       quiz => this._quiz = quiz, // set our local _quiz array equal to the IQuiz[] data which arrive from our data stream
       error => this.errorMessage = <any>error);
   }
-   
+
 
 }

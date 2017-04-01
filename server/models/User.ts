@@ -29,7 +29,7 @@ let userSchema = new Schema({
 
     },
     leftOrRight: {
-        type: Boolean,
+        type: String,
         default: false,
         required: true
     },
