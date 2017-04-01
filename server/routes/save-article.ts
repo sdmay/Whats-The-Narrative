@@ -46,7 +46,7 @@ export class SaveArticleRouter {
     }
 
     private updateUsersSavedArticles(req: Request, res: Response, next: NextFunction): void {
-        User.findOneAndUpdate({ "_id": res.locals.usersInformation.id }, { $push: { "savedArticles": res.locals.article } }, { new: true })
+        User.findOneAndUpdate({ "_id": res.locals.decodedToken.id }, { $push: { "savedArticles": res.locals.article } }, { new: true })
             .exec((error, user) => {
                 if (error) {
                     return next(error);
