@@ -18,7 +18,6 @@ export class PopularNewsSearches {
         this.router.get('/money', this.createMoneyNewsSearch, this.searchNews, this.sendResultsBack);
         this.router.get('/health', this.createHealthNewsSearch, this.searchNews, this.sendResultsBack);
         this.router.get('/:searchterm', this.createLeftWingOrRightWingSearch, this.searchNews, this.sendResultsBack);
-        
     }
 
     private createTrendingNowNewsSearch(req: Request, res: Response, next: NextFunction): void {

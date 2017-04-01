@@ -13,16 +13,25 @@ export class UserAuthenication {
     }
 
     private initializeRoutes() {
-        this.router.post('/registeruser', this.doesTheUserExistInTheDatabase, this.createNewUserFromModel, this.saveNewUserToDatabase);
-        this.router.get('/login/:name/:password', this.userIsTrue, this.doesTheUsersPasswordMatch, JsonWebTokenMiddleWare.getPrivateKey, JsonWebTokenMiddleWare.signJsonWebToken);
+        this.router.use("/registeruser", this.doesTheUserExistInTheDatabase);
+        this.router.use("/registeruser", this.createNewUserFromModel);
+        this.router.post("/registeruser", this.saveNewUserToDatabase);
+        
+        this.router.use('/login/:name/:password', this.userIsTrue);
+        this.router.use("/login/:name/:password", this.doesTheUsersPasswordMatch);
+        this.router.use("/login/:name/:password", JsonWebTokenMiddleWare.getPrivateKey);
+        this.router.get('/login/:name/:password', JsonWebTokenMiddleWare.signJsonWebToken);
     }
+
+
 
     public userIsTrue(req: Request, res: Response, next: NextFunction): void {
         User.findOne({ 'name': req.params.name },
             (error, user) => {
                 // TODO: some kind of error handling for the future.
-                if (error) throw error;
-
+                if (error) {
+                    return next(error);
+                }
                 if (user) {
                     // store the user information found in the database to a local variable.
                     res.locals.user = user;

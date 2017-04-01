@@ -25,15 +25,9 @@
 			<li><a class="stories-read-full-article" href="{{story.links.permalink}}" target="_blank">View Full Article</a></li>
 
 			<li *ngIf="authenicationControl.isTheUserAuthenicated()">
-				<button class="btn btn-primary save-article-button" 
-						[attr.picture]="story.media[0].url"
-						[attr.id]="story.id"
-						[attr.author]="story.author.name"
-						[attr.summarypartone]="story.summary.sentences[0]"
-						[attr.summaryparttwo]="story.summary.sentences[1]"
-						[attr.link]="story.links.permalink"
-						[attr.title]="story.title"
-						(click)="saveArticle($event.target.attributes)">
+				<button class="btn btn-primary save-article-button" [attr.picture]="story.media[0].url" [attr.id]="story.id" [attr.author]="story.author.name"
+				 [attr.summarypartone]="story.summary.sentences[0]" [attr.summaryparttwo]="story.summary.sentences[1]" [attr.link]="story.links.permalink"
+				 [attr.title]="story.title" (click)="saveArticle($event.target.attributes)">
 						Save Article
 				</button>
 			</li>

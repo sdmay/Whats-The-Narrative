@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
     moduleId: module.id,
     selector: 'contact',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
     templateUrl: './contact.component.html'
 })
 
-export class ContactComponent  {
+export class ContactComponent {
+
+
+    constructor() {}
 
 }

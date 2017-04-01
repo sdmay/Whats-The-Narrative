@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { FormBuilder, Validators } from '@angular/forms';
 import { SignUpService } from "./signup.service";
 
 
@@ -13,9 +13,20 @@ import { SignUpService } from "./signup.service";
 })
 
 export class SignupComponent {
+    public loginForm = this.fb.group({
+        name: ["", Validators.required],
+        password: ["", Validators.required]
+    });
+
     questions: any = [];
     user: any = {};
 
+    constructor(
+        private signUpService: SignUpService,
+        private router: Router,
+        public fb: FormBuilder,
+    ) { }
+    
     public surveyJSON = {
         pages: [
             {
@@ -47,10 +58,6 @@ export class SignupComponent {
                     { type: "radiogroup", choices: [{ value: "1", text: "Yes" }, { value: "0", text: "No" }], isRequired: true, name: "question1" }]
             }]
     }
-
-    constructor(
-        private signUpService: SignUpService, private router: Router
-    ) { }
 
     private doLogin(username, pass) {
         this.user = { "name": username, "pass": pass };

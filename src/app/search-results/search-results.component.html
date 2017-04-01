@@ -26,7 +26,12 @@
 			<p>{{story.summary.sentences[0]}}{{story.summary.sentences[1]}}</p>
 			<ul class="wtn-quickview-item-action">
 				<li><a class="stories-read-full-article" href="{{story.links.permalink}}" target="_blank">View Full Article</a></li>
-				<li><button class="btn btn-primary save-article-button">Save Article</button></li>
+				<li *ngIf="authenicationControl.isTheUserAuthenicated()">
+					<button class="btn btn-primary save-article-button" [attr.picture]="story.media[0].url" [attr.id]="story.id" [attr.author]="story.author.name"
+					 [attr.summarypartone]="story.summary.sentences[0]" [attr.summaryparttwo]="story.summary.sentences[1]" [attr.link]="story.links.permalink"
+					 [attr.title]="story.title" (click)="saveArticle($event.target.attributes)">
+						Save Article
+				</button>
 			</ul>
 			<!-- wtn-quickview-item-action -->
 		</div>
@@ -34,3 +39,13 @@
 		<a class="wtn-quickview-close">Close</a>
 	</div>
 	<!-- wtn-quickview-quick-view -->
+
+	<ul class="wtn-quickview-items wtn-quickview-container">
+		<li *ngFor="let story of stories" id="container-{{story.id}}" class="wtn-quickview-item">
+			<img src={{story.media[0].url}} alt="Item Preview">
+			<a class="wtn-quickview-trigger">View Article</a>
+		</li>
+		<!-- wtn-quickview-item -->
+	</ul>
+	<!-- wtn-quickview-items -->
+</div>

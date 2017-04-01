@@ -4,7 +4,6 @@ import { Story } from '../../shared/types/story-type';
 import { StoriesService } from '../../shared/observables/stories.service';
 import { AuthenicationControl } from "../../shared/authenication/authenication-control";
 import { SaveArticleService } from "../../shared/observables/save-article-service";
-import { SavedArticleType } from "../../shared/types/saved-article-type";
 
 @Component({
     moduleId: module.id,
@@ -31,21 +30,14 @@ export class TrendingComponent implements OnInit {
         );
     }
 
-    private createSaveArticleObject(attributes): SavedArticleType {
-        let newSavedArticleObject = {
-            pictureUrl: attributes.picture.value,
-            articleId: attributes.id.value,
-            author: attributes.author.value,
-            summaryPartOne: attributes.summarypartone.value,
-            summaryPartTwo: attributes.summaryparttwo.value,
-            articleUrl: attributes.link.value,
-            title: attributes.title.value
-        };
-        return newSavedArticleObject;
+    private saveArticle(attributes): void {
+        this.saveArticleService.saveArticle(attributes).subscribe(
+            response => this.determineSuccessOfSavingArticle(response)
+        );
     }
 
-    private saveArticle(attributes): any {
-        let newSavedArticleObject = this.createSaveArticleObject(attributes);
-        this.saveArticleService.saveArticle(newSavedArticleObject).subscribe();
+    private determineSuccessOfSavingArticle(response): void {
+        // TODO: let the user know the article was successfully saved or not.
+        console.log(response);
     }
 }

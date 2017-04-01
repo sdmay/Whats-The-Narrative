@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataComponent } from '../shared/providers/data.component';
 import { SearchResultsService } from './search-results.service';
+import { AuthenicationControl } from "../shared/authenication/authenication-control";
+import { SaveArticleService } from "../shared/observables/save-article-service";
 
 @Component({
     moduleId: module.id,
@@ -18,6 +20,8 @@ export class SearchResultsComponent implements OnInit {
     constructor(
         private dataComponent: DataComponent,
         private searchResultsService: SearchResultsService,
+        private authenicationControl: AuthenicationControl,
+        private savedArticleService: SaveArticleService
     ) {}
 
     ngOnInit(): void {
@@ -27,5 +31,16 @@ export class SearchResultsComponent implements OnInit {
     public getUsersSearch(): void {
         const userSearchData = this.dataComponent.userSearchData;
         this.searchResultsService.getUsersSearchFromServer(userSearchData);
+    }
+
+    private saveArticle(attributes): void {
+        this.savedArticleService.saveArticle(attributes).subscribe(
+            response => this.determineSuccessOfSavingArticle(response)
+        );
+    }
+
+    private determineSuccessOfSavingArticle(response): void {
+        // TODO: let the user know the article was successfully saved or not.
+        console.log(response);
     }
 }

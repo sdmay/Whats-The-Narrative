@@ -33,9 +33,9 @@ let userSchema = new Schema({
         default: false,
         required: true
     },
-    savedArticle: [{
+    savedArticles: [{
         type: Schema.Types.ObjectId,
-        ref: 'articles'
+        ref: "article"
     }],
     createdAt: {
         type: Date,
@@ -60,13 +60,14 @@ userSchema.pre("save", function (next: Function) {
     generateBcryptSalt(next, user);
 });
 
+// thanks http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt
 const generateBcryptSalt = (next, user) => {
 
     bcrypt.genSalt(10, (error, salt) => {
         if (error) return next(error);
         encryptPassword(next, user, salt);
     });
-}
+};
 
 const encryptPassword = (next, user, salt) => {
 
@@ -75,7 +76,9 @@ const encryptPassword = (next, user, salt) => {
         user.password = hash;
         return next();
     });
-}
+};
+
+
 
 
 

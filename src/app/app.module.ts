@@ -38,6 +38,7 @@ import { GetTweetsService } from './shared/observables/get-tweets.service';
 import { AuthenicationControl } from './shared/authenication/authenication-control';
 import { SignUpService } from './index/signup/signup.service';
 import { SaveArticleService } from './shared/observables/save-article-service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     imports: [
@@ -68,7 +69,8 @@ import { SaveArticleService } from './shared/observables/save-article-service';
         ContactComponent,
         SignupComponent,
         DashBoardComponent,
-        SigninComponent
+        SigninComponent,
+        RegisterComponent,
     ],
     providers: [
         DataComponent,

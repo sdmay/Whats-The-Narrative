@@ -14,6 +14,7 @@ import { TeamComponent } from './index/team/team.component';
 import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
+    { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({

@@ -4,6 +4,13 @@ let Schema = mongoose.Schema;
 let ObjectId = mongoose.Schema.Types.ObjectId;
 
 interface ArticleModel extends mongoose.Document {
+    pictureUrl: string;
+    articleId: string;
+    author: string;
+    summaryPartOne: string;
+    summaryPartTwo: string;
+    articleUrl: string;
+    articleTitle: string;
     title: string;
     url: string;
     createdAt: Date;
