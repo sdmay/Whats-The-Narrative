@@ -1,8 +1,11 @@
-<h1>Left Wing Tweets</h1>
+<img src="/assets/img/donkey.jpg"/>
+<!--<h1>Left Wing Tweets</h1>-->
 <ul>
     <li *ngFor="let tweet of tweets">
-        <p>Tweeted By: {{tweet.user.name}}</p>
-        <p>{{tweet.text}}</p>
-        <p>{{tweet.created_at}}</p>
+        <div class ="lefttwitter">
+        <div class="leftname"><img src="{{tweet.user.profile_image_url}}" class="leftprofilepic"/> {{tweet.user.name}}</div>
+        <div class ="lefttweet">{{tweet.text}}</div>
+        <div class="leftcreated">{{tweet.created_at}}</div>
+        </div>
     </li>
 </ul>

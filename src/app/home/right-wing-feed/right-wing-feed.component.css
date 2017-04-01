@@ -1,0 +1,35 @@
+.twitter {
+    border-style: solid;
+    border-color: darkblue;
+    border-width: 5px;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.name {
+font-size: 17px;
+color: darkred;
+margin-left: 10px;
+margin-bottom: 20px;
+}
+
+.profilepic {
+border-radius: 8px; 
+height: 75px;
+width: 75px;
+}
+
+.tweet {
+font-family: 'Roboto', sans-serif;
+font-size:15px;
+color: black;
+padding-bottom: 10px;
+
+/*font-family: 'Macondo', cursive;*/
+}
+
+.created {
+    color: black;
+
+}
