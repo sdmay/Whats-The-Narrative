@@ -16,7 +16,6 @@ export class QuizService {
 
   quizSend(data : number){
       this.score = data;
-      
   }
 
 }
