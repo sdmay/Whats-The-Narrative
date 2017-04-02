@@ -1,9 +1,12 @@
+
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
 
 import Routes from '../routes/routes-index';
+import ClientHtmlRouter from '../routes/html-routes/client-html-routes';
+import FourOhFourRouter from '../routes/html-routes/404-router';
 
 class App {
     app: express.Express;
@@ -27,9 +30,8 @@ class App {
 
     private routes(): void {
         this.app.use('/api', Routes);
-        this.app.get('*', (req: express.Request, res: express.Response) => {
-            res.sendFile(path.join(__dirname + '/../../dist/index.html'));
-        });
+        this.app.use('/', ClientHtmlRouter);
+        this.app.use('*', FourOhFourRouter);
     }
 };
 

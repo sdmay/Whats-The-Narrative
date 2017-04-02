@@ -5,8 +5,6 @@ import { SavedArticleType } from '../shared/types/saved-article-type';
 import { AuthenicationControl } from "../shared/authenication/authenication-control";
 import { MySavedArticlesService } from './saved.service';
 
-
-
 @Component({
     moduleId: module.id,
     selector: 'saved',
