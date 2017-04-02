@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -31,6 +32,7 @@ import { DashBoardComponent } from './dashboard/dashboard.component';
 import { QuestionsAnswersComponent } from './register/quiz/questionsandanswers/questionsandanswers.component';
 import { SavedComponent } from './saved/saved.component';
 import { MyNewsFeedComponent } from './mynewsfeed/mynewsfeed.component';
+import { ErrorComponent } from './error/error.component';
 
 // Services
 import { RegisterService } from './register/register.service';
@@ -79,7 +81,8 @@ import { MySavedArticlesService } from './saved/saved.service';
         SigninComponent,
         QuestionsAnswersComponent,
         SavedComponent,
-        MyNewsFeedComponent
+        MyNewsFeedComponent,
+        ErrorComponent
     ],
     providers: [
         DataComponent,

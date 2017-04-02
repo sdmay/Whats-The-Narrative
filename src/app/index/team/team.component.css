@@ -1,0 +1,8 @@
+.team-photo {
+    height: 250px;
+	width: 250px;
+	border: 2px outset;
+	border-color: #9a9a9a;
+	border-radius: 50%;
+	opacity: 1.0;
+}

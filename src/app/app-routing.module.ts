@@ -17,6 +17,7 @@ import { DashBoardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { SavedComponent } from './saved/saved.component';
 import { MyNewsFeedComponent } from './mynewsfeed/mynewsfeed.component';
+import { ErrorComponent } from './error/error.component';
 
 
 const appRoutes: Routes = [
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     { path: 'signin', component: SigninComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'dashboard/saved', component: SavedComponent },
-    { path: 'dashboard/mynewsfeed', component: MyNewsFeedComponent }
+    { path: 'dashboard/mynewsfeed', component: MyNewsFeedComponent },
+    { path: 'error', component: ErrorComponent}
 ];
 
 @NgModule({
