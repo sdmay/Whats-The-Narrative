@@ -83,8 +83,7 @@ export class PopularNewsSearches {
     private searchNews(req: Request, res: Response, next: NextFunction): void {
         res.locals.AylienNewsInstance.listStories(res.locals.searchOptions, (error, data, response) => {
             if (error) {
-                // TODO: send the user an error
-                console.log(error);
+                return next(error);
             } else {
                 res.locals.stories = data.stories;
                 next();

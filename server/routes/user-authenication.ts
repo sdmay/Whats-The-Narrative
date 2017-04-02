@@ -1,4 +1,3 @@
-import bcrypt = require("bcrypt");
 import { Router, Request, Response, NextFunction } from 'express';
 import { JsonWebTokenMiddleWare } from "./middleware/json-web-token-middleware";
 
@@ -28,10 +27,7 @@ export class UserAuthenication {
     public userIsTrue(req: Request, res: Response, next: NextFunction): void {
         User.findOne({ 'name': req.params.name },
             (error, user) => {
-                // TODO: some kind of error handling for the future.
-                if (error) {
-                    return next(error);
-                }
+                if (error) return next(error);
                 if (user) {
                     // store the user information found in the database to a local variable.
                     res.locals.user = user;
@@ -64,8 +60,7 @@ export class UserAuthenication {
     private doesTheUserExistInTheDatabase(req: Request, res: Response, next: NextFunction): void {
         User.findOne({ 'name': req.body.name },
             (error, user) => {
-                // TODO: some kind of error handling for the future.
-                if (error) throw error;
+                if (error) return next(error);
 
                 if (user) {
                     // tell the client the user already exists.
@@ -89,8 +84,7 @@ export class UserAuthenication {
 
     private saveNewUserToDatabase(req: Request, res: Response, next: NextFunction): void {
         res.locals.newUser.save((error, user) => {
-            // TODO: some kind of error handling for the future.
-            if (error) throw error;
+            if (error) return next(error);
             res.json({ status: 200, data: 'You have successfully registered' });
         });
     }

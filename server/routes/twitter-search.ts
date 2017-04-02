@@ -11,8 +11,13 @@ export class TwitterApi {
     }
 
     private initializeRoutes() {
-        this.router.get('/rightwing', this.createRightWingTwitterSearch, this.makeTwitterSearch, this.sendBackTweetResults);
-        this.router.get('/leftwing', this.createLeftWingMakeTwitterSearch, this.makeTwitterSearch, this.sendBackTweetResults);
+        this.router.use('/rightwing', this.createRightWingTwitterSearch);
+        this.router.use('/rightwing', this.makeTwitterSearch);
+        this.router.get('/rightwing', this.sendBackTweetResults);
+
+        this.router.use('/leftwing', this.createLeftWingMakeTwitterSearch);
+        this.router.use('/leftwing', this.makeTwitterSearch);
+        this.router.get('/leftwing', this.sendBackTweetResults);
     }
 
     private createRightWingTwitterSearch(req: Request, res: Response, next: NextFunction): void {
@@ -32,6 +37,7 @@ export class TwitterApi {
     private makeTwitterSearch(req: Request, res: Response, next: NextFunction): void {
         res.locals.twitterClient.get(res.locals.twitterEndPoint, res.locals.twitterSearchParameters,
             (error, tweets, response) => {
+                if (error) return next(error);
                 res.locals.tweets = tweets;
                 next();
             });

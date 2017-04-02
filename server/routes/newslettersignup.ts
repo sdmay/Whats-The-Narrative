@@ -11,14 +11,17 @@ export class NewsLetterSignUpRouter {
         this.initializeRoutes();
     }
     private initializeRoutes() {
-        this.router.post('/signup', this.isThisUserSignedUpForTheNewsLetter, this.createNewsLetterUser, this.saveUserToNewsLetterCollection);
+        this.router.use('/signup', this.isThisUserSignedUpForTheNewsLetter);
+        this.router.use('/signup', this.createNewsLetterUser);
+        this.router.post('/signup', this.saveUserToNewsLetterCollection);
     }
+
     private isThisUserSignedUpForTheNewsLetter(req: Request, res: Response, next: NextFunction): void {
         NewsLetter.findOne({ 'email': req.body.signupemail },
             (error, user) => {
                 // TODO: some kind of error handling for the future.
                 if (error) {
-                    throw error;
+                    return next(error);
                 }
 
                 if (user) {
@@ -40,11 +43,11 @@ export class NewsLetterSignUpRouter {
         next();
     }
 
-    private saveUserToNewsLetterCollection(req: Request, res: Response): void {
+    private saveUserToNewsLetterCollection(req: Request, res: Response, next: NextFunction): void {
         res.locals.newEmail.save((error) => {
             // TODO: some kind of error handling for the future.
             if (error) {
-                throw error;
+                return next(error);
             }
 
             res.json({ status: 200, data: '' });
