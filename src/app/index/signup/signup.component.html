@@ -24,13 +24,12 @@
                     <button *ngIf="questionIndex < 11">Next Question</button>
                     <button *ngIf="questionIndex === 11">Finish Quiz</button>
                 </div>
-
-
-                <input [(ngModel)]="username" type="text" placeholder="Your Name" required>
-
-                <input [(ngModel)]="pass" type="text" placeholder="Your Password" required>
-                <br>
-                <button (click)="doLogin(username, pass)">Register</button>
+                <div *ngIf="quizAnswer !== ''">
+                    <input [(ngModel)]="username" type="text" placeholder="Your Name" required>
+                    <input [(ngModel)]="pass" type="text" placeholder="Your Password" required>
+                    <br>
+                    <button (click)="doLogin(username, pass)">Register</button>
+                </div>
             </div>
         </div>
     </div>
