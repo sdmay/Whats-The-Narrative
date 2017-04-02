@@ -1,4 +1,3 @@
-
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as logger from 'morgan';
@@ -32,6 +31,10 @@ class App {
         this.app.use('/api', Routes);
         this.app.use('/', ClientHtmlRouter);
         this.app.use('*', FourOhFourRouter);
+        // Global error handler
+        this.app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+            res.json({status: 500, data: "Something Went Wrong On Our End"});
+        });
     }
 };
 
