@@ -14,6 +14,7 @@ interface ArticleModel extends mongoose.Document {
     title: string;
     url: string;
     createdAt: Date;
+    idOfUserWhoSaved: string;
     modifiedAt: Date;
 }
 
@@ -45,6 +46,10 @@ let articleSchema = new Schema({
     articleTitle: {
         type: String,
         required: true
+    },
+    idOfUserWhoSaved: {
+        type: String,
+        require: true
     },
     createdAt: {
         type: Date,

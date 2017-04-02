@@ -1,1 +1,40 @@
-<h1>SAVED</h1>
+<ul class="wtn-quickview-items wtn-quickview-container">
+	<li *ngFor="let story of mySavedArticles" id="container-{{story._id}}" class="wtn-quickview-item">
+		<img src={{story.pictureUrl}} alt="Item Preview">
+		<a class="wtn-quickview-trigger">View Article</a>
+	</li>
+	<!-- wtn-quickview-item -->
+</ul>
+<!-- wtn-quickview-items -->
+
+<div class="wtn-quickview-quick-view" id="{{story._id}}" *ngFor="let story of mySavedArticles">
+	<div class="wtn-quickview-slider-wrapper">
+		<ul class="wtn-quickview-slider">
+			<li class="wtn-quickview-selected"><img src={{story.pictureUrl}}></li>
+		</ul>
+		<!-- wtn-quickview-slider -->
+	</div>
+	<!-- wtn-quickview-slider-wrapper -->
+
+	<div class="wtn-quickview-item-info">
+		<h2>{{story.articleTitle}}</h2>
+		<br>
+		<h3>Written By: {{story.author}}</h3>
+		<p>{{story.summaryPartOne}}{{story.summaryPartTwo}}</p>
+		<ul class="wtn-quickview-item-action">
+			<li><a class="stories-read-full-article" href="{{story.articleUrl}}" target="_blank">View Full Article</a></li>
+
+			<li *ngIf="authenicationControl.isTheUserAuthenicated()">
+				<button class="btn btn-danger delete-article-button" [attr.id]="story._id"  
+				(click)="toggleDeleteArticle($event.target.attributes)">
+						Delete Article
+				</button>
+			</li>
+		</ul>
+		<!-- wtn-quickview-item-action -->
+	</div>
+	<!-- wtn-quickview-item-info -->
+	<a class="wtn-quickview-close">Close</a>
+</div>
+
+<!-- wtn-quickview-quick-view -->

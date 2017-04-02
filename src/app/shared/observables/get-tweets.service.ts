@@ -10,7 +10,7 @@ import { Tweet } from '../types/tweet-type';
 export class GetTweetsService {
   constructor(private http: Http) {}
 
-  getTweets(apiUrl): Observable<Tweet[]> {
+  public getTweets(apiUrl): Observable<Tweet[]> {
     return this.http.get(apiUrl)
       .map(this.extractTweetData)
       .catch(this.handleError);

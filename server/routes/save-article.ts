@@ -30,6 +30,7 @@ export class SaveArticleRouter {
             summaryPartTwo: req.body.summaryPartTwo,
             articleUrl: req.body.articleUrl,
             articleTitle: req.body.title,
+            idOfUserWhoSaved: res.locals.decodedToken.id
         });
         next();
     }

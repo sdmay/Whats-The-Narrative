@@ -10,9 +10,11 @@ interface UserModel extends mongoose.Document {
     name: string;
     password: string;
     leftOrRight: string;
-    savedArticle: string;
+    savedArticles: string;
     createdAt: Date;
-    modifiedAt: Date;
+    modifiedAt: Date
+
+    comparseLoginPasswordWithEncryptedPassword(unEncryptedPassword: string, callback: Function): Function;
 }
 
 let userSchema = new Schema({
@@ -21,7 +23,6 @@ let userSchema = new Schema({
         required: true,
         unique: true
     },
-
     password: {
         type: String,
         trim: true,
@@ -35,7 +36,7 @@ let userSchema = new Schema({
     },
     savedArticles: [{
         type: Schema.Types.ObjectId,
-        ref: "article"
+        ref: "Article"
     }],
     createdAt: {
         type: Date,
@@ -62,7 +63,6 @@ userSchema.pre("save", function (next: Function) {
 
 // thanks http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt
 const generateBcryptSalt = (next, user) => {
-
     bcrypt.genSalt(10, (error, salt) => {
         if (error) return next(error);
         encryptPassword(next, user, salt);
@@ -70,7 +70,6 @@ const generateBcryptSalt = (next, user) => {
 };
 
 const encryptPassword = (next, user, salt) => {
-
     bcrypt.hash(user.password, salt, (error, hash) => {
         if (error) return next(error);
         user.password = hash;
@@ -78,10 +77,12 @@ const encryptPassword = (next, user, salt) => {
     });
 };
 
-
-
-
-
-
+userSchema.methods.comparseLoginPasswordWithEncryptedPassword = function (unEncryptedPassword: string, callback: Function)  {
+    // if the passwords do not makes return a callback with the error if the passwords match the error value is equal to null and we send the result back as true
+    bcrypt.compare(unEncryptedPassword, this.password, (error, result) => {
+        if (error) return callback(error);
+        return callback(null, result);
+    });
+}
 
 export const User = mongoose.model<UserModel>('User', userSchema);

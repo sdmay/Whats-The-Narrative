@@ -45,12 +45,9 @@ export class UserAuthenication {
     }
 
     private doesTheUsersPasswordMatch(req: Request, res: Response, next: NextFunction): void {
-        // compare the password the user sent down to the to the password we got from the database.
-        bcrypt.compare(req.params.password, res.locals.user.password, (error, result) => {
-            if (error) {
-                return next(error);
-            }
-            // if the passwords match
+        // compare the password the user sent down to the to the password we got from the database. this is performed in the user model.
+        res.locals.user.comparseLoginPasswordWithEncryptedPassword(req.params.password, (error, result) => {
+            if (error) return next(error);
             if (result) {
                 //create a response local variable that only stores the users database id and if they are left wing or right wing.
                 res.locals.tokenData = {

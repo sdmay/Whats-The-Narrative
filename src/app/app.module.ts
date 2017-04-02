@@ -31,6 +31,7 @@ import { DashBoardComponent } from './dashboard/dashboard.component';
 import { QuestionsAnswersComponent } from './register/quiz/questionsandanswers/questionsandanswers.component';
 import { SavedComponent } from './saved/saved.component';
 import { MyNewsFeedComponent } from './mynewsfeed/mynewsfeed.component';
+
 // Services
 import { RegisterService } from './register/register.service';
 import { NewsLetterService } from './shared/observables/newsletter.service';
@@ -43,6 +44,7 @@ import { QuizService } from './register/quiz/questionsandanswers/questionsandans
 import { AuthenicationControl } from './shared/authenication/authenication-control';
 import { SignUpService } from './index/signup/signup.service';
 import { SaveArticleService } from './shared/observables/save-article-service';
+import { MySavedArticlesService } from './saved/saved.service';
 
 @NgModule({
     imports: [
@@ -89,6 +91,7 @@ import { SaveArticleService } from './shared/observables/save-article-service';
         StoriesService,
         QuizService,
 		AuthenicationControl,
+        MySavedArticlesService,
         SignInService,
         SignUpService,
         SaveArticleService

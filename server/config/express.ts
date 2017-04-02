@@ -2,8 +2,6 @@ import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
-import * as mongoose from 'mongoose';
-import * as Promise from 'bluebird';
 
 import Routes from '../routes/routes-index';
 
