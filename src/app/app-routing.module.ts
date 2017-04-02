@@ -14,7 +14,6 @@ import { TeamComponent } from './index/team/team.component';
 import { SignupComponent } from './index/signup/signup.component';
 import { SigninComponent } from './index/signin/signin.component';
 import { DashBoardComponent } from './dashboard/dashboard.component';
-import { RegisterComponent } from './register/register.component';
 import { SavedComponent } from './saved/saved.component';
 import { MyNewsFeedComponent } from './mynewsfeed/mynewsfeed.component';
 import { ErrorComponent } from './error/error.component';
@@ -35,7 +34,6 @@ const appRoutes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
-    { path: 'register', component: RegisterComponent },
     { path: 'dashboard/saved', component: SavedComponent },
     { path: 'dashboard/mynewsfeed', component: MyNewsFeedComponent },
     { path: 'error', component: ErrorComponent}
