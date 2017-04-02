@@ -13,11 +13,16 @@ a:hover {
     left: 20px;
 }
 
+.cd-content {
+    position: relative;
+    min-height: 100%;
+}
+
 .cd-title {
     position: relative;
     background-color: #333545;
     position: relative;
-    top: 80px;
+    top: 70px;
 }
 
 .cd-section{

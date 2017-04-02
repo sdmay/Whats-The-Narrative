@@ -18,7 +18,6 @@ body {
   font-family: "PT Sans", sans-serif;
   color: #3e585f;
  /* background-color: #47374e;*/
-  background-color: #3e585f;
 }
 body::after {
   /* dark overlay layer - visible when we fire .wtn-quickview-quick-view */
