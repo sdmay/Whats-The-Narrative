@@ -30,10 +30,13 @@ export class SigninComponent {
             );
     }
     private redirect(res): void {
-        console.log(res);
         if (res.status === 200) {
             this.authenicationControl.storeJsonWebToken(res.token);
             this.router.navigate(['dashboard']);
+        }
+
+        if (res.status === 500) {
+            this.router.navigate(['error'])
         }
     }
 
