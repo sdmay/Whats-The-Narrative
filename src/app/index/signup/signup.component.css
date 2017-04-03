@@ -1,6 +1,6 @@
 .question-index {
-    padding: 10px 0;
-    font-family: 'Roboto', sans-serif;
+/*    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;*/
 }
 .question {
     font-size: 25px;
@@ -36,4 +36,5 @@
     color: #fff;
     cursor: pointer;
     outline: none;
+    width: 100%;
 }
