@@ -8,6 +8,7 @@ jQuery(document).ready(function($){
 		coverLayer = $('.wtn-cover-layer'),
 		navigationTrigger = $('.wtn-nav-trigger'),
 		mainHeader = $('.wtn-main-header');
+		searchInput = $("#wtn-search-input");
 	
 	function checkWindowWidth() {
 		var mq = window.getComputedStyle(mainHeader.get(0), '::before').getPropertyValue('content').replace(/"/g, '').replace(/'/g, "");
@@ -60,13 +61,20 @@ jQuery(document).ready(function($){
 	searchTrigger.on('click', function(event){
 		event.preventDefault();
 		if( searchTrigger.hasClass('wtn-search-form-visible') ) {
-			searchForm.find('form').submit();
+			// searchForm.find('form').submit();
+			closeSearchForm();
 		} else {
 			searchTrigger.addClass('wtn-search-form-visible');
 			coverLayer.addClass('wtn-search-form-visible');
 			searchForm.addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 				searchForm.find('input[type="search"]').focus().end().off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
 			});
+		}
+	});
+
+	searchInput.keypress(function (event) {
+		if (event.which === 13) {
+			closeSearchForm();
 		}
 	});
 

@@ -12,7 +12,7 @@
     </div>
 
     <div class="wtn-main-nav-wrapper">
-        <a class="wtn-search-trigger wtn-text-replace">Search</a>
+        <a class="wtn-search-trigger wtn-text-replace" (click)="toggleUserSearch()">Search</a>
 
         <ul class="wtn-main-nav">
             <li><a [routerLink]="['trending']" class="links">Trending</a></li>
@@ -29,10 +29,10 @@
 </div>
 
 
-<div id="search" class="wtn-main-search">
-    <form>
-        <!--THIS IS THE SEARCH COMPONENT-->
-        <search></search>
+<div class="wtn-main-search">
+    <form [formGroup]="userSearchForm" autocomplete="off">
+        <input id="wtn-search-input" type="search" placeholder="Search..." (keyup.enter)="toggleUserSearch()" [(ngModel)]="userInputSearchTerm"
+            formControlName="userInputSearchTerm">
     </form>
 
     <div class="wtn-search-suggestions">
@@ -74,6 +74,7 @@
     <span>Menu</span>
 </a>
 <!-- .cd-nav-trigger -->
+
 
 <div class="cd-nav-container">
     <div>

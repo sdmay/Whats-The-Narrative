@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { SearchComponent } from './header/search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { HomeComponent } from './home/home.component';
 import { NewsLetterComponent } from './footer/newsletter/newsletter.component';
@@ -56,7 +55,6 @@ import { MySavedArticlesService } from './saved/saved.service';
     declarations: [
         AppComponent,
         HeaderComponent,
-        SearchComponent,
         HomeComponent,
         NewsLetterComponent,
         FooterComponent,
