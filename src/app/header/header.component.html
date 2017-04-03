@@ -31,13 +31,13 @@
 
 <div class="wtn-main-search">
     <form [formGroup]="userSearchForm" autocomplete="off">
-        <input id="wtn-search-input" type="search" placeholder="Search..." (keyup.enter)="toggleUserSearch()" [(ngModel)]="userInputSearchTerm"
+        <input id="wtn-search-input" type="search" placeholder="Search What's The Narrative" (keyup.enter)="toggleUserSearch()" [(ngModel)]="userInputSearchTerm"
             formControlName="userInputSearchTerm">
     </form>
 
     <div class="wtn-search-suggestions">
         <div class="wtn-news">
-            <h3>News</h3>
+            <h3>Today's Top Trending</h3>
             <ul>
                 <li>
                     <a class="wtn-image-wrapper"><img src="assets/img/placeholder1.png" alt="News image"></a>

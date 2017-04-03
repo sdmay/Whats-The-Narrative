@@ -16,8 +16,8 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Open Sans", sans-serif;
-/*  color: #9e87ce;*/
-/*  background-color: #403438;*/
+  /*  color: #9e87ce;*/
+  /*  background-color: #403438;*/
 
 }
 
@@ -701,10 +701,10 @@ main.scale-down {
 
 
 @media only screen and (max-width: 500px){
-.logo-desktop {
- display: none;
-}
-.cd-section header {
+  .logo-desktop {
+   display: none;
+ }
+ .cd-section header {
   height: 25vh;
 }
 .wtn-nav-trigger {
@@ -714,9 +714,9 @@ main.scale-down {
 
 @media only screen and (min-width: 501px){
 
-.logo-mobile {
-  display: none;
-}
+  .logo-mobile {
+    display: none;
+  }
 
 
 }
@@ -746,3 +746,130 @@ main.scale-down {
 .wtn-search-trigger::before {
   background-color: #9e87ce;
 }
+
+
+/*April 4 2017*/
+
+
+.wtn-logo img {
+  width: 50%!important;
+  margin-top: 2.75%!important;
+}
+
+.wtn-modal-signin {
+  margin-right: -30px!important;
+}
+
+.cd-title {
+  background-color: white!important;
+  top: 85px!important;
+}
+
+.logo-desktop {
+  margin-top: 5%;
+  padding-bottom: 25px;
+
+}
+
+
+
+
+.wtn-search-trigger::before {
+ background-color: #2f889a;
+}
+
+
+
+.cd-content {
+  padding-top: 0px;
+  margin-top: -5%;
+}
+
+
+.twitter, .lefttwitter {
+  border-width: 2.5px!important;
+  border-radius: 8px!important;
+
+}
+
+.profilepic, .leftprofilepic {
+  display: none;
+}
+
+.name, .leftname {
+  margin-left: 0px!important;
+}
+
+.tweet, .lefttweet {
+  line-height: 1.2
+}
+
+.created, .leftcreated {
+  font-size: 1.2rem;
+}
+
+
+.cd-content ul {
+  margin-bottom: 50%;
+}
+
+body {
+  background-color: white;
+}
+
+.donkey, .elephant {
+  width: 30%;
+  position: relative;
+  left: 35%;
+  margin-bottom: 5%;
+}
+
+.cd-nav-container h3 {
+position: relative;
+top: 25px;
+left: 5%
+}
+
+.cd-nav-container .fa {
+padding: 15px;
+}
+
+.cd-nav-container .fa-facebook {
+  margin-left: 25px;
+}
+
+.no-touch .cd-nav li:first-of-type a:hover, .cd-nav li.cd-selected:first-of-type a {
+background-color: #2f889a;
+}
+
+.no-touch .cd-nav li:nth-of-type(2) a:hover, .cd-nav li.cd-selected:nth-of-type(2) a, .no-touch .cd-nav li:nth-of-type(3) a:hover, .cd-nav li.cd-selected:nth-of-type(3) a, 
+.no-touch .cd-nav li:nth-of-type(4) a:hover, .cd-nav li.cd-selected:nth-of-type(4) a, .no-touch .cd-nav li:nth-of-type(5) a:hover, .cd-nav li.cd-selected:nth-of-type(5) a,
+.no-touch .cd-nav li:nth-of-type(6) a:hover, .cd-nav li.cd-selected:nth-of-type(6) a {
+  background-color: #333545; 
+}
+
+.newsletter-h2 {
+  padding: 2% 0;
+  font-size: 2rem;
+  color: white;
+}
+
+#footer input, textarea {
+  padding: .7%;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 1px solid #333545;
+}
+
+.newsletter-btn {
+  border-radius: 8px;
+  border-radius: 1px solid #2f889a;
+  box-shadow: none;
+  padding: .7% 1.25%;
+  background-color: #2f889a;
+  border-color: #2f889a;
+  font-size: 1.6rem;
+
+}
+
+/*April 4 2017*/
