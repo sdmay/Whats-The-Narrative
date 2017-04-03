@@ -23,6 +23,7 @@ export class ClientHtmlRouter {
         this.router.use('/contact', this.sendClientTheApp);
         this.router.use('/signup', this.sendClientTheApp);
         this.router.use('/signin', this.sendClientTheApp);
+        this.router.use('/dashboard', this.sendClientTheApp);
     }
 
     private sendClientTheApp(req: Request, res: Response): void {
