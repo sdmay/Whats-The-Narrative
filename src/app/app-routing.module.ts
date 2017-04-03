@@ -18,11 +18,12 @@ import { SavedComponent } from './saved/saved.component';
 import { MyNewsFeedComponent } from './mynewsfeed/mynewsfeed.component';
 import { ErrorComponent } from './error/error.component';
 
+import { ClientAuthGuard } from './shared/authenication/client-auth-guard';
+
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
-    { path: 'dashboard', component: DashBoardComponent },
     { path: 'trending', component: TrendingComponent },
     { path: 'politics', component: PoliticsComponent },
     { path: 'people', component: PeopleComponent },
@@ -34,9 +35,11 @@ const appRoutes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
-    { path: 'dashboard/saved', component: SavedComponent },
-    { path: 'dashboard/mynewsfeed', component: MyNewsFeedComponent },
-    { path: 'error', component: ErrorComponent}
+    { path: 'error', component: ErrorComponent },
+    // protected client side routes that the user must be logged in to access.
+    { path: 'dashboard', component: DashBoardComponent, canActivate: [ClientAuthGuard] },
+    { path: 'dashboard/saved', component: SavedComponent, canActivate: [ClientAuthGuard] },
+    { path: 'dashboard/mynewsfeed', component: MyNewsFeedComponent, canActivate: [ClientAuthGuard] }
 ];
 
 @NgModule({

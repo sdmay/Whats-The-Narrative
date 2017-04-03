@@ -19,6 +19,7 @@ export class ClientHtmlRouter {
         this.router.use('/health', this.sendClientTheApp);
         this.router.use('/about', this.sendClientTheApp);
         this.router.use('/team', this.sendClientTheApp);
+        this.router.use('/searchresults', this.sendClientTheApp);
         this.router.use('/contact', this.sendClientTheApp);
         this.router.use('/signup', this.sendClientTheApp);
         this.router.use('/signin', this.sendClientTheApp);

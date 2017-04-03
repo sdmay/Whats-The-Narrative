@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -42,6 +41,7 @@ import { AuthenicationControl } from './shared/authenication/authenication-contr
 import { SignUpService } from './index/signup/signup.service';
 import { SaveArticleService } from './shared/observables/save-article-service';
 import { MySavedArticlesService } from './saved/saved.service';
+import { ClientAuthGuard } from './shared/authenication/client-auth-guard';
 
 @NgModule({
     imports: [
@@ -84,6 +84,7 @@ import { MySavedArticlesService } from './saved/saved.service';
         SearchResultsService,
         StoriesService,
 		AuthenicationControl,
+        ClientAuthGuard,
         MySavedArticlesService,
         SignInService,
         SignUpService,

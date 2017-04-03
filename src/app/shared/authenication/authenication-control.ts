@@ -17,7 +17,7 @@ export class AuthenicationControl {
     }
 
     public isTheUserAuthenicated(): boolean {
-        const token = sessionStorage.getItem("token");
+        const token = this.getJsonWebTokenFromSessionStorage();
         if (token === null) {
             return false;
         } else {
