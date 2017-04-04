@@ -698,7 +698,9 @@ main.scale-down {
 }
 
 .dark-text {
-  color: black;
+  /*color: #333;*/
+ /* color: black;*/
+ color: #333545!important;
 }
 
 
@@ -1084,6 +1086,44 @@ input, textarea {
 width: 100%!important;
 font-family: 'montserrat'!important;
   font-size: 2rem!important;
+/*  background: #2f889a!important;*/
 
 }
 /*April 4 2017*/
+
+/*April 5 2017*/
+
+.name, .leftname {
+   font-family: 'Bree Serif', serif;
+   font-size: 20px;
+color: #333!important;
+}
+
+.tweet, .lefttweet {
+    font-family: 'montserrat'!important;
+    font-weight: 400;
+    color: #333!important;
+}
+
+.created, .leftcreated {
+  font-family: 'roboto';
+}
+
+.option {
+ font-family: 'montserrat'!important;
+ border: 2px solid #2f889a!important;
+
+}
+
+.register-name, .register-password {
+
+}
+
+.cd-content-less-padding {
+padding: 0;
+margin: -5%;
+
+}
+
+
+/*April 5 2017*/

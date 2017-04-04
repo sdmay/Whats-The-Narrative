@@ -17,6 +17,7 @@
     border: 2px solid lightseagreen;
     border-radius: 6px;
     background: #fff;
+    color: #2f889a;
 }
 
 .option.active {
@@ -30,9 +31,10 @@
 }
 .navigation > button {
     padding: 10px 8px;
-    border: 1px solid lightslategray;
+    border: 1px solid #2f889a;
     border-radius: 6px;
-    background: #34a9ce;
+  /*  background: #34a9ce;*/
+    background: #2f889a;
     color: #fff;
     cursor: pointer;
     outline: none;

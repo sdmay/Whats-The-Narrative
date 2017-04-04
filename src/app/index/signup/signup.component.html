@@ -8,9 +8,14 @@
     </div>
 
 
-    <div class="cd-content">
+    <div class="cd-content cd-content-less-padding">
         <div class="text-center">
+
+            
+
             <div class="col-sm-offset-5 col-sm-2">
+
+
                 <!--(keyup.enter)="doLogin(user, pass)"-->
                 <div *ngFor="let quiz of _quiz | slice:(questionIndex-1):questionIndex">
                     <div class="question-index">Question {{ questionIndex }} / {{ _quiz.length }}</div>
@@ -25,8 +30,8 @@
                     <button *ngIf="questionIndex === 11">Finish Quiz</button>
                 </div>
                 <div *ngIf="quizAnswer !== ''">
-                    <input [(ngModel)]="username" type="text" placeholder="Your Name" required>
-                    <input [(ngModel)]="pass" type="text" placeholder="Your Password" required>
+                    <input class="register-name" [(ngModel)]="username" type="text" placeholder="Your Name" required>
+                    <input class="register-password" [(ngModel)]="pass" type="text" placeholder="Your Password" required>
                     <br>
                     <button (click)="doLogin(username, pass)">Register</button>
                 </div>
