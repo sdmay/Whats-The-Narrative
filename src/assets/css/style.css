@@ -1115,15 +1115,60 @@ color: #333!important;
 
 }
 
-.register-name, .register-password {
-
-}
-
 .cd-content-less-padding {
 padding: 0;
 margin: -5%;
 
 }
+.thank-you {
+  line-height: 1.25!important;
+  font-size: 1.75rem;
+  padding-bottom: 25%;
+}
 
+.register-name, .register-password {
+padding: 7% 5%;
+margin: 3%;
+border-radius: 8px;
+border: 1px solid;
+font-style: 1.6rem;
+font-family: 'montserrat'!important;
+
+}
+
+.btn-more-padding {
+  padding: 7%;
+  margin: 3%;
+  margin-bottom: 20%;
+}
+
+.save-article-button {
+  padding: 1%;
+  position: absolute;
+  left: 4%;
+}
+
+.padding-bottom-10 {
+  padding-bottom: 10%;
+}
+
+.team-p {
+  font-size: 2rem;
+  line-height: 1.5!important;
+/*  text-align: left!important;*/
+}
+
+.team-h1 {
+  font-size: 3.5rem;
+font-family: 'Bree Serif', serif;
+  margin: 2%;
+color: #2f889a;
+}
+
+.team-photo {
+  height: 200px!important;
+  width: 200px!important;
+  border: 2px solid #2f889a!important;
+}
 
 /*April 5 2017*/

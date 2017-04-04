@@ -18,6 +18,7 @@
 
                 <!--(keyup.enter)="doLogin(user, pass)"-->
                 <div *ngFor="let quiz of _quiz | slice:(questionIndex-1):questionIndex">
+                <div class="text-center"><p class="copy-p thank-you">Welcome to What's The Narrative?! Please complete these quick questions.</p></div>
                     <div class="question-index">Question {{ questionIndex }} / {{ _quiz.length }}</div>
                     <p class="question">{{ quiz.question }}</p>
                     <div [class]="'option option-' + i" *ngFor="let option of quiz.options; let i = index" (click)="selected(elem)" #elem>{{ option }}</div>
@@ -30,10 +31,11 @@
                     <button *ngIf="questionIndex === 11">Finish Quiz</button>
                 </div>
                 <div *ngIf="quizAnswer !== ''">
+                <div class="text-center"><p class="copy-p thank-you">Thanks for completing the questions. Please choose a name and password to login.</p></div>
                     <input class="register-name" [(ngModel)]="username" type="text" placeholder="Your Name" required>
                     <input class="register-password" [(ngModel)]="pass" type="text" placeholder="Your Password" required>
                     <br>
-                    <button (click)="doLogin(username, pass)">Register</button>
+                    <button class="btn-primary btn-more-padding" (click)="doLogin(username, pass)">Register</button>
                 </div>
             </div>
         </div>
