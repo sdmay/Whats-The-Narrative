@@ -5,14 +5,14 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mtmulch/Whats-The-Narrative.git"
+    "url": "https://github.com/sdmay/Whats-The-Narrative.git"
   },
   "author": "Bob Dempsey, Scott May, and Mike Mulchrone",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mtmulch/Whats-The-Narrative/issues"
+    "url": "https://github.com/sdmay/Whats-The-Narrative/issues"
   },
-  "homepage": "https://github.com/mtmulch/Whats-The-Narrative#readme",
+  "homepage": "https://github.com/sdmay/Whats-The-Narrative#readme",
   "scripts": {
     "ng": "ng",
     "start": "node index.js",

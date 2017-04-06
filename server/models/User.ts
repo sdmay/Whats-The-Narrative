@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import bcrypt = require("bcryptjs");
+import bcrypt = require("bcrypt");
 
 
 
